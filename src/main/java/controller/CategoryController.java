@@ -2,6 +2,92 @@ package controller;
 
 
 import java.io.File;
+<<<<<<< HEAD
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.el.lang.FunctionMapperImpl.Function;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
+import model.Category;
+import service.CategoryMybatisDao;
+
+
+@Controller 
+@RequestMapping("/category/")
+public class CategoryController {
+	 @Autowired 
+	 CategoryMybatisDao bd;
+	
+	HttpServletRequest request;
+	   Model m;
+	   HttpSession session;
+	   @ModelAttribute
+	   void init(HttpServletRequest request, Model m) {
+	      this.request = request;
+	      this.m = m;
+	      this.session = request.getSession();
+	   } 
+	
+
+	@RequestMapping("bakeryMain")	//handler처럼 사용하기 위해서 가져온다.
+	public String bakeryMain()  {
+		
+		return "bakeryMain";
+	}
+	
+	@RequestMapping("categoryForm")	//handler처럼 사용하기 위해서 가져온다.
+	public String categoryForm(){
+		
+		
+		return "bakeryMain";
+	}
+	@RequestMapping("categoryPro")
+	public String categoryPro(@RequestParam("uploadfile") MultipartFile multipartFile, Category board) throws Exception {
+
+		
+		  String path = request.getServletContext().getRealPath("/") +
+		 "view/category/img/";
+		
+		  if (!multipartFile.isEmpty()) {
+				File file = new File(path, multipartFile.getOriginalFilename());
+				multipartFile.transferTo(file);
+				board.setFile1(multipartFile.getOriginalFilename());
+				
+			}else {
+				board.setFile1("");
+			}
+
+		  String filename = null;
+		String msg = "게시물을 등록 실패";
+		String url = "categoryForm";
+		HttpSession session = request.getSession();
+
+		String boardid = (String) session.getAttribute("boardid");
+		if (boardid == null)
+			boardid = "1";
+		board.setBoardid(boardid);	//우선 공지사항
+		int num = bd.insertBoard(board);
+		
+			
+			if (num > 0) {
+				msg = "게시물을 등록 성공";
+				url = "mainpage";
+			}
+
+			System.out.println(board);
+=======
 
 import java.util.List;
 
@@ -84,6 +170,7 @@ public class CategoryController {
 			}
 
 			System.out.println(category);
+>>>>>>> branch 'master' of https://github.com/OkJE/KIOCafe_spring.git
 
 		
 		// request.setAttribute("filename", filename);
