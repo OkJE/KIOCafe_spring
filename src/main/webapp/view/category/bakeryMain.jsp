@@ -52,7 +52,7 @@
                 }
 
                 .section .slidelist {
-                    background-color: #FEFAF9;
+                    background-color: #FEFAF9; 
                     white-space: nowrap;
                     font-size: 0;
                     overflow: hidden;
