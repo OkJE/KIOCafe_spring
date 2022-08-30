@@ -6,16 +6,16 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-public class AdminInterceptor extends HandlerInterceptorAdapter{
-@Override
-public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-		throws Exception { 
-	
+public class LoginInterceptor extends HandlerInterceptorAdapter{
+
+	@Override
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+			throws Exception {
 		HttpSession session = request.getSession();
 		String auth = (String) session.getAttribute("id");
 		
-		if(auth==null || !auth.equals("admin")) {
-			response.sendRedirect(request.getContextPath()+"/member/loginForm?id=forbidden");
+		if(auth==null) {
+			response.sendRedirect(request.getContextPath()+"/member/loginForm?id=login");
 		return false;
 		}else {
 			return true;

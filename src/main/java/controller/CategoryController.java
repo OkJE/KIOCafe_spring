@@ -26,7 +26,7 @@ import service.CategoryMybatisDao;
 @Controller 
 @RequestMapping("/category/")
 public class CategoryController {
-	 @Autowired 
+	 @Autowired  
 	 CategoryMybatisDao bd;
 	
 	HttpServletRequest request;
