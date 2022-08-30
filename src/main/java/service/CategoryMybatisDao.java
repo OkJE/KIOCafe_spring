@@ -12,7 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Repository;
 
+<<<<<<< HEAD
 import model.Board;
+=======
+>>>>>>> branch 'master' of https://github.com/OkJE/KIOCafe_spring.git
 import model.Category;
 
 
