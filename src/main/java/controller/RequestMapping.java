@@ -1,5 +1,5 @@
 package controller;
 
-public @interface RequestMapping {
+public interface RequestMapping {
 
 }

@@ -16,7 +16,7 @@
 </script> -->
 </head>
 <body>
-<form class="w3-container" action="${pageContext.request.contextPath }/product/productPro" name="f" method="post">
+<form class="w3-container" action="${pageContext.request.contextPath }/category/categoryPro" name="f" method="post">
 <input type="hidden" name="picture">
 <table class="w3-table-all">
 <caption>상품 등록</caption>
