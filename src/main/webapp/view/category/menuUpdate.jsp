@@ -10,7 +10,7 @@
 
 <body>
 
-<form class="w3-container" action="/view/category/bakeryMain.jsp" name="f"
+<form class="w3-container" action="${pageContext.request.contextPath}/category/menuUpdatePro" name="f"
 method="post" onsubmit="return inputCheck(this)">
    
    <br> <br> <br> 

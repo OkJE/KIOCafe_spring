@@ -71,7 +71,7 @@ public class CategoryController {
 			}
 
 		 //String filename = null;
-		String msg = "게시물을 등록 실패";
+		String msg = "제품 등록 실패";
 		String url = "category/menuUpdate";
 		HttpSession session = request.getSession();
 
@@ -83,7 +83,7 @@ public class CategoryController {
 		
 			
 			if (num > 0) {
-				msg = "게시물을 등록 성공";
+				msg = "제품 등록 성공";
 				url = "category/categoryList";
 			}
 
