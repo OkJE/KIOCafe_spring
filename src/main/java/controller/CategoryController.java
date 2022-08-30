@@ -53,7 +53,7 @@ public class CategoryController {
 		return "bakeryMain";
 	}
 	@RequestMapping("categoryPro")
-	public String categoryPro(@RequestParam("uploadfile") MultipartFile multipartFile, Category board) throws Exception {
+	public String categoryPro(@RequestParam("uploadfile") MultipartFile multipartFile, Category category) throws Exception {
 
 		
 		  String path = request.getServletContext().getRealPath("/") +
@@ -62,10 +62,10 @@ public class CategoryController {
 		  if (!multipartFile.isEmpty()) {
 				File file = new File(path, multipartFile.getOriginalFilename());
 				multipartFile.transferTo(file);
-				board.setFile1(multipartFile.getOriginalFilename());
+				category.setCpicture(multipartFile.getOriginalFilename());
 				
 			}else {
-				board.setFile1("");
+				category.setCpicture("");
 			}
 
 		  String filename = null;
@@ -76,8 +76,8 @@ public class CategoryController {
 		String boardid = (String) session.getAttribute("boardid");
 		if (boardid == null)
 			boardid = "1";
-		board.setBoardid(boardid);	//우선 공지사항
-		int num = bd.insertBoard(board);
+		category.setBoardid(boardid);	//우선 공지사항
+		int num = bd.insertBoard(category);
 		
 			
 			if (num > 0) {
@@ -85,7 +85,7 @@ public class CategoryController {
 				url = "mainpage";
 			}
 
-			System.out.println(board);
+			System.out.println(category);
 
 		
 		// request.setAttribute("filename", filename);

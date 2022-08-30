@@ -9,6 +9,7 @@ public class Category {
 	private int cqty;
 	private int cmenu;
 	private String boardid;
+	
 	public int getCnum() {
 		return cnum;
 	}
