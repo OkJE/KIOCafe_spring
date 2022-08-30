@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,41 +8,50 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 //import com.oreilly.servlet.MultipartRequest;
 
 import model.Member;
 import service.MemberMybatisDao;
 
+@Controller
+@RequestMapping("/member/")
 public class MemberController {
 	
+	@Autowired
+	MemberMybatisDao md;
+	
+	HttpServletRequest request;
+	Model m;
+	HttpSession session;
+	
+	@ModelAttribute
+	void init(HttpServletRequest request, Model m) {
+		this.request = request;
+		this.m = m;
+		this.session = request.getSession();
+	}
+	
 	@RequestMapping("index")
-	public String index(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String index() throws Exception {
 		request.setAttribute("index", "member 입니다.");
-		return "/view/index.jsp";
+		return "index";
 	}
 
 	@RequestMapping("joinForm")
-	public String joinForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String joinForm() throws Exception {
 
-		return "/view/member/joinForm.jsp";
+		return "member/joinForm";
 	}
 
 	@RequestMapping("joinPro")
-	public String joinPro(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		request.setCharacterEncoding("utf-8");
-		Member mem = new Member();
-		SimpleDateFormat formatter=new SimpleDateFormat("yyyy년 MM월 dd일");
+	public String joinPro(Member mem) throws Exception {
 		
-		mem.setId(request.getParameter("id"));
-		mem.setPass(request.getParameter("pass"));
-		mem.setName(request.getParameter("name"));
-		mem.setTel(request.getParameter("tel"));
-		mem.setAdress(request.getParameter("adress"));
-		mem.setBirthday(formatter.parse(request.getParameter("birthday")));
-		mem.setEmail(request.getParameter("email"));
-		mem.setNickname(request.getParameter("nickname"));
-
-		MemberMybatisDao md = new MemberMybatisDao();
 		int num = md.insertMember(mem);
 		String msg = "";
 		String url = "";
@@ -81,25 +89,20 @@ public class MemberController {
 		request.setAttribute("msg", msg);
 		request.setAttribute("url", url);
 
-		return "/view/alert.jsp";
+		return "alert";
 	
 	}
 
 	@RequestMapping("loginForm")
-	public String loginForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String loginForm() throws Exception {
 
-		return "/view/member/loginForm.jsp";
+		return "member/loginForm";
 	}
 
 
 	@RequestMapping("loginPro")
-	public String loginPro(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		HttpSession session = request.getSession();
-		String id = request.getParameter("id");
-		String pass = request.getParameter("pass");
-
-		MemberMybatisDao md = new MemberMybatisDao();
-
+	public String loginPro(String id,String pass) throws Exception {
+		
 		Member mem = md.selectOne(id);
 
 		String msg = "아이디를 확인하세요";
@@ -119,12 +122,11 @@ public class MemberController {
 		request.setAttribute("msg", msg);
 		request.setAttribute("url", url);
 
-		return "/view/alert.jsp";
+		return "alert";
 	}
 
 	@RequestMapping("logout")
-	public String logout(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		HttpSession session = request.getSession();
+	public String logout() throws Exception {
 		String login = (String) session.getAttribute("id");
 		session.invalidate();
 
@@ -134,71 +136,59 @@ public class MemberController {
 		request.setAttribute("msg", msg);
 		request.setAttribute("url", url);
 
-		return "/view/alert.jsp";
+		return "alert";
 	}
 
-	@RequestMapping("memberInfo")
-	public String memberInfo(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		HttpSession session = request.getSession();
+	@RequestMapping("myaccount")
+	public String myaccount() throws Exception {
 		String id = (String) session.getAttribute("id");
 
 		if (id != null && !id.equals("")) {
-			Member m = new MemberMybatisDao().selectOne(id);
+			Member m = md.selectOne(id);
 			request.setAttribute("m", m);
-			return "/view/member/myaccount.jsp";
+			return "member/myaccount";
+			
 		} else {
 			String msg = "로그인이 필요 합니다.";
 			String url = "/member/loginForm";
 			request.setAttribute("msg", msg);
 			request.setAttribute("url", url);
-			return "/view/alert.jsp";
+			return "alert";
 		}
 	}
-/*
+
 	@RequestMapping("memberUpdateForm")
-	public String memberUpdateForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		HttpSession session = request.getSession();
+	public String memberUpdateForm() throws Exception {
 		String id = (String) session.getAttribute("id");
 
 		if (id != null && !id.equals("")) {
 			Member m = new MemberMybatisDao().selectOne(id);
 			request.setAttribute("m", m);
-			return "/view/member/memberUpdateForm.jsp";
+			return "member/memberUpdateForm";
 
 		} else {
 			String msg = "로그인이 필요 합니다.";
 			String url = "/member/loginForm";
 			request.setAttribute("msg", msg);
 			request.setAttribute("url", url);
-			return "/view/alert.jsp";
+			return "alert";
 		}
 	}
 
 	@RequestMapping("memberUpdatePro")
-	public String memberUpdatePro(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		HttpSession session = request.getSession();
+	public String memberUpdatePro(Member mem) throws Exception {
 		String id = (String) session.getAttribute("id");
 		String msg = "로그인이 필요합니다.";
 		String url = "/member/loginForm";
 
 		if (id != null && !id.equals("")) {
-			request.setCharacterEncoding("utf-8");
-			Member mem = new Member();
-			mem.setId(id);
-			mem.setPass(request.getParameter("pass"));
-			mem.setName(request.getParameter("name"));
-			mem.setGender(Integer.parseInt(request.getParameter("gender")));
-			mem.setTel(request.getParameter("tel"));
-			mem.setEmail(request.getParameter("email"));
-			mem.setPicture(request.getParameter("picture"));
-			MemberMybatisDao md = new MemberMybatisDao();
 			Member dbm = md.selectOne(id);
 			if (dbm != null) {
 				if (dbm.getPass().equals(mem.getPass())) {
 					int num = md.updateMember(mem);
 					if (num > 0) {
 						msg = mem.getName() + "님의 정보 수정이 되었습니다.";
-						url = "/member/memberInfo";
+						url = "/member/myaccount";
 					} else {
 						msg = "정보 수정이 실패했습니다.";
 						url = "/member/memberUpdateForm";
@@ -213,32 +203,30 @@ public class MemberController {
 		request.setAttribute("msg", msg);
 		request.setAttribute("url", url);
 
-		return "/view/alert.jsp";
+		return "alert";
 
 	}
-*/
+
 	@RequestMapping("memberDelete")
-	public String memberDelete(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		HttpSession session = request.getSession();
+	public String memberDelete() throws Exception {
 		String id = (String) session.getAttribute("id");
 		String msg = "로그인이 필요합니다.";
 		String url = "/member/loginForm";
 		if (id != null && !id.equals("")) {
-			return "/view/member/memberDelete.jsp";
+			return "member/memberDelete";
 		}
 
 		request.setAttribute("msg", msg);
 		request.setAttribute("url", url);
-		return "/view/alert.jsp";
+		return "alert";
 	}
 
 	@RequestMapping("memberDeletePro")
-	public String memberDeletePro(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		HttpSession session = request.getSession();
+	public String memberDeletePro(String pass) throws Exception {
+		HttpSession session = request.getSession();		
 		String id = (String) session.getAttribute("id");
-		String pass = request.getParameter("pass");
 		String msg = "로그인이 필요합니다.";
-		String url = "/view/member/loginForm";
+		String url = "/member/loginForm";
 
 		if (id != null && !id.equals("")) {
 			MemberMybatisDao md = new MemberMybatisDao();
@@ -264,40 +252,36 @@ public class MemberController {
 		}
 		request.setAttribute("msg", msg);
 		request.setAttribute("url", url);
-		return "/view/alert.jsp";
+		return "alert";
 	}
 	
 	
 	
 	@RequestMapping("memberPassUpdate")
-	public String memberPassUpdate(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String memberPassUpdate() throws Exception {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
 		String msg = "로그인이 필요합니다.";
 		String url = "/member/loginForm";
 		if (id != null && !id.equals("")) {
-			return "/view/member/memberPassUpdate.jsp";
+			return "member/memberPassUpdate";
 		}
 
 		request.setAttribute("msg", msg);
 		request.setAttribute("url", url);
-		return "/view/alert.jsp";
+		return "alert";
 	}
 	
 	
 	
 	
 	@RequestMapping("memberPassPro")
-	public String memberPassPro(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		HttpSession session = request.getSession();
+	public String memberPassPro(String pass,String chgpass1) throws Exception {
 		String id=(String)session.getAttribute("id");
-		String pass=(String)request.getParameter("pass");
-		String chgpass1=(String)request.getParameter("chgpass1");
 		String msg="로그인이 필요합니다.";
 		String url="/member/loginForm";
 
 		if(id!=null && !id.equals("")){
-			MemberMybatisDao md = new MemberMybatisDao();
 			Member dbm=md.selectOne(id);
 		if(dbm!=null){
 			if(dbm.getPass().equals(pass)){
@@ -319,13 +303,13 @@ public class MemberController {
 		}
 		request.setAttribute("msg", msg);
 		request.setAttribute("url", url);
-		return "/view/alert.jsp";
+		return "alert";
 	}
 	
 	
 	
 	@RequestMapping("memberList")
-	public String memberList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String memberList() throws Exception {
 		HttpSession session = request.getSession();
 		String id=(String)session.getAttribute("id");
 		String msg="로그인이 필요합니다.";
@@ -333,13 +317,13 @@ public class MemberController {
 		
 		if (id!= null && id.equals("admin")) {
 			List<Member> li = new ArrayList<Member>();
-			li = new MemberMybatisDao().memberList();	
+			li = md.memberList();	
 			request.setAttribute("li", li);
-			return "/view/member/memberList.jsp";
+			return "/member/memberList";
 		}
 		request.setAttribute("msg", msg);
 		request.setAttribute("url", url);
-		return "/view/alert.jsp";
+		return "alert";
 	}
 	
 	

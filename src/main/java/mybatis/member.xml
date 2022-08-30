@@ -11,7 +11,7 @@
 		=> where id=admin  -->
 		
 		<insert id="insertMember" parameterType="member">
-		insert into kiocafe_member values (#{id},#{pass},#{name},#{tel},#{adress},#{birthday},#{email},#{nickname},sysdate)		
+		insert into kiocafe_member values (#{id},#{pass},#{name},#{tel},#{adress},#{birthday},#{email},#{nickname},sysdate,sysdate)		
 		</insert>
  		
 		<select id="selectOne" resultType="member">
