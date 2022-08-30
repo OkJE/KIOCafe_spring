@@ -43,7 +43,7 @@
 			<value>jdbc:oracle:thin:@localhost:1521:xe</value>
 		</property>
 		<property name="user">
-			<value>kic</value>
+			<value>c##kic</value>
 		</property>
 		<property name="password">
 			<value>1111</value>
@@ -82,6 +82,37 @@
 	<bean class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory" />
 	</bean>
+	
+	<mvc:interceptors>
+	  	<mvc:interceptor>
+	  		<mvc:mapping path="/member/memberInfo"/>
+	  		<mvc:mapping path="/member/memberUpdateForm"/>
+	  		<mvc:mapping path="member/memberDelete"/>
+	  		<bean class="service.LoginInterceptor"/>  		
+	  	</mvc:interceptor>
+	  	
+	  	<mvc:interceptor>
+	  		<mvc:mapping path="/member/memberList"/>
+	  		<bean class="service.AdminInterseptor"/>
+	  	</mvc:interceptor>
+	  	
+	  </mvc:interceptors> 
+	  
+	  <!-- web 환경에서 객체 주입을 위한 설정 : @Autowired, @Controller... 기능 사용 -->
+		<mvc:annotation-driven/>
+		
+		<!-- -base-package="controller, service" 패키지를 먼저 scan 해서 @Component 를 가진 클래스의 객체 생성 -->
+		<context:component-scan base-package="controller, service"/>
+
+		<!-- css,js,html 웹에서 제공되는 파일의 기본 기능 제외 -->
+		<mvc:default-servlet-handler/>		
+	
+		<mvc:view-controller path="/index" view-name="index"/>
+		
+		<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+			<property name="prefix" value="/view/"/>
+			<property name="suffix" value=".jsp"/>
+		</bean>
 
 
 
