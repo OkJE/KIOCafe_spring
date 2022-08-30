@@ -63,7 +63,7 @@
    <bean class="org.mybatis.spring.SqlSessionTemplate">
    <constructor-arg ref="sqlSessionFactory"/>
    </bean>
-   
+  <!--  
    <mvc:interceptors>
    <mvc:interceptor>
    <mvc:mapping path="/member/memberInfo"/>
@@ -78,5 +78,5 @@
    </mvc:interceptor>  
    </mvc:interceptors>
    
-   
+   --> 
 </beans>

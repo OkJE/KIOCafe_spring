@@ -9,10 +9,7 @@ public class Category {
 	private int cqty;
 	private int cmenu;
 	private String boardid;
-<<<<<<< HEAD
-=======
-	
->>>>>>> branch 'master' of https://github.com/OkJE/KIOCafe_spring.git
+
 	public int getCnum() {
 		return cnum;
 	}
