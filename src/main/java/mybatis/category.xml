@@ -3,53 +3,40 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="category">
 
-	<select id="boardCount" parameterType="String" resultType="int">
-		select nvl(count(*),0) from board where boardid = #{value}
+	<select id="categoryCount" parameterType="String" resultType="int">
+		select nvl(count(*),0) from kiocafe_category where cid = #{value}
 	</select>
 
-	<select id="boardList" parameterType="map" resultType="board">
-		select *
-		from (
-		select rownum rnum, a.*
-		from(select * from board where boardid =
-		#{boardid}
-		order by ref desc, refstep) a )
-		where rnum between #{start}
-		and #{end}
+	<select id="categoryList" parameterType="map" resultType="category">
+		select * from
+		(select rownum rnum, a.* from (select * from kiocafe_category where cid = #{cid}) a )
+		where rnum between #{start} and #{end}		
 	</select>
-	<insert id="insertBoard" parameterType="board">
-		insert into board values
-		(boardseq.nextval,#{name},#{pass},#{subject},#{content},#{file1},
-		sysdate, 0, boardseq.currval, #{reflevel}, #{refstep},#{boardid})
+	
+	
+	<insert id="insertCategory" parameterType="category">
+	
+		insert into kiocafe_category values
+		
+		(#{cnum},#{cname},#{cmenu},#{ctext},#{cprice},#{cqty},#{cpicture})	
 	</insert>
 
-	<insert id="insertReply" parameterType="board">
-		insert into board values
-		(boardseq.nextval,#{name},#{pass},#{subject},#{content},#{file1},
-		sysdate, 0, #{ref}, #{reflevel}, #{refstep},#{boardid})
-	</insert>
 	
 	
-	
-	<select id="boardOne" parameterType="int" resultType="board">
-		select * from board where num=#{num}
+	<select id="category" parameterType="int" resultType="category">
+		select * from kiocafe_category where cnum=#{cnum}
 	</select>
 
-	<update id="readCountUp" parameterType="int">
-		update board set readcnt = readcnt+1 where num = #{value}
+	
+	
+	<update id="categoryUpdate" parameterType="category">
+		update kiocafe_category set cname = #{cname} , ctext = #{ctext} , 
+		cpicture = #{cpicture} where cnum = #{cnum}		
 	</update>
 
-	<update id="refStepAdd" parameterType="map">
-		update board set refstep = refstep + 1 where ref = #{ref} and refstep > #{refstep}
-	</update>
 
-	<update id="boardUpdate" parameterType="board">
-		update board set subject = #{subject} , content = #{content} , 
-		file1 = #{file1} where num = #{num}		
-	</update>
-
-	<delete id="boardDelete" parameterType="int">
-	delete from board where num= #{num}	
-	</delete>
+	<delete id="categoryDelete" parameterType="int">
+	delete from kiocafe_category where cnum= #{cnum}	
+	</delete> 
 
 </mapper>

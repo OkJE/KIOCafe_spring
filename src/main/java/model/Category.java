@@ -3,13 +3,12 @@ package model;
 public class Category {
 	private int cnum;
 	private String cname;
-	private String cpicture;
+	private int cmenu;
 	private String ctext;
 	private int cprice;
 	private int cqty;
-	private int cmenu;
-	private String boardid;
-
+	private String cpicture;
+	private String cid;
 	public int getCnum() {
 		return cnum;
 	}
@@ -22,11 +21,11 @@ public class Category {
 	public void setCname(String cname) {
 		this.cname = cname;
 	}
-	public String getCpicture() {
-		return cpicture;
+	public int getCmenu() {
+		return cmenu;
 	}
-	public void setCpicture(String cpicture) {
-		this.cpicture = cpicture;
+	public void setCmenu(int cmenu) {
+		this.cmenu = cmenu;
 	}
 	public String getCtext() {
 		return ctext;
@@ -46,22 +45,25 @@ public class Category {
 	public void setCqty(int cqty) {
 		this.cqty = cqty;
 	}
-	public int getCmenu() {
-		return cmenu;
+	public String getCpicture() {
+		return cpicture;
 	}
-	public void setCmenu(int cmenu) {
-		this.cmenu = cmenu;
+	public void setCpicture(String cpicture) {
+		this.cpicture = cpicture;
 	}
-	public String getBoardid() {
-		return boardid;
+	public String getCid() {
+		return cid;
 	}
-	public void setBoardid(String boardid) {
-		this.boardid = boardid;
+	public void setCid(String cid) {
+		this.cid = cid;
 	}
 	@Override
 	public String toString() {
-		return "Category [cnum=" + cnum + ", cname=" + cname + ", cpicture=" + cpicture + ", ctext=" + ctext
-				+ ", cprice=" + cprice + ", cqty=" + cqty + ", cmenu=" + cmenu + ", boardid=" + boardid + "]";
+		return "Category [cnum=" + cnum + ", cname=" + cname + ", cmenu=" + cmenu + ", ctext=" + ctext + ", cprice="
+				+ cprice + ", cqty=" + cqty + ", cpicture=" + cpicture + ", cid=" + cid + "]";
 	}
+
+	
+	
 	
 }

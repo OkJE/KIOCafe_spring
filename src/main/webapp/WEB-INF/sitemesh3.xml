@@ -2,7 +2,6 @@
 <sitemesh>
 	<!-- WEB-INF/sitemesh3.xml -->
 	<mapping path="/member/*" decorator="/layout/layout.jsp" />
-	<mapping path="/board/*" decorator="/layout/layout.jsp" />
 	<mapping path="/category/*" decorator="/layout/layout.jsp" />
 
 

@@ -4,12 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
 
-import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Repository;
 
 import model.Category;
@@ -21,77 +18,51 @@ public class CategoryMybatisDao {
 	@Autowired
 	SqlSessionTemplate session;
 	
-	private static final String ns = "board."; 
+	private static final String ns = "category."; 
 	private Map map = new HashMap();
-	public int boardCount(String boardid) {
+	public int categoryCount(String cid) {
 		
-		int num = session.selectOne(ns+"boardCount", boardid);
+		int num = session.selectOne(ns+"categoryCount", cid);
 		return num;
 	}
 	
-	public List<Category> boardList(int pageInt, int limit, String boardid){
+	public List<Category> categoryList(int pageInt, int limit, String cid){
 		
 		map.clear();
-		map.put("boardid", boardid);
+		map.put("boardid", cid);
 		map.put("start", (pageInt-1)*limit+1);
 		map.put("end", (pageInt*limit));
-		List<Category> list = session.selectList(ns+"boardList",map);
+		List<Category> list = session.selectList(ns+"categoryList",map);
 		System.out.println(list);
 		return list;
 	}
 
-public int insertBoard(Category board) {
+public int insertCategory(Category category) {
 	
-	int num = session.insert(ns+"insertBoard", board);
-	
-	
-	return num;
-}
-
-	public Category boardOne(int num) {
-		
-		Category board = session.selectOne(ns+"boardOne", num);
-		
-		return board;
-	}
-	
-	public void readCountUp(int num) {
-		
-		
-		session.update(ns+"readCountUp", num);
-		
-		
-	}
-	
-public void refStepAdd(int ref, int refstep) {
-		
-	
-	map.clear();
-	map.put("ref", ref);
-	map.put("refstep", refstep);
-	session.insert(ns+"insertBoard", map);
-	
-
-	}
-
-public int insertReply(Category board) {
-	
-	int num = session.insert(ns+"insertReply", board);
-	
-	
-	return num;
-	
-}
-public int boardUpdate(Category board) {
-	
-	int num = session.update(ns+"boardUpdate", board);
+	int num = session.insert(ns+"insertCategory", category);
 	
 	
 	return num;
 }
-public int boardDelete(int num) {
+	//xml에 없음 
+	public Category category(int num) {
+		
+		Category category = session.selectOne(ns+"category", num);
+		
+		return category;
+	}
 	
-	int n = session.delete(ns+"boardDelete", num);
+
+public int categoryUpdate(Category category) {
+	
+	int num = session.update(ns+"categoryUpdate", category);
+	
+	
+	return num;
+}
+public int categoryDelete(int num) {
+	
+	int n = session.delete(ns+"categoryDelete", num);
 	
 	
 	return n;
