@@ -106,6 +106,7 @@ public class CategoryController {
 	
 		if(request.getParameter("pageNum") !=null) {
 			session.setAttribute("pageNum", request.getParameter("pageNum"));
+			
 		}
 		
 		String pageNum = request.getParameter("pageNum");
@@ -137,7 +138,7 @@ public class CategoryController {
 		 * 2P
 		 * 3 -- 페이지 보여줄 부분 수정
 		 * */
-		String boardName = "공지사항";
+		String boardName = "";
 		switch(boardid) {
 		case "1" : boardName = "공지사항"; break;
 		case "2" : boardName = "자유게시판"; break;
@@ -157,10 +158,11 @@ public class CategoryController {
 		request.setAttribute("maxPage", maxPage);
 		
 		
-		return "category/boardList";
+		return "category/categoryList";
 	}
 	
 	}
+
 	
 	/*@RequestMapping("loginForm")	//handler처럼 사용하기 위해서 가져온다.
 	public String loginForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
