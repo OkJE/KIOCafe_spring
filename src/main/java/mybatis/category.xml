@@ -15,15 +15,10 @@
    
    
    <insert id="insertCategory" parameterType="category">
-   
       insert into kiocafe_category values
-      
-      (#{cnum},#{cname},#{cmenu},#{ctext},#{cprice},0,#{cpicture}, #{cid})   
-      
-      
+      (#{cnum},#{cname},#{cmenu},#{ctext},#{cprice},0,#{cpicture}, #{cid})        
    </insert>
-
-   
+ 
    
    <select id="categoryOne" parameterType="int" resultType="category">
       select * from kiocafe_category where cnum=#{cnum}

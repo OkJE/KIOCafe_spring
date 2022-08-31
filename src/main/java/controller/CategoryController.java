@@ -54,6 +54,7 @@ public class CategoryController {
       return "category/drinkMain";
    }
    
+   
    @RequestMapping("menuUpdate")
    public String menuUpdate() throws Exception {
       return "category/menuUpdate";
@@ -149,10 +150,9 @@ public class CategoryController {
       return "category/categoryList";
    
    }
+   
    @RequestMapping("categoryInfo")
    public String categoryInfo(int cnum) throws Exception {
-   
-   
       Category category = bd.categoryOne(cnum);
       bd.categoryOne(cnum);
 

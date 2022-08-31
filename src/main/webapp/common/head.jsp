@@ -55,6 +55,7 @@
 					카테고리
 				</button>
 				<div class="w3-dropdown-content w3-bar-block w3-card-4">
+					<a href="${pageContext.request.contextPath}/category/categoryList" class="w3-bar-item w3-button">상품리스트</a>
 					<a href="${pageContext.request.contextPath}/category/bakeryMain" class="w3-bar-item w3-button">디저트</a>
 					<a href="${pageContext.request.contextPath}/category/drinkMain" class="w3-bar-item w3-button">음료</a>
 				</div>
