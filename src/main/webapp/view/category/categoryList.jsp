@@ -37,15 +37,15 @@
 						<th>상품수량</th>
 						<th>상품사진</th>
 					</tr>
-				
-
+				</tbody>
+				<tbody>
 					<c:forEach var="c" items="${list}">
-					<td>
-					<a href="${pageContext.request.contextPath}/category/categoryInfo?cnum=${c.cnum}">${c.cname}</a>
+					
+					
 					
 						<tr>
-							<td>${c.cnum}</td>
-							<td>${c.cname}</td>
+							<td><a href="${pageContext.request.contextPath}/category/categoryInfo?cnum=${c.cnum}">${c.cnum}</a></td>
+							<td>${c.cname}</td>						
 							<td>${c.cmenu}</td>
 							<td>${c.ctext}</td>
 							<td>${c.cprice}</td>

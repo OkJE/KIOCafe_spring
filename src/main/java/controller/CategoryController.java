@@ -39,7 +39,10 @@ public class CategoryController {
 	      this.session = request.getSession();
 	   } 
 	
-
+	@RequestMapping("mainpage")	
+	public String mainpage(){		
+		return "category/mainpage";
+	}
 	
 	@RequestMapping("bakeryMain")	
 	public String bakeryMain(){		
@@ -65,10 +68,10 @@ public class CategoryController {
 		HttpSession session = request.getSession();
 
 		String cid = (String) session.getAttribute("cid");
-		if (cid == null)
-			cid = "1";
+		if (cid == null) 	cid = "1";
 		category.setCid(cid);	//우선 공지사항
-		category.setCpicture(""); //null값
+		
+		//category.setCpicture(""); //null값
 		int num = bd.insertCategory(category);
 			
 			if (num > 0) {
@@ -146,6 +149,18 @@ public class CategoryController {
 		return "category/categoryList";
 	
 	}
+	@RequestMapping("categoryInfo")
+	public String categoryInfo(int cnum) throws Exception {
+	
+	
+		Category category = bd.categoryOne(cnum);
+		bd.categoryOne(cnum);
+
+		request.setAttribute("Category", category);
+		return "category/categoryInfo";
+	}
+	
+
 	@RequestMapping("pictureimgForm")
 	public String pictureimgForm() throws Exception {
 

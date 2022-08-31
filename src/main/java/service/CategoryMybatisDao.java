@@ -39,16 +39,16 @@ public class CategoryMybatisDao {
 	}
 
 public int insertCategory(Category category) {
-	
+	System.out.println(category);
 	int num = session.insert(ns+"insertCategory", category);
 	
 	
 	return num;
 }
 	//xml에 없음 
-	public Category category(int num) {
+	public Category categoryOne(int cnum) {
 		
-		Category category = session.selectOne(ns+"category", num);
+		Category category = session.selectOne(ns+"categoryOne", cnum);
 		
 		return category;
 	}

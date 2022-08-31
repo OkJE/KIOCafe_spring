@@ -18,14 +18,14 @@
 	
 		insert into kiocafe_category values
 		
-		(#{cnum},#{cname},#{cmenu},#{ctext},#{cprice},#{cpicture})	
+		(#{cnum},#{cname},#{cmenu},#{ctext},#{cprice},0,#{cpicture}, #{cid})	
 		
-		<!-- (#{cnum},#{cname},#{cmenu},#{ctext},#{cprice},#{cqty},#{cpicture})	 -->
+		
 	</insert>
 
 	
 	
-	<select id="category" parameterType="int" resultType="category">
+	<select id="categoryOne" parameterType="int" resultType="category">
 		select * from kiocafe_category where cnum=#{cnum}
 	</select>
 
