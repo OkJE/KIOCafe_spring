@@ -57,28 +57,19 @@ public class CategoryController {
 	}
 
 	@RequestMapping("menuUpdatePro")
-	public String menuUpdatePro(@RequestParam("uploadfile") MultipartFile multipartFile, Category category) throws Exception {
+	public String menuUpdatePro( Category category) throws Exception {
 		
-		String path = request.getServletContext().getRealPath("/") +"view/category/img/";
-		 
 		
-		  if (!multipartFile.isEmpty()) {
-				File file = new File(path, multipartFile.getOriginalFilename());
-				multipartFile.transferTo(file);
-				category.setCpicture(multipartFile.getOriginalFilename());				
-			}else {
-				category.setCpicture("");
-			}
-
-		 //String filename = null;
+		String filename = null;
 		String msg = "제품 등록 실패";
 		String url = "category/menuUpdate";
 		HttpSession session = request.getSession();
 
-		String cdid = (String) session.getAttribute("cdid");
-		if (cdid == null)
-			cdid = "1";
-		category.setCid(cdid);	//우선 공지사항
+		String cid = (String) session.getAttribute("cid");
+		if (cid == null)
+			cid = "1";
+		category.setCid(cid);	//우선 공지사항
+		category.setCpicture(""); //null값
 		int num = bd.insertCategory(category);
 		
 			
@@ -157,6 +148,28 @@ public class CategoryController {
 			
 		return "category/categoryList";
 	
+	}
+	@RequestMapping("pictureimgForm")
+	public String pictureimgForm() throws Exception {
+
+		return "category/pictureimgForm";
+	}
+
+	@RequestMapping("picturePro")
+	public String picturePro(@RequestParam("cpicture")MultipartFile multipartFile) throws Exception {
+
+		String path = request.getServletContext().getRealPath("/") + "view/category/img/";
+		String filename = null;
+
+		if(!multipartFile.isEmpty()) {
+			File file = new File(path, multipartFile.getOriginalFilename());
+			multipartFile.transferTo(file);
+			filename=multipartFile.getOriginalFilename();
+		}
+			
+		request.setAttribute("filename", filename);
+		
+		return "category/picturePro";
 	}
 }
 

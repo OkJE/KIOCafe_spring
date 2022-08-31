@@ -29,9 +29,10 @@ public class CategoryMybatisDao {
 	public List<Category> categoryList(int pageInt, int limit, String cid){
 		
 		map.clear();
-		map.put("boardid", cid);
+		map.put("cid", cid);
 		map.put("start", (pageInt-1)*limit+1);
 		map.put("end", (pageInt*limit));
+		//System.out.println(map);
 		List<Category> list = session.selectList(ns+"categoryList",map);
 		System.out.println(list);
 		return list;

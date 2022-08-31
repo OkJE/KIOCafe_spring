@@ -6,29 +6,41 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script>
+function win_upload(){
+	
+	
+	 var op = "width=500, height=150, left=50, top=150";
+	 open("${pageContext.request.contextPath}/category/pictureimgForm", "",op);
+
+}
+</script>
+
+
 </head>
 
 <body>
 
 <form class="w3-container" action="${pageContext.request.contextPath}/category/menuUpdatePro" name="f"
-method="post" onsubmit="return inputCheck(this)">
+method="post" onsubmit="return inputCheck(this)"    >
    
    <br> <br> <br> 
     <h3 class="w3-center">제품 등록</h3>
     <br>  <br>  
     
             <div class="w3-center">
-            <img src="../picture/picture"
+            <img src="../cpicture/cpicture"
                width="600" height="400" id="pic"><br> 
                <br>  
-               <a href="#"><input class="w3-button w3-light-grey w3-center" value="사진등록"></a></div>
+               <a	class="w3-button w3-green"		
+						href="javascript:win_upload()">사진등록</a></div>
                <br>
          
          
 <table class="w3-table w3-bordered"
 			style="background-color: #fff; color: #000; width: 700px; margin: auto;">
 			<tbody>
-<input type="hidden" name="picture" value="Picture">
+<input type="hidden" name="cpicture" value="cpicture">
       
      
          <tr>
@@ -48,22 +60,17 @@ method="post" onsubmit="return inputCheck(this)">
             
             <tr>
             <td>제품이름</td>
-            <td><input type="text" name="id"></td>
+            <td><input type="text" name="cname"></td>
          </tr>
          <tr>
             <td>제품코드</td>
-            <td><input type="text" name="id"></td>
+            <td><input type="text" name="cnum"></td>
          </tr>
          <tr>
             <td>제품가격</td>
-            <td><input type="text" name="id">&nbsp;원</td>
+            <td><input type="text" name="cprice">&nbsp;원</td>
          </tr>
          
-         <tr>
-
-            <td>비밀번호</td>
-            <td><input type="password" name="pass"></td>
-         </tr>
         
       </table>
       <br>
