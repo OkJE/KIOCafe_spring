@@ -8,7 +8,7 @@ public class Member {
 	private String pass;
 	private String name;
 	private String tel;
-	private String adress;
+	private String address;
 	private String email;
 	private String nickname;
 	/**
@@ -60,16 +60,16 @@ public class Member {
 		this.tel = tel;
 	}
 	/**
-	 * @return the adress
+	 * @return the address
 	 */
-	public String getAdress() {
-		return adress;
+	public String getAddress() {
+		return address;
 	}
 	/**
-	 * @param adress the adress to set
+	 * @param address the address to set
 	 */
-	public void setAdress(String adress) {
-		this.adress = adress;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	/**
 	 * @return the email
@@ -98,7 +98,7 @@ public class Member {
 	
 	@Override
 	public String toString() {
-		return "Member [id=" + id + ", pass=" + pass + ", name=" + name + ", tel=" + tel + ", adress=" + adress
+		return "Member [id=" + id + ", pass=" + pass + ", name=" + name + ", tel=" + tel + ", address=" + address
 				+ ", email=" + email + ", nickname=" + nickname + "]";
 	}
 

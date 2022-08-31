@@ -176,35 +176,32 @@
                 <p class="title">필수항목</p>
                 <tr>
                     <th scope="row">아이디</th>
-                    <td><input type="text" class="text" name="id" style="width:200px;">
+                    <td> ${sessionScope.id }
                     </td>
                 </tr>
                 <tr>
                     <th scope="row">이름</th>
-                    <td><input type="text" class="text"  name="name" style="width:200px;">
+                    <td>${m.name }
                     </td>
                 </tr>
                 <tr>
                     <th scope="row">현 주소</th>
-                    <td class="address-input">
-                        <div>
-                            <input type="text" id="addressInput1" class="text"  name="adress" style="width:200px;">
-                        </div>
-                        <div>
-                            <input type="text" class="text" style="width:533px;" id="addressInput2">
-                        </div>
+                    <td>
+                        ${m.address }
                     </td>
                 </tr>
                 <tr>
                     <th scope="row">이메일</th>
                     <td>
-                        <input type="email"  name="email" class="text" value="">
+                       ${m.email }
                     </td>
                 </tr>
             </tbody>
         </table>
         <div class="btn-right" style="margin-top: 40px;">
-            <button class="btn1">개인정보수정</button>
+            <a class="w3-button w3-black" href="${pageContext.request.contextPath}/member/memberUpdateForm">회원정보수정</a>
+            <a class="w3-button w3-black" href="${pageContext.request.contextPath}/member/memberDelete">회원탈퇴</a>
+			<a class="w3-button w3-black" href="${pageContext.request.contextPath}/member/memberPassUpdate">비밀번호수정</a>		
         </div>
 
 

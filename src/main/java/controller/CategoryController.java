@@ -41,7 +41,7 @@ public class CategoryController {
    
    @RequestMapping("mainpage")   
    public String mainpage(){      
-      return "category/mainpage";
+      return "mainpage";
    }
    
    @RequestMapping("bakeryMain")   

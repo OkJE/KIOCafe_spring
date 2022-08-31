@@ -47,7 +47,7 @@
 						<td>${m.pass}</td>
 						<td>${m.name}</td>
 						<td>${m.tel}</td>
-						<td>${m.adress}</td>
+						<td>${m.address}</td>
 						<td>${m.email}</td>
 						<td>${m.nickname}</td>
 					</tr>

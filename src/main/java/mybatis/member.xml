@@ -11,16 +11,16 @@
 		=> where id=admin  -->
 		
 		<insert id="insertMember" parameterType="member">
-		insert into kiocafe_member values (#{id},#{pass},#{name},#{tel},#{adress},#{email},#{nickname})		
+		insert into kiocafe_member values (#{id},#{pass},#{name},#{tel},#{address},#{email},#{nickname})		
 		</insert>
  		
 		<select id="selectOne" resultType="member">
-		select * from kiocafe_member where id = #{value}
+		select * from kiocafe_member where id = #{id}
 		
 		</select>
 		
 		<update id="updateMember" parameterType="member">
-		update kiocafe_member set name=#{name}, tel=#{tel}, adress=#{adress}, email=#{email}, nickname=#{nickname} where id=#{id}
+		update kiocafe_member set name=#{name}, tel=#{tel}, address=#{address}, email=#{email} where id=#{id}
 		</update>
 	
 		<delete id="deleteMember" >

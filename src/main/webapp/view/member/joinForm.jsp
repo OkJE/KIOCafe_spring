@@ -219,7 +219,7 @@
                 <tr>
                     <th scope="row">아이디</th>
                     <td><input type="text" class="text" name="id" style="width:200px;">
-                        <button class="btn1">중복확인</button>
+                    <!--    <button class="btn1">중복확인</button> --> 
                     </td>
                 </tr>
                 <tr>
@@ -242,7 +242,7 @@
                     <th scope="row">주소</th>
                     <td class="address-input">
                         <div>
-                            <input type="text" id="addressInput1" class="text" name="adress" style="width:200px;">
+                            <input type="text" id="addressInput1" class="text" name="address" style="width:200px;">
                             <input type="button" class="btn1" onclick="sample4_execDaumPostcode()"
                                 value="우편번호찾기"></input>
                         </div>
