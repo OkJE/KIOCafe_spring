@@ -16,9 +16,6 @@
 	
 	<insert id="insertCategory" parameterType="category">
 	
-	
-	
-		
 		insert into kiocafe_category values
 		
 		(#{cnum},#{cname},#{cmenu},#{ctext},#{cprice},#{cpicture})	

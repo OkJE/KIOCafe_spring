@@ -23,20 +23,21 @@ function win_upload(){
 
 <form class="w3-container" action="${pageContext.request.contextPath}/category/menuUpdatePro" name="f"
 method="post" onsubmit="return inputCheck(this)"    >
+ <input type="hidden" name="cpicture">
    
    <br> <br> <br> 
     <h3 class="w3-center">제품 등록</h3>
     <br>  <br>  
     
             <div class="w3-center">
-            <img src="../cpicture/cpicture"
+            <img src=""
                width="600" height="400" id="pic"><br> 
                <br>  
                <a	class="w3-button w3-green"		
 						href="javascript:win_upload()">사진등록</a></div>
                <br>
          
-       <input type="hidden" name="cpicture">
+    
          
 <table class="w3-table w3-bordered"
 			style="background-color: #fff; color: #000; width: 700px; margin: auto;">
@@ -46,23 +47,18 @@ method="post" onsubmit="return inputCheck(this)"    >
      
          <tr>
        <td>카테고리</td>
-              <td>
       
-          <select name="cmenu" style="width:220px">
-    
-    
-       <option value="1" class="w3-center">커피</option>
-       <option value="2" class="w3-center">음료</option>   
+      <td>
+			
+      
+         <select name="cmenu" style="width:220px">
+         <option value="1" class="w3-center">커피</option>
+       <option value="2" class="w3-center">음료</option>  
     </select>
 
     
 </td></tr>
   
-            <!--  <tr>
-            <td>제품메뉴</td>
-            <td><input type="text" name="cmenu"></td>
-         </tr> -->
-         
             <tr>
             <td>제품이름</td>
             <td><input type="text" name="cname"></td>
