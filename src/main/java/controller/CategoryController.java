@@ -57,6 +57,7 @@ public class CategoryController {
 	}
 
 	@RequestMapping("menuUpdatePro")
+<<<<<<< HEAD
 	public String menuUpdatePro( Category category) throws Exception {
 		
 		
@@ -82,6 +83,30 @@ public class CategoryController {
 
 		
 		// request.setAttribute("filename", filename);
+=======
+	public String menuUpdatePro(Category category) throws Exception {
+		
+		String filename = null;
+		String msg = "제품 등록 실패";
+		String url = "category/menuUpdate";
+		HttpSession session = request.getSession();
+
+		String cid = (String) session.getAttribute("cid");
+		if (cid == null)
+			cid = "1";
+		category.setCid(cid);	//우선 공지사항
+		category.setCpicture(""); //null값
+		int num = bd.insertCategory(category);
+			
+			if (num > 0) {
+				msg = "제품 등록 성공";
+				url = "category/categoryList";
+			}
+
+			System.out.println(category);
+		
+		request.setAttribute("filename", filename);
+>>>>>>> branch 'master' of https://github.com/OkJE/KIOCafe_spring.git
 		request.setAttribute("msg", msg);
 		request.setAttribute("url", url);
 		return "alert";

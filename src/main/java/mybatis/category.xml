@@ -16,9 +16,20 @@
 	
 	<insert id="insertCategory" parameterType="category">
 	
+<<<<<<< HEAD
 		insert into kiocafe_category values
 		
 		(#{cnum},#{cname},#{cmenu},#{ctext},#{cprice},#{cqty},#{cpicture})	
+=======
+	
+	
+		
+		insert into kiocafe_category values
+		
+		(#{cnum},#{cname},#{cmenu},#{ctext},#{cprice},#{cpicture})	
+		
+		<!-- (#{cnum},#{cname},#{cmenu},#{ctext},#{cprice},#{cqty},#{cpicture})	 -->
+>>>>>>> branch 'master' of https://github.com/OkJE/KIOCafe_spring.git
 	</insert>
 
 	
