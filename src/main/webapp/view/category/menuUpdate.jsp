@@ -77,8 +77,9 @@ method="post" onsubmit="return inputCheck(this)"    >
      <div class="w3-center">
    	
 			<!--  <a href="${pageContext.request.contextPath}/view/category/mainpage.jsp">-->
-      <input type="submit" class="w3-button w3-light-grey" value="제품 등록"></a>
+      <input type="submit" class="w3-button w3-light-grey" value="제품 등록">
   </div>
+  </tbody>
    </form>
  
 </body>
