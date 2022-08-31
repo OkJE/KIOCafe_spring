@@ -57,8 +57,7 @@ public class CategoryController {
 	}
 
 	@RequestMapping("menuUpdatePro")
-	public String menuUpdatePro( Category category) throws Exception {
-		
+	public String menuUpdatePro(Category category) throws Exception {
 		
 		String filename = null;
 		String msg = "제품 등록 실패";
@@ -71,7 +70,6 @@ public class CategoryController {
 		category.setCid(cid);	//우선 공지사항
 		category.setCpicture(""); //null값
 		int num = bd.insertCategory(category);
-		
 			
 			if (num > 0) {
 				msg = "제품 등록 성공";
@@ -79,9 +77,8 @@ public class CategoryController {
 			}
 
 			System.out.println(category);
-
 		
-		// request.setAttribute("filename", filename);
+		request.setAttribute("filename", filename);
 		request.setAttribute("msg", msg);
 		request.setAttribute("url", url);
 		return "alert";
