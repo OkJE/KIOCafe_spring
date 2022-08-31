@@ -36,7 +36,6 @@ method="post" onsubmit="return inputCheck(this)"    >
 						href="javascript:win_upload()">사진등록</a></div>
                <br>
          
-<<<<<<< HEAD
          
 <table class="w3-table w3-bordered"
 			style="background-color: #fff; color: #000; width: 700px; margin: auto;">
@@ -70,68 +69,10 @@ method="post" onsubmit="return inputCheck(this)"    >
          <tr>
             <td>제품가격</td>
             <td><input type="text" name="cprice">&nbsp;원</td>
-         </tr>
-=======
-       <input type="hidden" name="cpicture">
-         
-<table class="w3-table w3-bordered"
-			style="background-color: #fff; color: #000; width: 700px; margin: auto;">
-			<tbody>
-
-      
-     
-         <tr>
-       <td>카테고리</td>
-              <td>
-      
-          <select name="cmenu" style="width:220px">
-    
-    
-       <option value="1" class="w3-center">커피</option>
-       <option value="2" class="w3-center">음료</option>   
-    </select>
-
-    
-</td></tr>
-  
-            <!--  <tr>
-            <td>제품메뉴</td>
-            <td><input type="text" name="cmenu"></td>
-         </tr> -->
-         
-            <tr>
-            <td>제품이름</td>
-            <td><input type="text" name="cname"></td>
-         </tr>
-         <tr>
-            <td>제품코드</td>
-            <td><input type="text" name="cnum"></td>
-         </tr>
-         <tr>
-            <td>제품가격</td>
-            <td><input type="text" name="cprice">&nbsp;원</td>
-         </tr>
-         <tr>
-            <td>내용설명</td>
-            <td><input type="text" name="ctext"></td>
-         </tr>
-         <!--  <tr>
-            <td>수량</td>
-            <td><input type="text" name="cqty"></td>
-         </tr> -->
-         
->>>>>>> branch 'master' of https://github.com/OkJE/KIOCafe_spring.git
-         
-        
-      </table>
-      <br>
-     <div class="w3-center">
-   	
-			<!--  <a href="${pageContext.request.contextPath}/view/category/mainpage.jsp">-->
-      <input type="submit" class="w3-button w3-light-grey" value="제품 등록">
-  </div>
+         </tr>   
   </tbody>
-   </form>
+  </table>
+  </form>
  
 </body>
 </html>

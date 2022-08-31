@@ -311,19 +311,23 @@ public class MemberController {
 	@RequestMapping("memberList")
 	public String memberList() throws Exception {
 		HttpSession session = request.getSession();
-		String id=(String)session.getAttribute("id");
-		String msg="로그인이 필요합니다.";
-		String url="/member/loginForm";
 		
-		if (id!= null && id.equals("admin")) {
+	
+		//String id=(String)session.getAttribute("id");
+		//String msg="로그인이 필요합니다.";
+		//String url="/member/loginForm";
+		
+		//if (id!= null && id.equals("admin")) {
 			List<Member> li = new ArrayList<Member>();
 			li = md.memberList();	
 			request.setAttribute("li", li);
 			return "/member/memberList";
-		}
-		request.setAttribute("msg", msg);
-		request.setAttribute("url", url);
-		return "alert";
+		//}
+		
+		//request.setAttribute("msg", msg);
+		//request.setAttribute("url", url);
+
+		//return "alert";
 	}
 	
 	
