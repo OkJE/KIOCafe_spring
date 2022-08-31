@@ -37,47 +37,7 @@ method="post" onsubmit="return inputCheck(this)"    >
 						href="javascript:win_upload()">사진등록</a></div>
                <br>
          
-<<<<<<< HEAD
     
-=======
-<<<<<<< HEAD
-         
-<table class="w3-table w3-bordered"
-			style="background-color: #fff; color: #000; width: 700px; margin: auto;">
-			<tbody>
-<input type="hidden" name="cpicture" value="cpicture">
-      
-     
-         <tr>
-       <td>카테고리</td>
-              <td>
-      
-          <select name="category" style="width:220px">
-    
-    
-       <option value="커피" class="w3-center">커피</option>
-       <option value="음료" class="w3-center">음료</option>   
-    </select>
-
-    
-</td></tr>
-  
-            
-            <tr>
-            <td>제품이름</td>
-            <td><input type="text" name="cname"></td>
-         </tr>
-         <tr>
-            <td>제품코드</td>
-            <td><input type="text" name="cnum"></td>
-         </tr>
-         <tr>
-            <td>제품가격</td>
-            <td><input type="text" name="cprice">&nbsp;원</td>
-         </tr>
-=======
-       <input type="hidden" name="cpicture">
->>>>>>> branch 'master' of https://github.com/OkJE/KIOCafe_spring.git
          
 <table class="w3-table w3-bordered"
 			style="background-color: #fff; color: #000; width: 700px; margin: auto;">
@@ -120,7 +80,6 @@ method="post" onsubmit="return inputCheck(this)"    >
             <td><input type="text" name="cqty"></td>
          </tr> -->
          
->>>>>>> branch 'master' of https://github.com/OkJE/KIOCafe_spring.git
          
         
       </table>

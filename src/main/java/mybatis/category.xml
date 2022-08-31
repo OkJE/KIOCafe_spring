@@ -15,28 +15,17 @@
 	
 	
 	<insert id="insertCategory" parameterType="category">
-<<<<<<< HEAD
 	
 		insert into kiocafe_category values
 		
 		(#{cnum},#{cname},#{cmenu},#{ctext},#{cprice},0,#{cpicture}, #{cid})	
 		
 		
-=======
-		insert into kiocafe_category values	
-		(#{cnum},#{cname},#{cmenu},#{ctext},#{cprice},#{cqty},#{cpicture})	
-
->>>>>>> branch 'master' of https://github.com/OkJE/KIOCafe_spring.git
 	</insert>
 
-<<<<<<< HEAD
 	
 	
 	<select id="categoryOne" parameterType="int" resultType="category">
-=======
-
-	<select id="category" parameterType="int" resultType="category">
->>>>>>> branch 'master' of https://github.com/OkJE/KIOCafe_spring.git
 		select * from kiocafe_category where cnum=#{cnum}
 	</select>
 
