@@ -35,11 +35,8 @@
   <th>이름</th>
   <th>전화번호</th>
   <th>주소</th>
-  <th>생일</th>
   <th>이메일</th>
   <th>닉네임</th>
-  <th>가입일</th>
-  <th>탈퇴일</th>
 </tr>
 </tbody>
 <tbody>
@@ -51,11 +48,8 @@
   <td>${m.name}</td>
   <td>${m.tel}</td>
   <td>${m.address}</td>
-  <td>${m.birthday}</td>
   <td>${m.email}</td>
   <td>${m.nickname}</td>
-  <td>${m.joindate}</td>
-  <td>${m.withdrawal}</td>
 
 </tr>
 

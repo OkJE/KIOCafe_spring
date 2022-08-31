@@ -228,11 +228,11 @@
 
                     </td>
                 </tr>
-                <tr>
+             <!--   <tr>
                     <th scope="row">비밀번호확인</th>
                     <td><input type="password" class="text" name="pass" style="width:200px;">
-                    </td>
-                </tr>
+                    </td> 
+                </tr> --> 
                 <tr>
                     <th scope="row">이름</th>
                     <td><input type="text" class="text" name="name" style="width:200px;">
@@ -268,12 +268,12 @@
             </colgroup>
             <tbody>
                 <p class="title">선택항목</p>
-                <tr>
+            <!--    <tr>
                     <th scope="row">생년월일</th>
                     <td><input type="text" class="text" name="birthday" style="width:200px;">
                     </td>
                 </tr>
-                <tr>
+                <tr> --> 
                     <th scope="row">이메일</th>
                     <td><input type="email" class="text" name="email" style="width:200px;">
                     </td>
