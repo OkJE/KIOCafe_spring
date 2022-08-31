@@ -9,11 +9,11 @@ public class Member {
 	private String name;
 	private String tel;
 	private String adress;
-	private Date birthday;
+	private String birthday;
 	private String email;
 	private String nickname;
-	private Date joindate;
-	private Date withdrawal;
+	private String joindate;
+	private String withdrawal;
 
 	/**
 	 * @return the id
@@ -85,17 +85,20 @@ public class Member {
 		this.adress = adress;
 	}
 
+	
+	
+
 	/**
 	 * @return the birthday
 	 */
-	public Date getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
 
 	/**
-	 * @param string the birthday to set
+	 * @param birthday the birthday to set
 	 */
-	public void setBirthday(Date birthday) {
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
 
@@ -127,31 +130,33 @@ public class Member {
 		this.nickname = nickname;
 	}
 
+
+
 	/**
 	 * @return the joindate
 	 */
-	public Date getJoindate() {
+	public String getJoindate() {
 		return joindate;
 	}
 
 	/**
 	 * @param joindate the joindate to set
 	 */
-	public void setJoindate(Date joindate) {
+	public void setJoindate(String joindate) {
 		this.joindate = joindate;
 	}
 
 	/**
 	 * @return the withdrawal
 	 */
-	public Date getWithdrawal() {
+	public String getWithdrawal() {
 		return withdrawal;
 	}
 
 	/**
 	 * @param withdrawal the withdrawal to set
 	 */
-	public void setWithdrawal(Date withdrawal) {
+	public void setWithdrawal(String withdrawal) {
 		this.withdrawal = withdrawal;
 	}
 
