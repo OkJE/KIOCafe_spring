@@ -61,7 +61,6 @@ public class CategoryController {
 
 	@RequestMapping("menuUpdatePro")
 	public String menuUpdatePro(Category category) throws Exception {
-		
 		String filename = null;
 		String msg = "제품 등록 실패";
 		String url = "category/menuUpdate";
