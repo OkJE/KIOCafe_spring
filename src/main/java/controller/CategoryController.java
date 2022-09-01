@@ -154,9 +154,8 @@ public class CategoryController {
    @RequestMapping("categoryInfo")
    public String categoryInfo(int cnum) throws Exception {
       Category category = bd.categoryOne(cnum);
-      bd.categoryOne(cnum);
 
-      request.setAttribute("Category", category);
+      request.setAttribute("category", category);
       return "category/categoryInfo";
    }
    
