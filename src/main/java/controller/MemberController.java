@@ -37,10 +37,10 @@ public class MemberController {
 		this.session = request.getSession();
 	}
 	
-	@RequestMapping("index")
-	public String index() throws Exception {
-		request.setAttribute("index", "member 입니다.");
-		return "index";
+	@RequestMapping("mainpage")
+	public String mainpage() throws Exception {
+
+		return "mainpage";
 	}
 
 	@RequestMapping("joinForm")
@@ -79,7 +79,7 @@ public class MemberController {
 			} else if(mem.getTel()==null) {
 				msg = "전화번호를 입력 해 주세요!";
 				url = "/member/joinForm";
-			} else if(mem.getAdress()==null) {
+			} else if(mem.getAddress()==null) {
 				msg = "주소를 입력 해 주세요!";
 				url = "/member/joinForm";
 			}
@@ -113,7 +113,7 @@ public class MemberController {
 			if (pass.equals(mem.getPass())) {
 				session.setAttribute("id", id);
 				msg = mem.getName() + "님이 로그인 하셨습니다.";
-				url = "/member/index";
+				url = "/mainpage";
 
 			} else {
 				msg = "비밀번호를 확인하세요";
@@ -162,7 +162,7 @@ public class MemberController {
 		String id = (String) session.getAttribute("id");
 
 		if (id != null && !id.equals("")) {
-			Member m = new MemberMybatisDao().selectOne(id);
+			Member m = md.selectOne(id);
 			request.setAttribute("m", m);
 			return "member/memberUpdateForm";
 
@@ -229,7 +229,6 @@ public class MemberController {
 		String url = "/member/loginForm";
 
 		if (id != null && !id.equals("")) {
-			MemberMybatisDao md = new MemberMybatisDao();
 			Member dbm = md.selectOne(id);
 			if (dbm != null) {
 				if (dbm.getPass().equals(pass)) {
@@ -288,7 +287,7 @@ public class MemberController {
 				int num=md.changePass(id, chgpass1);
 				if(num>0){
 					msg=id+"님이 비멀번호가 수정 되었습니다.";
-					url="/member/index";
+					url="mainpage";
 				} else{
 					msg="비밀번호 변경이 실패하였습니다.";
 					url="/member/memberPassUpdate";

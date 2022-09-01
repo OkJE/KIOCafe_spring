@@ -27,14 +27,9 @@ function win_upload() {
 <body>
 
 <form class="w3-container" action="${pageContext.request.contextPath}/member/memberUpdatePro" method="post" onsubmit="return inputCheck(this)">
-		<input type="hidden" name="picture" value="${m.picture}">
 		<table class="w3-table-all">
 			<caption>MODEL1으로 구현한 회원가입</caption>
 			<tr>
-				<td rowspan="4" valign="bottom" width="100px">
-				<img src="${pageContext.request.contextPath}/view/member/picture/${m.picture}"
-					width="100" height="120" id="pic"><br> <font size="1"><a
-						 href="javascript:win_upload()">사진등록</a></font></td>
 					
 				<td>아이디</td>
 				<td><input type="text" name="id" value="${sessionScope.id}" readonly></td>
@@ -49,12 +44,7 @@ function win_upload() {
 				<td>이름</td>
 				<td><input type="text" name="name" value="${m.name}"></td>
 			</tr>
-			<tr>
-
-				<td>성별</td>
-				<td><input type="radio" name="gender" value="1" ${m.gender==1?"checked":""}> 남 <input
-					type="radio" name="gender" value="2" ${m.gender==2?"checked":""}> 여</td>
-			</tr>
+			
 			<tr>
 				<td>전화번호</td>
 				<td colspan="2"><input type="text" name="tel" ${m.tel}></td>
@@ -62,6 +52,10 @@ function win_upload() {
 			<tr>
 				<td>이메일</td>
 				<td colspan="2"><input type="text" name="email" ${m.email}></td>
+			</tr>
+			<tr>
+				<td> 주소</td>
+				<td colspan="2"><input type="text" name="adress" ${m.address}></td>
 			</tr>
 			<tr>
 				<td colspan="3"><input type="submit" value="회원정보수정"></td>

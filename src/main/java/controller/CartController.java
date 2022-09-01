@@ -25,7 +25,7 @@ import service.CategoryMybatisDao;
 
 @Controller 
 @RequestMapping("/category/") 
-public class CategoryController {
+public class CartController {
     @Autowired  
     CategoryMybatisDao bd;
    
@@ -53,7 +53,7 @@ public class CategoryController {
    public String drinkMain(){      
       return "category/drinkMain";
    }
-  
+   
    
    @RequestMapping("menuUpdate")
    public String menuUpdate() throws Exception {
@@ -77,7 +77,7 @@ public class CategoryController {
          
          if (num > 0) {
             msg = "제품 등록 성공";
-            url = "/category/categoryList";
+            url = "category/categoryList";
          }
 
          System.out.println(category);
@@ -88,80 +88,7 @@ public class CategoryController {
       return "alert";
    }
    
-   @RequestMapping("menuList")   
-   public String menuList(){
-      
-	  int cmenu=1;
-      HttpSession session = request.getSession();
-      if(request.getParameter("cid") != null) {
-         session.setAttribute("cid", request.getParameter("cid"));
-         session.setAttribute("pageNum","1");
-      }
-      String cid=(String)session.getAttribute("cid");
-      if(cid==null) cid="1";
-      //다른 게시판으로 갈때 다시 1로 넘어갈수 있도록 명령어를 넣어준다. 만약 없으면 자동으로 동일한 page로 들어가서 해당 page의 갯수가 없으면 야예 없는 null이 뜨게 한다.
-   
-      if(request.getParameter("pageNum") !=null) {
-         session.setAttribute("pageNum", request.getParameter("pageNum"));
-      }
-      
-      String pageNum = request.getParameter("pageNum");
-      if (pageNum==null) pageNum="1";
-      int pageInt = Integer.parseInt(pageNum);
-      int limit = 16;   //한 page당 게시물 갯수
-      //100개이면 order by 최근 num desc      
-      
-      /*
-       * 스타트 페이지를 알아야 한다. 전체 페이지에서 찾을려면 startPage(pageInt-1)*limit+1, 
-       * end:startPage + limit -1을 하면 해당 값이 나온다.
-       * 예)
-       * 1 page : 1,2,3
-       *       2 : 4,5,6      s: 4 , e: 6
-       *       3 : 7,8,9      s: 7  ,e: 9
-       */
-      
-      
-        
-      int categoryCount=bd.categoryCount(toString());
-      
-      
-      System.out.println(categoryCount);
-      List<Category> list=bd.menuList(pageInt, limit, cmenu);
-      int bottomLine=3; //페이지 수 
-      int start = (pageInt-1)/bottomLine*bottomLine+1; //이전
-      int end = start + bottomLine -1; //다음 
-      int maxPage = (categoryCount/limit) + (categoryCount%limit==0?0:1);
-      if (end>maxPage) end=maxPage; //페이지가 없면 작동 안함 
-      /* 1P
-       * 2P
-       * 3 -- 페이지 보여줄 부분 수정
-       * */
-      
-      //페이지 카운트 
-      int categoryNum = categoryCount - (pageInt-1)*limit; 
-      //----------------------------------페이지 
-      
-      request.setAttribute("pageInt", pageInt);
-      request.setAttribute("list", list);
-      //request.setAttribute("boardName", boardName);
-      request.setAttribute("categoryCount", categoryCount);
-      request.setAttribute("categoryNum", categoryNum);
-      request.setAttribute("start", start);
-      request.setAttribute("end", end);
-      request.setAttribute("bottomLine", bottomLine);
-      request.setAttribute("maxPage", maxPage);
-         
-   		if(cmenu==1){				
-    			return "category/bakeryMain";	
-    		}else{	
-    			return "category/drinkMain";	
-    		}
-      
-   
-   }
- 
-
-@RequestMapping("categoryList")   
+   @RequestMapping("categoryList")   
    public String categoryList()  {
       
       HttpSession session = request.getSession();
@@ -197,19 +124,18 @@ public class CategoryController {
       
       System.out.println(categoryCount);
       List<Category> list=bd.categoryList(pageInt, limit, cid);
-      int bottomLine=3; //페이지 수 
-      int start = (pageInt-1)/bottomLine*bottomLine+1; //이전
-      int end = start + bottomLine -1; //다음 
+      int bottomLine=3;
+      int start = (pageInt-1)/bottomLine*bottomLine+1;
+      int end = start + bottomLine -1;
       int maxPage = (categoryCount/limit) + (categoryCount%limit==0?0:1);
-      if (end>maxPage) end=maxPage; //페이지가 없면 작동 안함 
+      if (end>maxPage) end=maxPage;
       /* 1P
        * 2P
        * 3 -- 페이지 보여줄 부분 수정
        * */
       
       //페이지 카운트 
-      int categoryNum = categoryCount - (pageInt-1)*limit; 
-      //----------------------------------페이지 
+      int categoryNum = categoryCount - (pageInt-1)*limit;
       
       request.setAttribute("pageInt", pageInt);
       request.setAttribute("list", list);
@@ -229,11 +155,9 @@ public class CategoryController {
    public String categoryInfo(int cnum) throws Exception {
       Category category = bd.categoryOne(cnum);
 
-
       request.setAttribute("category", category);
       return "category/categoryInfo";
    }
-   
    
 
    @RequestMapping("pictureimgForm")

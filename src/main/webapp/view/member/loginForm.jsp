@@ -20,7 +20,7 @@
   <p><input class="w3-input w3-hover-light-gray" type="text" name="id"></p>
   <p>
   <label>Password</label>
-  <input class="w3-input w3-hover-light-gray" type="text" name="pass"></p>
+  <input class="w3-input w3-hover-light-gray" type="password" name="pass"></p>
   <p style="text-align: center">
   <input class="w3-btn w3-light-gray" type="submit" style="width: 100px"   value="확인" ></p>
 
