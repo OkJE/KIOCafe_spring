@@ -29,6 +29,7 @@ public class CartController {
 	
     @Autowired  
     CategoryMybatisDao bd;
+    //cartMybatisDao bd;로 수정하세요 
    
    HttpServletRequest request;
       Model m;
