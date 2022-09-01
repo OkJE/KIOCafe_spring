@@ -20,14 +20,14 @@
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<title>CategoryDetailForm</title> 
+<title>CategoryDetailForm</title>
 <script>
 	$(document).ready(function() {
 		/* 		alert("hi"); */
 		let cntA = 0;
 		let cntB = 0;
 		let cntC = 0;
-		let allPrice = 0; 
+		let allPrice = 0;
 
 		$('.plusA-btn').click(function() {
 			cntA++;
@@ -102,8 +102,8 @@
 				<div class="w3-half w3-padding-large w3-hide-small">
 
 					<ul class="detailImg">
-						
-						<img src="img/stmac.png" class="w3-round w3-image" alt="Table" width="600">
+						<img src="img/stmac.png" class="w3-round w3-image" alt="Table"
+							width="600">
 					</ul>
 
 					<ul class="thmb_1st">
@@ -121,13 +121,7 @@
 					<div class="prod-name">
 						<h2 class="tbl-text w3-left-align">kio bakery 딸기 마카롱</h2>
 					</div>
-					
-					<div class="prod-text">
-						<h3 class="tbl-text w3-left-align" style="font-size: 0.9rem; line-height:1.2rem; font-weight: bold; padding-top: 0.6rem;">
-						딸기가 살아있는 아주 상콤하고 달콤한 마카롱 <br>
-						지친 오후의 한입 사이즈 간식 </h3>
-					</div>
-					
+
 					<div class="prod-price">
 						<h1
 							class="tbl-text w3-border-bottom w3-border-light-gray w3-left-align">1,000원</h1>
@@ -153,65 +147,49 @@
 									<th>배송비</th>
 									<td>무료배송</td>
 								</tr>
-								
-								
-							</tbody>
-							
-						</table>
-					</div>
-						
-					<br>
-					<div class="w3-border-bottom w3-border-gray"></div>
-
-				</div>
-				
-				
-				<div class="w3-half w3-padding-large">
-					<table class=" w3-left-align"  style="font-size: 25px; font-weight: bold; ">
-							<tr>
+								<tr>
 									<th>구매수량</th>
-									
-									<td class="btn-td">
-										<button class="w3-button w3-white minusA-btn  count-btn" 
-										style=" border: 1px black solid ; border-radius: 8px;">
+									<td>
+									<td class="btn-td" style="text-align: left;">
+										<button class="w3-button w3-white minusA-btn  count-btn"
+											style="border: 1px black solid; border-radius: 8px;">
 											<span>-</span>
-										</button> 
-										
+										</button>
 									</td>
-									
-									<td class="count productA-cnt-p" style="padding-right: 10px; padding-left: 10px;">0</td>
-									<td class="btn-td">
+									<td class="count productA-cnt-p">0</td>
+									<td class="btn-td" style="text-align: left;">
 										<button class="w3-button w3-white plusA-btn  count-btn"
-											style=" border: 1px black solid; border-radius: 8px;">
+											style="border: 1px black solid; border-radius: 8px;">
 											<span>+</span>
 										</button>
 									</td>
 								</tr>
 
 								<tr>
-									<th class="tbl-text w3-left-align" style="padding-top: 10px;" >총 상품 금액</th>
-									<td class="productATotalPrice" style="padding-left: 1rem;">0</td>
+									<th>총 상품 금액</th>
+									<td class="productATotalPrice">0</td>
 								</tr>
+							</tbody>
 						</table>
+					</div>
+
+					<br>
+					<div class="w3-border-bottom w3-border-gray"></div>
+
 				</div>
-				
 
 				<br>
-				<div class="w3-half w3-padding-large btn-group">
-
-					<button href= "#a" type="button"
-						class="btn btn-block btn-lg btn-outline-danger"
-						style="margin: 0px; background-color: white; - -bs-btn-padding-y: .25rem;  margin-right: 1rem;">장바구니</button>
+				<div class="w3-half w3-padding-large">
 					<button href="#a" type="button"
 						class="btn btn-block btn-lg btn-outline-danger"
-						style="margin: 0px; background-color: #F9BFAB; - -bs-btn-padding-y: .25rem; margin-right: 1rem;">구매하기</button>
+						style="background-color: white; - -bs-btn-padding-y: .25rem; - -bs-btn-padding-x: .5rem; - -bs-btn-font-size: .75rem;">장바구니</button>
+					<button href="#a" type="button"
+						class="btn btn-block btn-lg btn-outline-danger"
+						style="background-color: #F9BFAB; - -bs-btn-padding-y: .25rem; - -bs-btn-padding-x: .5rem; - -bs-btn-font-size: .75rem;">구매하기</button>
 				</div>
 			</div>
 		</div>
 	</div>
-	
-	
-	
 
 	<div class="w3-row w3-stretch">
 		<div class="w3-padding-large w3-hide-small">
