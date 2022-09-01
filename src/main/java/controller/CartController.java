@@ -24,8 +24,9 @@ import service.CategoryMybatisDao;
 
 
 @Controller 
-@RequestMapping("/category/") 
+@RequestMapping("/cart/") 
 public class CartController {
+	
     @Autowired  
     CategoryMybatisDao bd;
    
@@ -38,12 +39,12 @@ public class CartController {
          this.m = m;
          this.session = request.getSession();
       } 
-   
+/*   
    @RequestMapping("mainpage")   
    public String mainpage(){      
       return "mainpage";
    }
-   
+ /*  
    @RequestMapping("bakeryMain")   
    public String bakeryMain(){      
       return "category/bakeryMain";
@@ -119,7 +120,7 @@ public class CartController {
        *       3 : 7,8,9      s: 7  ,e: 9
        */
       
-      
+    /*  
       int categoryCount=bd.categoryCount(cid);
       
       System.out.println(categoryCount);
@@ -133,7 +134,7 @@ public class CartController {
        * 2P
        * 3 -- 페이지 보여줄 부분 수정
        * */
-      
+  /*    
       //페이지 카운트 
       int categoryNum = categoryCount - (pageInt-1)*limit;
       
@@ -182,6 +183,7 @@ public class CartController {
       
       return "category/picturePro";
    }
+  */
 }
 
    
