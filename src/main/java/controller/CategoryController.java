@@ -120,14 +120,12 @@ public class CategoryController {
        *       3 : 7,8,9      s: 7  ,e: 9
        */
       
-      
-        
       int categoryCount=bd.categoryCount(toString());
       
-      
       System.out.println(categoryCount);
+      
       List<Category> list=bd.menuList(pageInt, limit, cmenu);
-      int bottomLine=3; //페이지 수 
+      int bottomLine=1; //페이지 수 
       int start = (pageInt-1)/bottomLine*bottomLine+1; //이전
       int end = start + bottomLine -1; //다음 
       int maxPage = (categoryCount/limit) + (categoryCount%limit==0?0:1);
@@ -151,17 +149,15 @@ public class CategoryController {
       request.setAttribute("bottomLine", bottomLine);
       request.setAttribute("maxPage", maxPage);
          
-   		if(cmenu==1){				
-    			return "category/bakeryMain";	
-    		}else{	
-    			return "category/drinkMain";	
-    		}
-      
-   
+      if(cmenu==1){				
+			return "category/bakeryMain";	
+		}else{	
+			return "category/drinkMain";	
+		}
+    
    }
- 
 
-@RequestMapping("categoryList")   
+   @RequestMapping("categoryList")   
    public String categoryList()  {
       
       HttpSession session = request.getSession();
