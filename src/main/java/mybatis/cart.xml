@@ -3,6 +3,26 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cart">
 
+<insert id="insertCart" parameterType="cart">
+      insert into kiocafe_cart values
+      (#{dnum},#{dname},#{dprice},#{dqty},#{dtotal},#{dpicture}, #{did})        
+   </insert>
+   
+
+	<select id="cartList" parameterType="map" resultType="cart">
+		select * from kiocafe_cart
+	</select>
+	
+	<delete id="cartDelete" parameterType="hashmap">
+		DELETE FROM kiocafe_cart
+		where did = #{userid}
+		and dnum IN
+		<foreach collection="didlist" item="item" index="index"
+			separator="," open="(" close=")">
+			#{item}
+		</foreach>
+	</delete>
+
 <!--    <select id="categoryCount" parameterType="String" resultType="int">
       select nvl(count(*),0) from kiocafe_category where cid = #{value}
    </select>

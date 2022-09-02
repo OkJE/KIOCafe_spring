@@ -26,16 +26,26 @@ public class CartMybatisDao {
       return num;
    }
    
-   public List<Cart> cartList(int pageInt, int limit, String did){
+   public List<Cart> cartList(){
       
-      map.clear();
-      map.put("did", did);
-      map.put("start", (pageInt-1)*limit+1);
-      map.put("end", (pageInt*limit));
-      //System.out.println(map);
-      List<Cart> list = session.selectList(ns+"cartList",map);
-      System.out.println(list);
-      return list;
+	   System.out.println("CartMybatisDao cartList start ");
+		List<Cart> list = session.selectList(ns + "cartList", map);
+		System.out.println("Dao list : " + list);
+		System.out.println("CartMybatisDao cartList end");
+		return list;
+	   
+	   /*
+	  public List<Cart> cartList(int pageInt, int limit, String did{
+     map.clear();
+     map.put("did", did);
+     map.put("start", (pageInt-1)*limit+1);
+     map.put("end", (pageInt*limit));
+     //System.out.println(map);
+     List<Cart> list = session.selectList(ns+"cartList",map);
+     System.out.println(list);
+     return list;
+     }
+     */
    }
 
 public int insertCart(Cart cart) {
@@ -61,12 +71,14 @@ public int cartUpdate(Cart cart) {
    
    return num;
 }
-public int cartDelete(int num) {
+public int cartDelete(String userId, String[] dids) {
    
-   int n = session.delete(ns+"cartDelete", num);
+   int n = session.delete(ns+"cartDelete", userId);
    
    
    return n;
 }
+
+
 
 }   //end class

@@ -19,27 +19,60 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import model.Cart;
 import model.Category;
+import service.CartMybatisDao;
 import service.CategoryMybatisDao;
 
 
-@Controller 
-@RequestMapping("/cart/") 
+@Controller
+@RequestMapping("/cart/")
 public class CartController {
-	
-    @Autowired  
-    CategoryMybatisDao bd;
-    //cartMybatisDao bd;로 수정하세요 
-   
-   HttpServletRequest request;
-      Model m;
-      HttpSession session;
-      @ModelAttribute
-      void init(HttpServletRequest request, Model m) {
-         this.request = request;
-         this.m = m;
-         this.session = request.getSession();
-      } 
+
+	@Autowired
+	CartMybatisDao cd;
+
+	HttpServletRequest request;
+	Model m;
+	HttpSession session;
+
+	@ModelAttribute
+	void init(HttpServletRequest request, Model m) {
+		this.request = request;
+		this.m = m;
+		this.session = request.getSession();
+	} 
+      
+      @RequestMapping("basket")   
+      public String cartUpdate() throws Exception{      
+         return "bas_pay/basket";
+      }
+      
+      @RequestMapping("cartList")
+  	public String cartList() throws Exception {
+
+  		System.out.println("Controller cartList start");
+  		
+  		List<Cart> list = cd.cartList();
+  		request.setAttribute("list", list);
+  		System.out.println("cartList :  "+list);
+  		
+  		System.out.println("Controller cartList end");
+  		return "/cart/cartList";
+  	}
+      
+      @RequestMapping("cartDelete")
+  	public String basketDelete() throws Exception {
+
+  		String userId = (String) session.getAttribute("id"); // 
+  		String[] dids = request.getParameterValues("did");
+
+  		cd.cartDelete(userId, dids);
+
+  		String referer = request.getHeader("Referer"); // 헤더에서 이전 페이지를 읽는다.
+  		return "redirect:" + referer; // 이전 페이지로 리다이렉
+
+  	}
 /*   
    @RequestMapping("mainpage")   
    public String mainpage(){      
