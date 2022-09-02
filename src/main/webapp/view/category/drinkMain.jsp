@@ -100,22 +100,24 @@
 
                 <div class="flex-div">
 
-                    <c:forEach var="index" begin="1" end="16">
+                    <c:forEach var="list" items="${list}">
                         <div class="product-container-div" style="width: 25%">
 
 
                             <div class=" product-div" style="width: 100%;">
-                                <img alt="#" src="./img/chemac.png">
+                               <a href="${pageContext.request.contextPath}/category/categoryDetailForm?cnum=${list.cnum}">
+                               <img src="${pageContext.request.contextPath}/view/category/img/${list.cpicture}" width="200" height="100" id="pic"><br>
+                               </a>
                             </div>
                             <table>
                                 <tr>
                                     <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                    <td style="background-color: #FCE7E2 ;"> Slide 1</td>
+                                    <td style="background-color: #FCE7E2 ;">${list.cname}</td>
                                     <td rowspan="2">&nbsp;&nbsp;<img alt="#" src="img/Buy.png"></td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
-                                    <td style="width: 6rem">30,000원</td>
+                                    <td style="width: 6rem">${list.cprice}</td>
                                 </tr>
                             </table>
                         </div>

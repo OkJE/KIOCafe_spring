@@ -95,14 +95,14 @@
 
 					<ul class="detailImg">
 						
-						<img src="img/stmac.png" class="w3-round w3-image" alt="Table" width="600">
+						<img src="${pageContext.request.contextPath}/view/category/img/${category.cpicture}" class="w3-round w3-image" alt="Table" width="600">
 					</ul>
 
 					<ul class="thmb_1st">
-						<span class="thmb"> <img src="img/stmac.png"
+						<span class="thmb"> <img src="${pageContext.request.contextPath}/view/category/img/${category.cpicture}"
 							class="w3-round testsm  w3-opacity-min" border="1" width="70"></a>
 						</span>
-						<span class="thmb"> <img src="img/stmac.png"
+						<span class="thmb"> <img src="${pageContext.request.contextPath}/view/category/img/${category.cpicture}"
 							class="w3-round testsm  w3-opacity-min" border="1" width="70"></a>
 						</span>
 					</ul>
@@ -111,7 +111,7 @@
 
 				<div class="w3-half w3-padding-large">
 					<div class="prod-name">
-						<h2 class="tbl-text w3-left-align">kio bakery 딸기 마카롱</h2>
+						<h2 class="tbl-text w3-left-align">${category.cname}</h2>
 					</div>
 					
 					<div class="prod-text">
@@ -122,7 +122,7 @@
 					
 					<div class="prod-price">
 						<h1
-							class="tbl-text w3-border-bottom w3-border-light-gray w3-left-align">1,000원</h1>
+							class="tbl-text w3-border-bottom w3-border-light-gray w3-left-align">${category.cprice}원</h1>
 					</div>
 					<br>
 					<div class="table-prod-info">
@@ -133,7 +133,7 @@
 							<tbody>
 								<tr>
 									<th scope="row" class="pro-code">상품코드</th>
-									<td>1234567</td>
+									<td>${category.cnum}</td>
 								</tr>
 
 								<tr>
@@ -161,7 +161,7 @@
 				<div class="w3-half w3-padding-large">
 					<table class=" w3-left-align"  style="font-size: 25px; font-weight: bold; ">
 							<tr>
-									<th>구매수량</th>
+									<th>${category.cqty}</th>
 									
 									<td class="btn-td">
 										<button class="w3-button w3-white minusA-btn  count-btn" 

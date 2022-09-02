@@ -74,6 +74,16 @@ public class CategoryController {
 	    return "category/drinkMain";
 	}
 
+	
+
+	@RequestMapping("categoryDetailForm")
+	public String categoryDetailForm(int cnum) throws Exception {
+		Category category = bd.categoryOne(cnum);
+
+		request.setAttribute("category", category);
+		return "category/categoryDetailForm";
+	}
+
 	@RequestMapping("menuUpdate")
 	public String menuUpdate() throws Exception {
 		return "category/menuUpdate";

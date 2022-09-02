@@ -102,7 +102,8 @@
 
                     <c:forEach var="list" items="${list}">
                         <div class="product-container-div" style="width: 25%">
-							 <img src="${pageContext.request.contextPath}/view/category/img/${list.cpicture}" width="200" height="100" id="pic"><br>
+                        <a href="${pageContext.request.contextPath}/category/categoryDetailForm?cnum=${list.cnum}">
+							 <img src="${pageContext.request.contextPath}/view/category/img/${list.cpicture}" width="200" height="100" id="pic"></a><br>
 
                          
                             <table>
