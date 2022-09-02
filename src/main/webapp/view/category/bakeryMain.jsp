@@ -100,14 +100,11 @@
 
                 <div class="flex-div">
 
-                    <c:forEach var="index" begin="1" end="16">
+                    <c:forEach var="list" items="${list}">
                         <div class="product-container-div" style="width: 25%">
+							 <img src="${pageContext.request.contextPath}/view/category/img/${list.cpicture}" width="200" height="100" id="pic"><br>
 
-
-                            <div class=" product-div" style="width: 100%;">
-                              
-                             <img src="${pageContext.request.contextPath}/view/category/img/${list.cpicture}" width="200" height="150">
-                            </div>
+                         
                             <table>
                                 <tr>
                                     <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>

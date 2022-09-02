@@ -14,9 +14,7 @@
    </select>
    
     <select id="menuList" parameterType="map" resultType="category">
-      select * from
-      (select rownum rnum, a.* from (select * from kiocafe_category where cmenu = #{cmenu}) a )
-      where rnum between #{start} and #{end}      
+      select * from kiocafe_category where cmenu = #{cmenu}     
    </select>
    
    
