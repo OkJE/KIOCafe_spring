@@ -228,9 +228,10 @@ img {
 						<p>
 					</td>
 
-					<td><img src="./img/bread1.png" alt=""></td>
+					<td><img src="${pageContext.request.contextPath}/view/cart/img/${cart.dpicture}" alt=""></td>
+					
 					<td>
-						<p>1,000원</p>
+						<p>${cart.dprice}</p>
 					</td>
 
 					<td class="btn-td" style="text-align: right;">
@@ -242,7 +243,7 @@ img {
 					</td>
 
 					<td>
-						<p class="count  productB-cnt-p" style="text-align: center">0개</p>
+						<p class="count  productB-cnt-p" style="text-align: center">${cart.dqty}</p>
 					<td class="btn-td" style="text-align: left">
 						<button class="w3-button w3-white plusB-btn   count-btn"
 							style="border: 1px black solid; border-radius: 8px;">
@@ -250,7 +251,7 @@ img {
 						</button>
 					</td>
 					<td style="text-align: right">
-						<p class="productBTotalPrice">0</p>
+						<p class="productBTotalPrice">${cart.dtotal}</p>
 					</td>
 				</tr>
 
