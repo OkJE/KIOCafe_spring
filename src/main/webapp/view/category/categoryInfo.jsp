@@ -21,7 +21,10 @@
             <div class="w3-center" style="margin-bottom: 40px;">
                 <img src="${pageContext.request.contextPath}/view/category/img/${category.cpicture}" width="600" height="400" id="pic"><br>
                 <br>
-
+				<a href="${pageContext.request.contextPath}/cart/cartList"
+                                class="w3-bar-item w3-button w3-hide-small" style="border:solid black 1px;">장바구니</a>
+                                             <input type="submit" value="삭제"
+                        onclick="javascript: form.action='${pageContext.request.contextPath}/cart/cartDelete';" />
             </div>
 
             <table class="w3-center"
