@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import model.Cart;
 import model.Category;
+import service.CartMybatisDao;
 import service.CategoryMybatisDao;
 
 @Controller
@@ -236,6 +238,52 @@ public class CategoryController {
 		return "category/categoryList";
 
 	}
+	
+	
+
+	  @RequestMapping("cartPro")
+	  	public String cartPro(Category category,int cnum) throws Exception {
+		  	request.setCharacterEncoding("UTF-8");
+	    	category=bd.categoryOne(cnum);
+	    	System.out.println(cnum);
+	    	System.out.println(category);
+		   
+		  	CartMybatisDao cd=new CartMybatisDao();
+		  	
+		  	String msg = "수량 확인 바랍니다.";
+	  		String url = "/category/categoryDetailForm?cnum="+cnum;
+
+	    	/*
+	    	int dnum=c.getCnum();
+	  		String dname=c.getCname();
+	  		int dprice=c.getCprice();
+	  		int dqty=c.getCqty();
+	  		String dpicture=c.getCpicture();
+	  		
+	  		
+	  		int dtotal=dprice*dqty;
+	  		
+	  	
+	  		System.out.println(dnum+":"+dname+":"+dprice+":"+dqty+":"+dpicture);
+
+	  		String msg = "수량 확인 바랍니다.";
+	  		String url = "/category/categoryDetailForm?cnum="+dnum;
+	 
+
+	  		int num = cd.insertCart(cart);
+
+	  		if (num > 0) {
+	  			msg = "장바구니 확인 해주세요!";
+	  			url = "/cart/cartList";
+	  		}
+
+	  		System.out.println(cart);
+*/
+	  		request.setAttribute("msg", msg);
+	  		request.setAttribute("url", url);
+	  		return "alert";
+	  		
+	  	}
 
 	@RequestMapping("categoryInfo")
 	public String categoryInfo(int cnum) throws Exception {

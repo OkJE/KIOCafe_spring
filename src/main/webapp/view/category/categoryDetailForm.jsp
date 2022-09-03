@@ -86,7 +86,7 @@
 </head>
 
 <body>
-<form action="${pageContext.request.contextPath}/cart/cartPro"  method="post">
+<form action="${pageContext.request.contextPath}/category/cartPro"  method="post">
 	<div class="w3-container w3-content w3-center w3-padding-64 w3-white"
 		style="max-width: 1580px">
 		<div style="font-family: sans-serif">

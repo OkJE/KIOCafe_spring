@@ -20,13 +20,9 @@
 		</foreach>
 	</delete>
 	
-	<insert id="cartInsert" parameterType="hashmap">
-		INSERT FROM kiocafe_cart VALUES	
-		
-		<foreach collection="didlist" item="item" index="index"
-			separator="," open="(" close=")">
-			#{item}
-		</foreach>
-	</insert>
-
+   <insert id="insertCart" parameterType="cart">
+      insert into kiocafe_cart values
+      (#{dnum},#{dname},#{dprice},#{dqty},#{dtotal},#{dpicture}, #{did})        
+   </insert>
+   
 </mapper> 
