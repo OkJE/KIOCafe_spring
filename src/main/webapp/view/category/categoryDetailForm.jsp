@@ -86,7 +86,7 @@
 </head>
 
 <body>
-<form action="${pageContext.request.contextPath}"  method="post">
+<form action="${pageContext.request.contextPath}/cart/cartPro"  method="post">
 	<div class="w3-container w3-content w3-center w3-padding-64 w3-white"
 		style="max-width: 1580px">
 		<div style="font-family: sans-serif">
@@ -191,7 +191,7 @@
 				<br>
 				<div class="w3-half w3-padding-large btn-group">
 
-					<button href= "#a" type="button"
+					<button href= "#a" type="submit"
 						class="btn btn-block btn-lg btn-outline-danger"
 						style="margin: 0px; background-color: white; - -bs-btn-padding-y: .25rem;  margin-right: 1rem;">장바구니</button>
 					<button href="#a" type="button"

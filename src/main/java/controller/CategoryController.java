@@ -79,8 +79,14 @@ public class CategoryController {
 	@RequestMapping("categoryDetailForm")
 	public String categoryDetailForm(int cnum) throws Exception {
 		Category category = bd.categoryOne(cnum);
-
+		System.out.println(cnum);
+		int dprice=category.getCprice();
+		System.out.println(dprice);
+		System.out.println(category);
+		
 		request.setAttribute("category", category);
+		
+
 		return "category/categoryDetailForm";
 	}
 
