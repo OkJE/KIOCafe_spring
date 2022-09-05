@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -41,8 +42,20 @@ public class CartController {
 		List<Cart> list = cd.cartList(userId);
 		request.setAttribute("list", list);
 		System.out.println("cartList :  " + list);
-
 		return "/cart/cartList";
+	}
+
+	@RequestMapping("orderList")
+	public String orderList() throws Exception {
+
+		System.out.println("Controller cartList start");
+
+		String userId = "1";
+		List<Cart> list = cd.orderList(userId);
+		request.setAttribute("list", list);
+		System.out.println("orderList :  " + list);
+
+		return "/cart/orderList";
 	}
 
 	@RequestMapping("cartDelete")
@@ -50,23 +63,74 @@ public class CartController {
 		String userId = "1";
 		String[] dids = request.getParameterValues("did");
 
-		cd.cartDelete(userId, dids);
+		String msg = "";
+		String url = "/cart/cartList";
 
+		if (dids == null) {
+			msg = "삭제할 상품의 체크박스를 클릭해주세요";
+			request.setAttribute("msg", msg);
+			request.setAttribute("url", url);
+
+			return "alert";
+		} else {
+			cd.cartDelete(userId, dids);
+
+		}
 		String referer = request.getHeader("Referer"); // 헤더에서 이전 페이지를 읽는다.
+
 		return "redirect:" + referer; // 이전 페이지로 리다이렉
 
 	}
-	
+
 	@RequestMapping("cartPro")
 	public String cartPro(Cart cart) throws Exception {
+		cart.setDpay("0");
 		System.out.println("cartPro Controller ");
 		System.out.println("cartPro : " + cart);
 //		String userId = "1";
 		int num = cd.cartInsert(cart);
 
+		return "/cart/cartList";
+	}
+	
+	@RequestMapping("cartPro1")
+	public String cartPro1(Cart cart) throws Exception {
+		cart.setDpay("1");
+		System.out.println("cartPro Controller ");
+		System.out.println("cartPro : " + cart);
+//		String userId = "1";
+		int num = cd.cartInsert(cart);
 		
+		return "/cart/cartList";
+	}
+
+	@RequestMapping("cartUpdatePro")
+	public String cartUpdatePro(Cart cart) throws Exception {
+		System.out.println("Controller cartUpdatePro  ");
+		String userId = "1";
+		
+		
+		
+		String[] dnums = request.getParameterValues("did");
+		
+		String dpay = request.getParameter("dpay");
+		
+		System.out.println("Ctr dpay :" + dpay);
+		System.out.println(dpay.getClass().getName());
+		System.out.println(dpay.getClass());
+	
+		if (dpay.equals("0")) {
+			System.out.println("Ctr cartUpdatePro dpay = 1");
+			cd.cartUpdate1(userId, dnums);
+		}
+
+		if (dpay.equals("1")) {
+			System.out.println("Ctr cartUpdatePro dpay = 2");
+			cd.cartUpdate2(userId, dnums);
+		}
+
+		System.out.println("ctr end");
 		return "/cart/cartList";
 
 	}
-
 }

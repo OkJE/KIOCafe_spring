@@ -8,6 +8,14 @@ public class Cart {
 	private int dtotal;
 	private String dpicture;
 	private String did;
+	private String dpay;
+	
+	public String getDpay() {
+		return dpay;
+	}
+	public void setDpay(String dpay) {
+		this.dpay = dpay;
+	}
 	public int getDnum() {
 		return dnum;
 	}
@@ -53,8 +61,9 @@ public class Cart {
 	@Override
 	public String toString() {
 		return "Cart [dnum=" + dnum + ", dname=" + dname + ", dprice=" + dprice + ", dqty=" + dqty + ", dtotal="
-				+ dtotal + ", dpicture=" + dpicture + ", did=" + did + "]";
+				+ dtotal + ", dpicture=" + dpicture + ", did=" + did + ", dpay=" + dpay + "]";
 	}
+	 
 	
 	
 }

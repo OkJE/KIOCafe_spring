@@ -6,7 +6,12 @@
 
 	<select id="cartList" parameterType="map" resultType="cart">
 		select *
-		from kiocafe_cart where did = #{id}
+		from kiocafe_cart where did = #{id} and dpay = 0
+	</select>
+
+	<select id="orderList" parameterType="map" resultType="cart">
+		select *
+		from kiocafe_cart where did = #{id} and dpay = 1
 	</select>
 
 
@@ -20,10 +25,36 @@
 		</foreach>
 	</delete>
 
-	 
-
 	<insert id="cartInsert" parameterType="cart">
-		insert into kiocafe_cart values (#{dnum},#{dname},#{dprice},#{dqty},#{dtotal},#{dpicture},#{did},0)
+		insert into kiocafe_cart
+		values
+		(#{dnum},#{dname},#{dprice},#{dqty},#{dtotal},#{dpicture},#{did}, #{dpay})
 	</insert>
+
+
+	<!-- <update id="cartUpdate1" parameterType="hashmap"> update kiocafe_cart 
+		set dpay = '1' where did='1' </update> -->
+
+
+	<update id="cartUpdate1" parameterType="hashmap">
+		update kiocafe_cart set dpay = 1
+		where did =1 and
+		<foreach collection="dnumlist" item="item" index="index"
+			separator=" or" open="" close=" ">
+			dnum = #{item}
+		</foreach>
+	</update>
+
+	<update id="cartUpdate2" parameterType="hashmap">
+		update kiocafe_cart set dpay = 2
+		where did =1 and
+		<foreach collection="dnumlist" item="item" index="index"
+			separator=" or" open="" close=" ">
+			dnum = #{item}
+		</foreach>
+	</update>
+
+
+
 
 </mapper> 
