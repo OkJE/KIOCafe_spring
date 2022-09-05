@@ -19,10 +19,11 @@
 			#{item}
 		</foreach>
 	</delete>
-	
-   <insert id="insertCart" parameterType="cart">
-      insert into kiocafe_cart values
-      (#{dnum},#{dname},#{dprice},#{dqty},#{dtotal},#{dpicture}, #{did})        
-   </insert>
-   
+
+	 
+
+	<insert id="cartInsert" parameterType="cart">
+		insert into kiocafe_cart values (#{dnum},#{dname},#{dprice},#{dqty},#{dtotal},#{dpicture},#{did},0)
+	</insert>
+
 </mapper> 

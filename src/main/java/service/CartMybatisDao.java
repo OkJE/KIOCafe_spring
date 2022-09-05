@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import model.Cart;
-import model.Category;
+import model.Member;
 
 @Repository
 public class CartMybatisDao {
@@ -41,11 +41,12 @@ public class CartMybatisDao {
 		session.delete(ns+"cartDelete", map);		
 	}
 	
-	public int insertCart(Cart cart) {
-		   System.out.println(cart);
-		   int num = session.insert(ns+"insertCart", cart);
-		   
-		   
-		   return num;
-		}
+	public int cartInsert(Cart cart) {
+		System.out.println("insertCart ");
+		System.out.println("insertCart cart : " + cart);
+		int num = session.insert(ns + "cartInsert", cart);
+		return num;
+	}
+
+	
 } // end class

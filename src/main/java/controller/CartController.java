@@ -56,5 +56,17 @@ public class CartController {
 		return "redirect:" + referer; // 이전 페이지로 리다이렉
 
 	}
+	
+	@RequestMapping("cartPro")
+	public String cartPro(Cart cart) throws Exception {
+		System.out.println("cartPro Controller ");
+		System.out.println("cartPro : " + cart);
+//		String userId = "1";
+		int num = cd.cartInsert(cart);
+
+		
+		return "/cart/cartList";
+
+	}
 
 }
