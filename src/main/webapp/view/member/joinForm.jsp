@@ -218,21 +218,21 @@
                 <p class="title">필수항목</p>
                 <tr>
                     <th scope="row">아이디</th>
-                    <td><input type="text" class="text" name="id" style="width:200px;">
-                    <!--    <button class="btn1">중복확인</button> --> 
+                    <td><input type="text" placeholder="아이디를 입력하세요." class="text" name="id" id="id" onkeyup="idOverlap()" style="width:200px;">
+              		<!-- <button class="btn1">중복확인</button> -->
                     </td>
                 </tr>
                 <tr>
                     <th scope="row">비밀번호</th>
-                    <td><input type="password" class="text" name="pass" style="width:200px;">
+                    <td><input type="password" placeholder="비밀번호를 입력하세요." class="text" name="pass" style="width:200px;">
 
                     </td>
                 </tr>
-             <!--   <tr>
-                    <th scope="row">비밀번호확인</th>
-                    <td><input type="password" class="text" name="pass" style="width:200px;">
-                    </td> 
-                </tr> --> 
+           <tr>
+                   <!--  <th scope="row">비밀번호확인</th>
+                    <td><input type="password" placeholder="비밀번호를 확인하세요." class="text" name="pass" style="width:200px;">
+                    </td>  -->
+                </tr> 
                 <tr>
                     <th scope="row">이름</th>
                     <td><input type="text" class="text" name="name" style="width:200px;">

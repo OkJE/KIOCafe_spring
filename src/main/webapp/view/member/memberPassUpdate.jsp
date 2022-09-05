@@ -6,8 +6,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
-function pssChk(form){
-	if(form.chgpass1.value=!form.chgpass2.value){
+function passChk(form){
+	if(form.chgpass1.value!=form.chgpass2.value){
 		alert("변경 비밀번호와 재입력 번호가 다릅니다.")
 		form.chgpass2.value="";
 		form.chgpass2.focus()

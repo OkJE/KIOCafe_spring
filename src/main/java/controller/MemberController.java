@@ -13,6 +13,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 //import com.oreilly.servlet.MultipartRequest;
 
@@ -65,25 +68,29 @@ public class MemberController {
 				url = "/member/loginForm";
 			}
 			
-			
 		} else {
-			if(mem.getId()==null) {
-			msg = "아이디를 확인해 주세요!";
-			url = "/member/joinForm";
-			} else if(mem.getPass()==null) {
+			if (mem.getId() == mem.getId()) {
+				msg = "존재하는 아이디 입니다.";
+				url = "/member/joinForm";
+
+			} else if (mem.getPass() == null) {
 				msg = "비밀번호를 입력 해 주세요!";
 				url = "/member/joinForm";
-			} else if(mem.getName()==null) {
+			} else if (mem.getName() == null) {
 				msg = "이름을 입력 해 주세요!";
 				url = "/member/joinForm";
-			} else if(mem.getTel()==null) {
+			} else if (mem.getTel() == null) {
 				msg = "전화번호를 입력 해 주세요!";
 				url = "/member/joinForm";
-			} else if(mem.getAddress()==null) {
+			} else if (mem.getAddress() == null) {
 				msg = "주소를 입력 해 주세요!";
 				url = "/member/joinForm";
+			}else if(mem.getId()== null||mem.getPass()== null||mem.getName()== null||mem.getTel()== null||mem.getAddress()==null) {
+				msg = "똑바로 치세요 ";
+				url = "/member/joinForm";
+				
 			}
-			
+
 		}
 			
 		request.setAttribute("msg", msg);
@@ -92,7 +99,8 @@ public class MemberController {
 		return "alert";
 	
 	}
-
+	
+	
 	@RequestMapping("loginForm")
 	public String loginForm() throws Exception {
 
@@ -112,7 +120,7 @@ public class MemberController {
 
 			if (pass.equals(mem.getPass())) {
 				session.setAttribute("id", id);
-				msg = mem.getName() + "님이 로그인 하셨습니다.";
+				msg = mem.getNickname() + "님이 로그인 하셨습니다.";
 				url = "/mainpage";
 
 			} else {
@@ -275,19 +283,24 @@ public class MemberController {
 	
 	
 	@RequestMapping("memberPassPro")
-	public String memberPassPro(String pass,String chgpass1) throws Exception {
+	public String memberPassPro(String pass, String chgpass1) throws Exception {
+		
 		String id=(String)session.getAttribute("id");
+		
 		String msg="로그인이 필요합니다.";
 		String url="/member/loginForm";
 
 		if(id!=null && !id.equals("")){
+			
 			Member dbm=md.selectOne(id);
+			
 		if(dbm!=null){
+			
 			if(dbm.getPass().equals(pass)){
 				int num=md.changePass(id, chgpass1);
 				if(num>0){
-					msg=id+"님이 비멀번호가 수정 되었습니다.";
-					url="mainpage";
+					msg = id + "님이 비밀번호가 수정 되었습니다.";
+					url="/member/myaccount";
 				} else{
 					msg="비밀번호 변경이 실패하였습니다.";
 					url="/member/memberPassUpdate";

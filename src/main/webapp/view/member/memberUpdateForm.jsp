@@ -55,7 +55,7 @@ function win_upload() {
 			</tr>
 			<tr>
 				<td> 주소</td>
-				<td colspan="2"><input type="text" name="adress" ${m.address}></td>
+				<td colspan="2"><input type="text" name="address" ${m.address}></td>
 			</tr>
 			<tr>
 				<td colspan="3"><input type="submit" value="회원정보수정"></td>

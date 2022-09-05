@@ -20,6 +20,8 @@ public class MemberMybatisDao {
 	@Autowired
 	private SqlSessionTemplate session;
 
+	
+
 	public int insertMember(Member mem) {
 		int num = session.insert(NS + "insertMember", mem);
 		return num;
@@ -54,5 +56,7 @@ public class MemberMybatisDao {
 		return list;
 	}
 
+	
+	
 }
 // end member

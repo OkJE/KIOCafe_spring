@@ -9,6 +9,7 @@
 		자료형이 문자열 : where id=#{value} => where id='admin' value의 자료형이 숫자 : where id=#{value} 
 		=> where id= 1 ${value} : 파라미터로 전달된 값 value의 자료형이 문자열 : where id=${value} 
 		=> where id=admin  -->
+	
 		
 		<insert id="insertMember" parameterType="member">
 		insert into kiocafe_member values (#{id},#{pass},#{name},#{tel},#{address},#{email},#{nickname})		
@@ -26,6 +27,7 @@
 		<delete id="deleteMember" >
 		delete from kiocafe_member where id=#{id}
 		</delete>
+		
 		
 		<update id="changePass" parameterType="string" >
 		update kiocafe_member set pass=#{pass} where id=#{id}
