@@ -67,30 +67,7 @@ public class MemberController {
 				msg = mem.getName() + "님 반갑습니다^^!";
 				url = "/member/loginForm";
 			}
-			
-		} else {
-			if (mem.getId() == mem.getId()) {
-				msg = "존재하는 아이디 입니다.";
-				url = "/member/joinForm";
-
-			} else if (mem.getPass() == null) {
-				msg = "비밀번호를 입력 해 주세요!";
-				url = "/member/joinForm";
-			} else if (mem.getName() == null) {
-				msg = "이름을 입력 해 주세요!";
-				url = "/member/joinForm";
-			} else if (mem.getTel() == null) {
-				msg = "전화번호를 입력 해 주세요!";
-				url = "/member/joinForm";
-			} else if (mem.getAddress() == null) {
-				msg = "주소를 입력 해 주세요!";
-				url = "/member/joinForm";
-			}else if(mem.getId()== null||mem.getPass()== null||mem.getName()== null||mem.getTel()== null||mem.getAddress()==null) {
-				msg = "똑바로 치세요 ";
-				url = "/member/joinForm";
-				
-			}
-
+		
 		}
 			
 		request.setAttribute("msg", msg);
