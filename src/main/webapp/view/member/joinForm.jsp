@@ -67,6 +67,50 @@
             }).open();
         }
     </script>
+    <script>
+    $(function(){
+    	$('#JBtn').click(function(){
+    		if($('#inputId').val()==""){
+    			alert("아이디를 입력해주세요");
+    			$('#inputId').focus();
+    			return false;
+    		}else if($('#inputPass1').val()==""){
+    			alert("비밀번호를 입력해주세요");
+    			$('#inputPass1').focus();
+    			return false;
+    		}else if($('#inputPass2').val()==""){
+    			alert("비밀번호를 확인 입력해주세요");
+    			$('#inputPass2').focus();
+    			return false;
+    		}else if($('#inputPass1').val()!=$('#inputPass2').val()){
+    			alert("입력하신 비밀번호가 일치 하지 않습니다.");
+    			$('#inputPass2').focus();
+    			return false;	
+    		}else if($('#inputName').val()==""){
+    			alert("이름을 입력해주세요");
+    			$('#inputName').focus();
+    			return false;
+    		}else if($('#addressInput1').val()==""){
+    			alert("주소를 입력해주세요");
+    			$('#addressInput1').focus();
+    			return false;
+    		}else if($('#rcvMobile').val()==""){
+    			alert("번호를 입력해주세요");
+    			$('#rcvMobile').focus();
+    			return false;
+    		}
+    	})
+    	
+    })
+    
+    
+    
+    
+    
+    
+    
+    </script>
+    
 
     <style>
         body {
@@ -218,24 +262,24 @@
                 <p class="title">필수항목</p>
                 <tr>
                     <th scope="row">아이디</th>
-                    <td><input type="text" placeholder="아이디를 입력하세요." class="text" name="id" id="id" onkeyup="idOverlap()" style="width:200px;">
+                    <td><input type="text" placeholder="아이디를 입력해주세요." class="text" name="id" id="inputId" onkeyup="idOverlap()" style="width:200px;">
               		<!-- <button class="btn1">중복확인</button> -->
                     </td>
                 </tr>
                 <tr>
                     <th scope="row">비밀번호</th>
-                    <td><input type="password" placeholder="비밀번호를 입력하세요." class="text" name="pass" style="width:200px;">
+                    <td><input type="password" placeholder="비밀번호를 입력해주세요." class="text" name="pass" id="inputPass1" style="width:200px;">
 
                     </td>
                 </tr>
            <tr>
-                   <!--  <th scope="row">비밀번호확인</th>
-                    <td><input type="password" placeholder="비밀번호를 확인하세요." class="text" name="pass" style="width:200px;">
-                    </td>  -->
+                    <th scope="row">비밀번호확인</th>
+                    <td><input type="password" placeholder="비밀번호를 재입력 입력해주세요." class="text" name="pass" id="inputPass2"style="width:200px;">
+                    </td>
                 </tr> 
                 <tr>
                     <th scope="row">이름</th>
-                    <td><input type="text" class="text" name="name" style="width:200px;">
+                    <td><input type="text" class="text" name="name" id="inputName" style="width:200px;">
                     </td>
                 </tr>
                 <tr>
