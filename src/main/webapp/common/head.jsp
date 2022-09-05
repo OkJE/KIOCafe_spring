@@ -65,7 +65,7 @@
 			<div class="w3-dropdown-hover">
 				<button class="w3-button  w3-sand">주문조회</button>
 				<div class="w3-dropdown-content w3-bar-block w3-card-4">
-					<a href="#" class="w3-bar-item w3-button">장바구니</a>
+					<a href="${pageContext.request.contextPath}/cart/cartList" class="w3-bar-item w3-button">장바구니</a>
 					<a href="#" class="w3-bar-item w3-button">결제란</a>
 				</div>
 			</div>
