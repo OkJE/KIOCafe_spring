@@ -74,22 +74,27 @@
     			alert("아이디를 입력해주세요");
     			$('#inputId').focus();
     			return false;
+    			
     		}else if($('#inputPass1').val()==""){
     			alert("비밀번호를 입력해주세요");
     			$('#inputPass1').focus();
     			return false;
+    			
     		}else if($('#inputPass2').val()==""){
     			alert("비밀번호를 확인 입력해주세요");
     			$('#inputPass2').focus();
     			return false;
+    			
     		}else if($('#inputPass1').val()!=$('#inputPass2').val()){
     			alert("입력하신 비밀번호가 일치 하지 않습니다.");
     			$('#inputPass2').focus();
     			return false;	
+    			
     		}else if($('#inputName').val()==""){
     			alert("이름을 입력해주세요");
     			$('#inputName').focus();
     			return false;
+    			
     		}else if($('#addressInput1').val()==""){
     			alert("주소를 입력해주세요");
     			$('#addressInput1').focus();
@@ -274,7 +279,7 @@
                 </tr>
            <tr>
                     <th scope="row">비밀번호확인</th>
-                    <td><input type="password" placeholder="비밀번호를 재입력 입력해주세요." class="text" name="pass" id="inputPass2"style="width:200px;">
+                    <td><input type="password" placeholder="비밀번호를 재입력 입력해주세요." class="text" name="pass2" id="inputPass2"style="width:200px;">
                     </td>
                 </tr> 
                 <tr>
@@ -336,7 +341,7 @@
         <!--  -->
 
         <div class="center" style="margin-top: 40px;">
-            <button class="btn1" type="submit">가입</button>
+            <button class="btn1" type="submit" id="JBtn">가입</button>
         </div>
 
     </div>

@@ -12,7 +12,7 @@
 	
 		
 		<insert id="insertMember" parameterType="member">
-		insert into kiocafe_member values (#{id},#{pass},#{name},#{tel},#{address},#{email},#{nickname}, #{pass2})		
+		insert into kiocafe_member values (#{id},#{pass},#{name},#{tel},#{address},#{email},#{nickname},#{pass2})		
 		</insert>
  		
 		<select id="selectOne" resultType="member">
