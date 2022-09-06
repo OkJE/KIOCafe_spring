@@ -37,4 +37,8 @@
 		select * from kiocafe_member
 		</select>
 		
+		<!-- <select id="memberList" resultType="member">
+		select count(1) as cnt from user where id=#{id}
+		</select> -->
+		
 </mapper>

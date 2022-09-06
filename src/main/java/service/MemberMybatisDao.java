@@ -55,7 +55,11 @@ public class MemberMybatisDao {
 		
 		return list;
 	}
-
+	/*
+	 * public int loginPro(String id) { result="cnt"; return result;
+	 * 
+	 * }
+	 */
 	
 	
 }

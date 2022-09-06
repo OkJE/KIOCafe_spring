@@ -68,6 +68,27 @@
         }
     </script>
     <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!--  <script src="js.js"></script>
+   <script type="text/javascript">
+   
+   //아이디 유효성 검사 ( 1 = 중복 / 0 != 중복)
+   $('#inputId').blur(function(){
+	   
+	  var user_id = $('#inputId').val();
+	  console.log(user_id + "<- user_id joinForm.jsp");
+	  $.ajax({
+		url : '${pageContext.request.contextPath}'  
+	  })
+	   
+   })
+    -->
+   
+   
+   
+   
+   
+   </script>
+   
     <script>
     $(function(){
     	$('#JBtn').click(function(){
@@ -269,7 +290,7 @@
                 <tr>
                     <th scope="row">아이디</th>
                     <td><input type="text" placeholder="아이디를 입력해주세요." class="text" name="id" id="inputId" onkeyup="idOverlap()" style="width:200px;">
-              		<!-- <button class="btn1">중복확인</button> -->
+              		<!-- <div class="check_font" id="id_check"></div> -->
                     </td>
                 </tr>
                 <tr>
