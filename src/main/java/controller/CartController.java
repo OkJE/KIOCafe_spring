@@ -89,6 +89,11 @@ public class CartController {
 		System.out.println("cartPro : " + cart);
 //		String userId = "1";
 		int num = cd.cartInsert(cart);
+		
+		if (cart.getDqty()  == 0) {
+	         System.out.println("getDqty : " + cart.getDqty());
+	         return "redirect:/cart/cartList";   
+	      }
 
 		return "redirect:/cart/cartList";
 	}

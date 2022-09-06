@@ -20,7 +20,7 @@
    
    <insert id="insertCategory" parameterType="category">
       insert into kiocafe_category values
-      (#{cnum},#{cname},#{cmenu},#{ctext},#{cprice},0,#{cpicture}, #{cid})        
+      (#{cnum},#{cname},#{cmenu},#{ctext},#{cprice},#{cqty},#{cpicture}, #{cid})        
    </insert>
  
    

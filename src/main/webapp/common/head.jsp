@@ -11,9 +11,11 @@
 <body>
 
 	<!--  -->
-
-	<!-- 로고 및 index이동   시작 -->
 	<div style="width: 80%; margin: auto;">
+
+	
+	<!-- 로고 및 index이동   시작 -->
+
 	<div class="w3-center">
 		<a
 			href="${pageContext.request.contextPath}/mainpage">
@@ -22,6 +24,7 @@
 			style="width:100%; height:21rem">
 		</a>
 	</div>
+		
 	<!-- 로고 및 index이동   끝-->
 
 	<!-- 회원가입 로그인 마이페이지 시작 -->
@@ -37,7 +40,6 @@
 	</c:if>
 
 	</div>
-	<br>
 	<!-- 회원가입 로그인 마이페이지  끝  -->
 
 
@@ -66,21 +68,21 @@
 				<button class="w3-button  w3-sand">주문조회</button>
 				<div class="w3-dropdown-content w3-bar-block w3-card-4">
 					<a href="${pageContext.request.contextPath}/cart/cartList" class="w3-bar-item w3-button">장바구니</a>
-					<a href="#" class="w3-bar-item w3-button">결제란</a>
+					<a href="${pageContext.request.contextPath}/cart/orderList" class="w3-bar-item w3-button">결제란</a>
 				</div>
 			</div>
 
 
 			<a href="#" class="w3-bar-item w3-button">배송조회</a>
-
+			
 			<!-- 검색창 시작-->
-			<div class="w3-right" style="margin-right: 7rem;">
+			<!--<div class="w3-right" style="margin-right: 7rem;">
 				<input type="text" class="w3-bar-item w3-input"
 					placeholder="Search.."> <a href="#"
 					class="w3-bar-item w3-button w3-white">Go</a>
-			</div>
+			</div>-->
 			<!-- 검색창 끝 -->
-
+			
 		</div>
 	</div>
 	<!-- 메뉴바  끝-->
