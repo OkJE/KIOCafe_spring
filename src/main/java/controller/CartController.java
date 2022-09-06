@@ -40,7 +40,19 @@ public class CartController {
 
 		String userId = "1";
 		List<Cart> list = cd.cartList(userId);
+		
 		request.setAttribute("list", list);
+	    Object mylistObj =	request.getAttribute("list");
+//	    List<String> mylistStr =	(List<String>) request.getAttribute("list");
+
+//	  List<Integer> dnumList = null ;
+	    
+//	    for (Cart string : list) {
+//			System.out.println("num : " + string.getDnum());
+//			dnumList.add(string.getDnum());
+//		}
+//		request.setAttribute("dnumList", dnumList);
+		
 		System.out.println("cartList :  " + list);
 		return "/cart/cartList";
 	}
@@ -85,15 +97,15 @@ public class CartController {
 	@RequestMapping("cartPro")
 	public String cartPro(Cart cart) throws Exception {
 		cart.setDpay("0");
+		// 수량 0이면 다른 List로 일단 돌려보내기
+		if (cart.getDqty()  == 0) {
+			System.out.println("getDqty : " + cart.getDqty());
+			return "redirect:/cart/cartList";	
+		}
 		System.out.println("cartPro Controller ");
 		System.out.println("cartPro : " + cart);
 //		String userId = "1";
 		int num = cd.cartInsert(cart);
-		
-		if (cart.getDqty()  == 0) {
-	         System.out.println("getDqty : " + cart.getDqty());
-	         return "redirect:/cart/cartList";   
-	      }
 
 		return "redirect:/cart/cartList";
 	}
@@ -132,6 +144,9 @@ public class CartController {
 		if (dpay.equals("1")) {
 			System.out.println("Ctr cartUpdatePro dpay = 2");
 			cd.cartUpdate2(userId, dnums);
+		}
+		else {
+			System.out.println(" dpay : " + dpay);
 		}
 
 		System.out.println("ctr end");

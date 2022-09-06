@@ -1,4 +1,4 @@
-<%@page import="java.util.List" %>
+
     <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
         <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -231,9 +231,10 @@
                                     <input type="checkbox" id="allCheck" class="w3-check" onclick="checkAll()">
                                 </div>
                                 <div>
+                            
                                     <input type="submit" value="삭제"
                                         onclick="javascript: form.action='${pageContext.request.contextPath}/cart/cartDelete';" />
-                                   
+
                                 </div>
                             </div>
                             <table class="w3-table w3-bordered" style="width: 80%; margin-left: 30px;">
@@ -260,7 +261,7 @@
 
                                         <td class="btn-td" style="text-align: right;">
                                             <button class="w3-button w3-white minusA-btn  count-btn"
-                                                style="border: 1px black solid; border-radius: 8px;" type="button">
+                                                style="border: 1px black solid; border-radius: 8px;">
                                                 <span>-</span>
                                             </button>
                                         </td>
@@ -269,7 +270,7 @@
                                             <p class="count productA-cnt-p" style="text-align: center">${c.dqty }개</p>
                                         <td class="btn-td" style="text-align: left">
                                             <button class="w3-button w3-white plusA-btn   count-btn"
-                                                style="border: 1px black solid; border-radius: 8px;"  type="button">
+                                                style="border: 1px black solid; border-radius: 8px;">
                                                 <span>+</span>
                                             </button>
                                         </td>
@@ -286,9 +287,12 @@
                     <div>
                         <div class="pay-div">
                             <h4 class="pay-p allPrice">상품금액 : 0</h4>
-
                             <div>
-                                <button class="pay-btn" style="height: 30px;">결제</button>
+							
+						<input type="hidden" id="${c.dpay }" value="0" name="dpay">
+                           
+        <input type="submit" value="결제"
+                                        onclick="javascript: form.action='${pageContext.request.contextPath}/cart/cartUpdatePro';" />
                             </div>
                         </div>
 

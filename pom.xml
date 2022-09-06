@@ -61,8 +61,17 @@
 			<artifactId>ojdbc11</artifactId>
 			<version>11</version>
 		</dependency>
-
+		
+		<!-- Error attempting to get column 'ID' from result set. Cause: java.sql.SQLException: 지원되지 않는 문자 집합(클래스 경로에 orai18n.jar 추가) -->
+		<dependency>
+			<groupId>com.oracle.ojdbc</groupId>
+			<artifactId>orai18n</artifactId>
+			<version>19.3.0.0</version>
+		</dependency>
+		
+		
 		<!-- jstl 설정-->
+		
 		<dependency>
 			<groupId>jstl</groupId>
 			<artifactId>jstl</artifactId>
