@@ -90,7 +90,7 @@ public class CartController {
 //		String userId = "1";
 		int num = cd.cartInsert(cart);
 
-		return "/cart/cartList";
+		return "redirect:/cart/cartList";
 	}
 	
 	@RequestMapping("cartPro1")

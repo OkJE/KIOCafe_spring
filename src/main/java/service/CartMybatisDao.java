@@ -37,6 +37,7 @@ public class CartMybatisDao {
 		System.out.println("CartMybatisDao orderList start ");
 		List<Cart> list = session.selectList(ns + "orderList", map);
 		System.out.println("Dao list : " + list); 
+		
 		return list;
 	}
 

@@ -22,14 +22,16 @@
             $(document).ready(function () {
                 /* 		alert("hi"); */
                 let cntA = 0;
-                let cntB = 0;
+                let maxQty = ${category.cqty};
                 let cntC = 0;
                 let allPrice = 0;
                 $('.plusA-btn').click(function () {
-                    cntA++;
+                	if(cntA<maxQty){
+                    cntA++;} else {
+                        alert("그만올리라우");}
                     $(".productA-cnt-p").html(cntA);
-                    allPrice = cntA * 1000 + "원";
-                    $(".productATotalPrice").html(cntA * 1000 + "원");
+                    allPrice = cntA * ${category.cprice} + "원";
+                    $(".productATotalPrice").html(cntA * ${category.cprice}  + "원");
                     $(".allPrice").html(allPrice);
                     console.log("hi");
                     console.log(cntA);
@@ -39,8 +41,8 @@
                         cntA--;
                         $(".productA-cnt-p").html(cntA);
                         console.log(cntA);
-                        $(".productATotalPrice").html(cntA * 1000 + "원");
-                        allPrice = cntA * 1000;
+                        $(".productATotalPrice").html(cntA * ${category.cprice} + "원");
+                        allPrice = cntA * ${category.cprice};
                         $(".allPrice").html(allPrice);
                     }
                 })
@@ -172,7 +174,7 @@
                         <div class="w3-half w3-padding-large">
                             <table class=" w3-left-align" style="font-size: 25px; font-weight: bold; ">
                                 <tr>
-                                    <th>${category.cqty}</th>
+                                    <th>수량</th>
                                     <input hidden value="${category.cqty}" name="dqty">
                                     <input hidden value="3000" name="dtotal">
                                     <td class="btn-td">
