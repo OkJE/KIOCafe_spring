@@ -20,8 +20,62 @@
 
                 <title>Document</title>
 
-                <script language=javascript>
-
+                <script defer>
+                
+	                function getClickIdFunc(id) {
+	                    let sendId = 0; // 001, 002 같은 id 담을 변수
+	                    // 클릭한 id값이 plus/minus 인지 구별
+	                    if (id.includes("plus")) {
+	                        sendId = id.substr(4);
+	                        plusQtxFunc(sendId);
+	                    }
+	                    if (id.includes("minus")) {
+	                        sendId = id.substr(5);
+	                        minusQtxFunc(sendId);
+	                    }
+	                }
+	
+	
+	                function plusQtxFunc(id) {
+	                    let price = $("#price" + id).text();
+	                    let qtx = $("#qtx" + id).text();
+	                    $("#qtx" + id).text(parseInt(qtx) + 1);
+	                    let nowQtx = $("#qtx" + id).text();
+	                    priceMulFunc(id, price, nowQtx);
+	                }
+	
+	                function minusQtxFunc(id) {
+	                    let price = $("#price" + id).text();
+	                    let qtx = $("#qtx" + id).text();
+	                    if (qtx != 0) {
+	                        $("#qtx" + id).text(parseInt(qtx) - 1);
+	                        let nowQtx = $("#qtx" + id).text();
+	                        priceMulFunc(id, price, nowQtx);
+	                    }
+	                }
+	
+	       
+	                function priceMulFunc(id, price, qtx) {
+	                    $("#priceMul" + id).text(parseInt(price) * parseInt(qtx));
+	                    allPriceSum();
+	                }
+	          	
+	              function allPriceSum() {
+	              	console.log("hi");
+	                  let totalPrice = document.getElementsByName("dtotal");
+	                  let priceSumResult = 0;
+	                  console.log(totalPrice[0]);
+	                  console.log(totalPrice[1]);
+	                  for (let i = 0; i < totalPrice.length; i++) {
+	                      priceSumResult += parseInt(totalPrice[i].innerHTML);
+	                  }
+	                  $("#allPrice").text(priceSumResult);
+	              }
+	              
+	              /*  */
+	              /*  */
+	              /*  */
+                console.log(${numList});
                     function checkBoxValueOnOff(id) {
                         let chBoxCheckState = document.getElementById(id);
                         if (chBoxCheckState.checked == true) {
@@ -52,12 +106,32 @@
                         }
                     }
 
+                    // ctx001 상품 개수, price001 상품 가격, priceMul001 1상품 합계
 
-
-
-
+                    // this.id를 이용해 클릭한 id값 id에 담아주는 함수
+                  
+                    jQuery(document).ready(function() {
+                    
+        	              
+        	                  let totalPrice = document.getElementsByName("dtotal");
+        	                  let priceSumResult = 0;
+        	                  console.log(totalPrice[0]);
+        	                  console.log(totalPrice[1]);
+        	                  for (let i = 0; i < totalPrice.length; i++) {
+        	                      priceSumResult += parseInt(totalPrice[i].innerHTML);
+        	                  }
+        	                  $("#allPrice").text(priceSumResult);
+        	     
+        	              
+					
+					});
                     $(document).ready(function () {
-                        /* 		alert("hi"); */
+                    	
+                    	
+
+                    })
+                   /*  $(document).ready(function () {
+
                         let cntA = 0;
                         let cntB = 0;
                         let cntC = 0;
@@ -73,8 +147,8 @@
                             $(".productATotalPrice").html(cntA * 1000 + "원");
                             $(".allPrice").html(allPrice);
 
-                            console.log("hi");
-                            console.log(cntA);
+
+                            console.log("cntA : "+ cntA);
                         })
                         $('.minusA-btn').click(function () {
                             if (cntA != 0) {
@@ -135,7 +209,7 @@
                         })
 
                     });
-
+ */
 
                 </script>
                 <style>
@@ -253,29 +327,28 @@
 
                                         <td>
                                             <img src="<%=request.getContextPath()%>/view/cart/img/${c.dpicture}" alt="">
-                                            <!-- <img src="./img/bread2.png" alt=""> -->
                                         </td>
                                         <td>
-                                            <p>${c.dprice }</p>
+                                            <p id="price${c.dnum}">${c.dprice }</p>
                                         </td>
 
                                         <td class="btn-td" style="text-align: right;">
-                                            <button class="w3-button w3-white minusA-btn  count-btn"
+                                            <button type="button" class="w3-button w3-white minusA-btn  count-btn"  id="minus${c.dnum}" onclick="getClickIdFunc(this.id)"
                                                 style="border: 1px black solid; border-radius: 8px;">
                                                 <span>-</span>
                                             </button>
                                         </td>
 
                                         <td>
-                                            <p class="count productA-cnt-p" style="text-align: center">${c.dqty }개</p>
+                                            <p class="count productA-cnt-p" style="text-align: center" id="qtx${c.dnum }">${c.dqty }</p>
                                         <td class="btn-td" style="text-align: left">
-                                            <button class="w3-button w3-white plusA-btn   count-btn"
+                                            <button type="button" class="w3-button w3-white plusA-btn   count-btn" id="plus${c.dnum}" onclick="getClickIdFunc(this.id)"
                                                 style="border: 1px black solid; border-radius: 8px;">
                                                 <span>+</span>
                                             </button>
                                         </td>
                                         <td style="text-align: right">
-                                            <p class="productATotalPrice">${c.dtotal}원</p>
+                                            <p class="productATotalPrice" id="priceMul${c.dnum}" name="dtotal">${c.dtotal}</p>
                                         </td>
                                     </tr>
 
@@ -286,7 +359,7 @@
                     </div>
                     <div>
                         <div class="pay-div">
-                            <h4 class="pay-p allPrice">상품금액 : 0</h4>
+                            <h4 class="pay-p allPrice" >상품금액 : <span id="allPrice">0</span> </h4>
                             <div>
 							
 						<input type="hidden" id="${c.dpay }" value="0" name="dpay">
