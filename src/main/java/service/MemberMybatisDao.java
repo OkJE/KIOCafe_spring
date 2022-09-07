@@ -55,12 +55,14 @@ public class MemberMybatisDao {
 		
 		return list;
 	}
-	/*
-	 * public int loginPro(String id) { result="cnt"; return result;
-	 * 
-	 * }
-	 */
 	
+	/*
+	public String idCheck(String id) {
+		List<Member> list=session.selectList(NS + "idCheck");
+		
+		return 
+	}
+	*/
 	
 }
 // end member

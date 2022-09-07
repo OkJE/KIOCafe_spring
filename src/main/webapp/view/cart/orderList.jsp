@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+	pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="ko">
@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- À§ 3°³ÀÇ ¸ÞÅ¸ ÅÂ±×´Â *¹Ýµå½Ã* head ÅÂ±×ÀÇ Ã³À½¿¡ ¿Í¾ßÇÕ´Ï´Ù; ¾î¶² ´Ù¸¥ ÄÜÅÙÃ÷µéÀº ¹Ýµå½Ã ÀÌ ÅÂ±×µé *´ÙÀ½¿¡* ¿Í¾ß ÇÕ´Ï´Ù -->
+<!-- ìœ„ 3ê°œì˜ ë©”íƒ€ íƒœê·¸ëŠ” *ë°˜ë“œì‹œ* head íƒœê·¸ì˜ ì²˜ìŒì— ì™€ì•¼í•©ë‹ˆë‹¤; ì–´ë–¤ ë‹¤ë¥¸ ì½˜í…ì¸ ë“¤ì€ ë°˜ë“œì‹œ ì´ íƒœê·¸ë“¤ *ë‹¤ìŒì—* ì™€ì•¼ í•©ë‹ˆë‹¤ -->
 <title>t</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
@@ -36,27 +36,27 @@
 	function sample4_execDaumPostcode() {
 		new daum.Postcode({
 			oncomplete : function(data) {
-				// ÆË¾÷¿¡¼­ °Ë»ö°á°ú Ç×¸ñÀ» Å¬¸¯ÇßÀ»¶§ ½ÇÇàÇÒ ÄÚµå¸¦ ÀÛ¼ºÇÏ´Â ºÎºÐ.
+				// íŒì—…ì—ì„œ ê²€ìƒ‰ê²°ê³¼ í•­ëª©ì„ í´ë¦­í–ˆì„ë•Œ ì‹¤í–‰í•  ì½”ë“œë¥¼ ìž‘ì„±í•˜ëŠ” ë¶€ë¶„.
 
-				// µµ·Î¸í ÁÖ¼ÒÀÇ ³ëÃâ ±ÔÄ¢¿¡ µû¶ó ÁÖ¼Ò¸¦ Ç¥½ÃÇÑ´Ù.
-				// ³»·Á¿À´Â º¯¼ö°¡ °ªÀÌ ¾ø´Â °æ¿ì¿£ °ø¹é('')°ªÀ» °¡Áö¹Ç·Î, ÀÌ¸¦ Âü°íÇÏ¿© ºÐ±â ÇÑ´Ù.
-				var roadAddr = data.roadAddress; // µµ·Î¸í ÁÖ¼Ò º¯¼ö
-				var extraRoadAddr = ''; // Âü°í Ç×¸ñ º¯¼ö
-				// ¹ýÁ¤µ¿¸íÀÌ ÀÖÀ» °æ¿ì Ãß°¡ÇÑ´Ù. (¹ýÁ¤¸®´Â Á¦¿Ü)
-				// ¹ýÁ¤µ¿ÀÇ °æ¿ì ¸¶Áö¸· ¹®ÀÚ°¡ "µ¿/·Î/°¡"·Î ³¡³­´Ù.
+				// ë„ë¡œëª… ì£¼ì†Œì˜ ë…¸ì¶œ ê·œì¹™ì— ë”°ë¼ ì£¼ì†Œë¥¼ í‘œì‹œí•œë‹¤.
+				// ë‚´ë ¤ì˜¤ëŠ” ë³€ìˆ˜ê°€ ê°’ì´ ì—†ëŠ” ê²½ìš°ì—” ê³µë°±('')ê°’ì„ ê°€ì§€ë¯€ë¡œ, ì´ë¥¼ ì°¸ê³ í•˜ì—¬ ë¶„ê¸° í•œë‹¤.
+				var roadAddr = data.roadAddress; // ë„ë¡œëª… ì£¼ì†Œ ë³€ìˆ˜
+				var extraRoadAddr = ''; // ì°¸ê³  í•­ëª© ë³€ìˆ˜
+				// ë²•ì •ë™ëª…ì´ ìžˆì„ ê²½ìš° ì¶”ê°€í•œë‹¤. (ë²•ì •ë¦¬ëŠ” ì œì™¸)
+				// ë²•ì •ë™ì˜ ê²½ìš° ë§ˆì§€ë§‰ ë¬¸ìžê°€ "ë™/ë¡œ/ê°€"ë¡œ ëë‚œë‹¤.
 
 				// console.log(data.buildingName);
 
-				if (data.bname !== '' && /[µ¿|·Î|°¡]$/g.order - (data.bname)) {
+				if (data.bname !== '' && /[ë™|ë¡œ|ê°€]$/g.order - (data.bname)) {
 					extraRoadAddr += data.bname;
 				}
 				console.log(data);
-				// °Ç¹°¸íÀÌ ÀÖ°í, °øµ¿ÁÖÅÃÀÏ °æ¿ì Ãß°¡ÇÑ´Ù.
+				// ê±´ë¬¼ëª…ì´ ìžˆê³ , ê³µë™ì£¼íƒì¼ ê²½ìš° ì¶”ê°€í•œë‹¤.
 				if (data.buildingName !== '' && data.apartment === 'Y') {
 					extraRoadAddr += (extraRoadAddr !== '' ? ', '
 							+ data.buildingName : data.buildingName);
 				}
-				// Ç¥½ÃÇÒ Âü°íÇ×¸ñÀÌ ÀÖÀ» °æ¿ì, °ýÈ£±îÁö Ãß°¡ÇÑ ÃÖÁ¾ ¹®ÀÚ¿­À» ¸¸µç´Ù.
+				// í‘œì‹œí•  ì°¸ê³ í•­ëª©ì´ ìžˆì„ ê²½ìš°, ê´„í˜¸ê¹Œì§€ ì¶”ê°€í•œ ìµœì¢… ë¬¸ìžì—´ì„ ë§Œë“ ë‹¤.
 				if (extraRoadAddr !== '') {
 					extraRoadAddr = ' (' + extraRoadAddr + ')';
 				}
@@ -67,8 +67,8 @@
 					inputAddress = data.roadAddress + " (" + data.buildingName
 							+ ")"
 				}
-				// ¿ìÆí¹øÈ£¿Í ÁÖ¼Ò Á¤º¸¸¦ ÇØ´ç ÇÊµå¿¡ ³Ö´Â´Ù.
-				// ¿ìÆí¹øÈ£
+				// ìš°íŽ¸ë²ˆí˜¸ì™€ ì£¼ì†Œ ì •ë³´ë¥¼ í•´ë‹¹ í•„ë“œì— ë„£ëŠ”ë‹¤.
+				// ìš°íŽ¸ë²ˆí˜¸
 				document.getElementById("addressInput1").value = data.zonecode;
 				document.getElementById('addressInput2').value = inputAddress;
 
@@ -84,7 +84,7 @@ body {
 
 html {
 	line-height: 1.15;
-	/*±âº» Çà°£ ³ôÀÌ*/
+	/*ê¸°ë³¸ í–‰ê°„ ë†’ì´*/
 }
 
 * {
@@ -354,33 +354,33 @@ input.text {
 
 
 
-	<!-- ¸Þ´º¹Ù  ³¡-->
+	<!-- ë©”ë‰´ë°”  ë-->
 	<div class="myaddress-modal">
 		<div class="modal-content">
-			Modal ¹Ì±¸Çö ÃßÈÄ »ç¿ë½Ã¿¡ ±¸Çö ¿¹Á¤
+			Modal ë¯¸êµ¬í˜„ ì¶”í›„ ì‚¬ìš©ì‹œì— êµ¬í˜„ ì˜ˆì •
 
 			<button class="" onclick="openAddressModal()">Modal none</button>
 		</div>
 
 
 	</div>
-	<!-- ¸Þ´º¹Ù  ³¡-->
+	<!-- ë©”ë‰´ë°”  ë-->
 	<!--  -->
 
 	<div class="cont_title01 " style="width: 75%; margin: auto;">
-		<h3>ÁÖ¹®ÀÛ¼º/°áÁ¦</h3>
+		<h3>ì£¼ë¬¸ìž‘ì„±/ê²°ì œ</h3>
 		<div class="modal">asdasdsda</div>
 		<form method="post" name="form">
 
 			<table class="order-table">
 				<thead>
 					<tr>
-						<th>»óÇ°¸í/¿É¼Ç</th>
-						<th>¹è¼Û¼ö´Ü</th>
-						<th style="width: 100px;">¼ö·®</th>
-						<th>»óÇ°°¡</th>
-						<th>ÁÖ¹®±Ý¾×</th>
-						<th>¹è¼Ûºñ</th>
+						<th>ìƒí’ˆëª…/ì˜µì…˜</th>
+						<th>ë°°ì†¡ìˆ˜ë‹¨</th>
+						<th style="width: 100px;">ìˆ˜ëŸ‰</th>
+						<th>ìƒí’ˆê°€</th>
+						<th>ì£¼ë¬¸ê¸ˆì•¡</th>
+						<th>ë°°ì†¡ë¹„</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -397,11 +397,11 @@ input.text {
 									<p>${c.dname }</p>
 								</div>
 							</td>
-							<td>´ëÀü¹è¼Û</td>
+							<td>ëŒ€ì „ë°°ì†¡</td>
 							<td>${c.dqty }</td>
 							<td>${c.dprice }</td>
-							<td>${c.dtotal }¿ø</td>
-							<td>0¿ø</td>
+							<td>${c.dtotal }ì›</td>
+							<td>0ì›</td>
 						</tr>
 						<input type="hidden" class="w3-check" id="${c.dnum}" value="${c.dnum }"
 										name="did" />
@@ -418,25 +418,25 @@ input.text {
 			<div class="order-div1">
 				<div class="order-div11">
 					<div class="head-box">
-						<label for="">ÁÖ¹®±Ý¾×</label> <span>16,000¿ø</span>
+						<label for="">ì£¼ë¬¸ê¸ˆì•¡</label> <span>16,000ì›</span>
 					</div>
 					<div>
 						<div>
 							<div class="space-between">
-								<span>ÄíÆù</span> <span> <input type="text" value="0"
-									class="price-input" readonly="true">¿ø
+								<span>ì¿ í°</span> <span> <input type="text" value="0"
+									class="price-input" readonly="true">ì›
 								</span>
 
 							</div>
 							<div class="space-between">
-								<span>Àû¸³±Ý</span> <span> <input type="text" value="0"
-									class="price-input" readonly="true">¿ø
+								<span>ì ë¦½ê¸ˆ</span> <span> <input type="text" value="0"
+									class="price-input" readonly="true">ì›
 								</span>
 							</div>
 							<div class="space-between">
-								<span style="margin-right: 45px;">¸ð¹ÙÀÏ»óÇ°±Ç</span> <span> <input
-									type="text" value="" class="price-input" placeholder="±³È¯±Ç ÄÚµå"
-									style="width: 150px;" readonly="true">¿ø
+								<span style="margin-right: 45px;">ëª¨ë°”ì¼ìƒí’ˆê¶Œ</span> <span> <input
+									type="text" value="" class="price-input" placeholder="êµí™˜ê¶Œ ì½”ë“œ"
+									style="width: 150px;" readonly="true">ì›
 								</span>
 							</div>
 
@@ -446,30 +446,30 @@ input.text {
 				<!--  -->
 				<div class="order-div2">
 					<div class="head-box">
-						<label for="">ÇÒÀÎ±Ý¾×</label> <span>0</span>
+						<label for="">í• ì¸ê¸ˆì•¡</label> <span>0</span>
 					</div>
 					<div>
-						<button class="btn1 coupton-btn" onclick="openCoupon();">ÄíÆùÀû¿ë</button>
-						( º¸À¯ <em>0Àå</em>)
+						<button class="btn1 coupton-btn" onclick="openCoupon();">ì¿ í°ì ìš©</button>
+						( ë³´ìœ  <em>0ìž¥</em>)
 					</div>
 					<div>
-						<button class="btn1 coupton-btn">¸ðµÎ»ç¿ë</button>
+						<button class="btn1 coupton-btn">ëª¨ë‘ì‚¬ìš©</button>
 						(<em>1000p</em>)
 					</div>
 					<div>
-						<button class="btn1 coupton-btn">À¯È¿¼º °Ë»ç</button>
+						<button class="btn1 coupton-btn">ìœ íš¨ì„± ê²€ì‚¬</button>
 					</div>
 
 				</div>
 				<!--  -->
 				<div class="order-div13">
 					<div class="head-box">
-						<label for="">°áÁ¦¿¹Á¤±Ý¾×</label> <span>0</span>
+						<label for="">ê²°ì œì˜ˆì •ê¸ˆì•¡</label> <span>0</span>
 					</div>
 					<div style="margin-top: 50px; padding: 36px;">
-						<span>Àû¸³ÇýÅÃ</span>
+						<span>ì ë¦½í˜œíƒ</span>
 						<div class="space-between">
-							<span>Àû¸³</span>
+							<span>ì ë¦½</span>
 							<p>3,050 P</p>
 						</div>
 					</div>
@@ -483,7 +483,7 @@ input.text {
 			<!--  -->
 			<!--  -->
 			<!--  -->
-			<h3 class="cont_title01">ÁÖ¹®ÇÏ½Ã´ÂºÐ (º¸³»½Ã´ÂºÐ)</h3>
+			<h3 class="cont_title01">ì£¼ë¬¸í•˜ì‹œëŠ”ë¶„ (ë³´ë‚´ì‹œëŠ”ë¶„)</h3>
 			<table class="board_write">
 				<colgroup>
 					<col style="width: 175px">
@@ -491,14 +491,14 @@ input.text {
 				</colgroup>
 				<tbody>
 					<tr class="bd_top">
-						<th scope="row">ÀÌ¸§</th>
+						<th scope="row">ì´ë¦„</th>
 						<td><input type="text" class="text" style="width: 200px;"
-							value="±è¸íÁØ"></td>
+							value="ê¹€ëª…ì¤€"></td>
 					</tr>
 					<tr>
-						<th scope="row">ÈÞ´ëÆù¹øÈ£</th>
+						<th scope="row">íœ´ëŒ€í°ë²ˆí˜¸</th>
 						<td><input type="text" class="text" numberonly="true"
-							maxlength="20" value="010-2093-5924" placeholder="ÈÞ´ëÆù ÀÔ·Â (¼ýÀÚ¸¸)">
+							maxlength="20" value="010-2093-5924" placeholder="íœ´ëŒ€í° ìž…ë ¥ (ìˆ«ìžë§Œ)">
 						</td>
 					</tr>
 				</tbody>
@@ -507,8 +507,8 @@ input.text {
 			<!--  -->
 			<!--  -->
 			<h3 class="cont_title01">
-				¹ÞÀ¸½Ã´ÂºÐ (»óÇ°¹ÞÀ¸½ÇºÐ) <input type="checkbox"><span
-					style="font-size: 14px;">ÁÖ¹®ÀÚ Á¤º¸¿Í µ¿ÀÏ</span>
+				ë°›ìœ¼ì‹œëŠ”ë¶„ (ìƒí’ˆë°›ìœ¼ì‹¤ë¶„) <input type="checkbox"><span
+					style="font-size: 14px;">ì£¼ë¬¸ìž ì •ë³´ì™€ ë™ì¼</span>
 			</h3>
 
 			<table class="board_write">
@@ -518,27 +518,27 @@ input.text {
 				</colgroup>
 				<tbody>
 					<tr class="bd_top">
-						<th scope="row">¹è¼ÛÁö</th>
+						<th scope="row">ë°°ì†¡ì§€</th>
 						<td><label for=""> <input type="radio" class="text"
-								style="margin-right: 0px;">»õ·Î ÀÔ·Â
+								style="margin-right: 0px;">ìƒˆë¡œ ìž…ë ¥
 						</label>
 							<button class="btn1" style="margin-left: 10px;"
-								onclick="openAddressModal()">³ªÀÇ¹è¼ÛÁö</button></td>
+								onclick="openAddressModal()">ë‚˜ì˜ë°°ì†¡ì§€</button></td>
 					</tr>
 					<tr>
-						<th scope="row">¹ÞÀ¸½Ã´ÂºÐ</th>
+						<th scope="row">ë°›ìœ¼ì‹œëŠ”ë¶„</th>
 						<td><input type="text" class="text" style="width: 200px;">
 						</td>
 					</tr>
 					<tr>
-						<th scope="row">ÈÞ´ëÆù¹øÈ£</th>
+						<th scope="row">íœ´ëŒ€í°ë²ˆí˜¸</th>
 						<td><input type="text" id="rcvMobile" class="text"
 							numberonly="true" maxlength="20" value=""
-							placeholder="ÈÞ´ëÆù ÀÔ·Â (¼ýÀÚ¸¸)"></td>
+							placeholder="íœ´ëŒ€í° ìž…ë ¥ (ìˆ«ìžë§Œ)"></td>
 					</tr>
 
 					<tr>
-						<th scope="row">ÁÖ¼Ò</th>
+						<th scope="row">ì£¼ì†Œ</th>
 						<td class="address-input">
 							<div>
 
@@ -546,7 +546,7 @@ input.text {
 								<input type="text" id="addressInput1" class="text"
 									style="width: 200px;"> <input type="button"
 									class="btn1" onclick="sample4_execDaumPostcode()"
-									value="¿ìÆí¹øÈ£Ã£±â"></input>
+									value="ìš°íŽ¸ë²ˆí˜¸ì°¾ê¸°"></input>
 							</div>
 							<div>
 								<input type="text" class="text" style="width: 533px;"
@@ -559,12 +559,12 @@ input.text {
 						</td>
 					</tr>
 					<tr>
-						<th scope="row">ÁÖ¹®½Ã¿äÃ»»çÇ×</th>
+						<th scope="row">ì£¼ë¬¸ì‹œìš”ì²­ì‚¬í•­</th>
 						<td><input type="text" class="text" style="width: 200px;">
 						</td>
 					</tr>
 					<tr>
-						<th scope="row">¹è¼ÛÈñ¸ÁÀÏ</th>
+						<th scope="row">ë°°ì†¡í¬ë§ì¼</th>
 						<td>
 							<!-- <input type="text" class="text" style="width:200px;"> --> <input
 							type="date" class="text" required pattern="\d{4}-\d{2}-\d{2}">
@@ -572,7 +572,7 @@ input.text {
 						</td>
 					</tr>
 					<tr>
-						<th scope="row">¹è¼Û½Ã°£</th>
+						<th scope="row">ë°°ì†¡ì‹œê°„</th>
 						<td><input type="text" class="text" style="width: 200px;">
 						</td>
 					</tr>
@@ -583,7 +583,7 @@ input.text {
 			<!--  -->
 			<!--  -->
 			<!--  -->
-			<h3 class="cont_title01">°áÁ¦¼±ÅÃ</h3>
+			<h3 class="cont_title01">ê²°ì œì„ íƒ</h3>
 			<table class="board_write ">
 				<colgroup>
 					<col style="width: 172px">
@@ -591,20 +591,20 @@ input.text {
 				</colgroup>
 				<tbody>
 					<tr class="bd_top">
-						<th scope="row">ÃÑ °áÁ¦±Ý¾×</th>
-						<td style="padding: 15px"><span class="price">61,000 ¿ø</span>
+						<th scope="row">ì´ ê²°ì œê¸ˆì•¡</th>
+						<td style="padding: 15px"><span class="price">61,000 ì›</span>
 						</td>
 					</tr>
 					<tr>
-						<th scope="row">°áÁ¦¹æ¹ý</th>
+						<th scope="row">ê²°ì œë°©ë²•</th>
 						<td style="padding: 15px">
 							<div class="label_group">
 
 								<label for="pay1" class="check_label"> <input
 									type="radio" class="radio" value="CARD" checked="true">
-									½Å¿ëÄ«µå
+									ì‹ ìš©ì¹´ë“œ
 								</label> <label for="pay10" class="check_label hide"> <input
-									type="radio" class="radio" value="gifty"> Ä«Ä«¿À ±âÇÁÆ¼ÄÜ
+									type="radio" class="radio" value="gifty"> ì¹´ì¹´ì˜¤ ê¸°í”„í‹°ì½˜
 								</label>
 							</div>
 						</td>
@@ -616,20 +616,20 @@ input.text {
 
 
 			<div class="center" style="margin: 30px; font-size: 12px;">
-				<!-- 20181011 joonyus Á¶°ÇÃß°¡-->
-				<label><input type="checkbox"><span></span><i>(ÇÊ¼ö)
-						°áÁ¦¼­ºñ½º ¾à°ü¿¡ µ¿ÀÇÇÏ¸ç, ¿øÈ°ÇÑ ¹è¼ÛÀ» À§ÇÑ °³ÀÎÁ¤º¸ Á¦°ø¿¡ µ¿ÀÇÇÕ´Ï´Ù.</i></label> <a href="javascript:;"
-					class="openClause">[¾à°üº¸±â]</a>
+				<!-- 20181011 joonyus ì¡°ê±´ì¶”ê°€-->
+				<label><input type="checkbox"><span></span><i>(í•„ìˆ˜)
+						ê²°ì œì„œë¹„ìŠ¤ ì•½ê´€ì— ë™ì˜í•˜ë©°, ì›í™œí•œ ë°°ì†¡ì„ ìœ„í•œ ê°œì¸ì •ë³´ ì œê³µì— ë™ì˜í•©ë‹ˆë‹¤.</i></label> <a href="javascript:;"
+					class="openClause">[ì•½ê´€ë³´ê¸°]</a>
 			</div>
 			<div class="center" style="margin: 30px;">
 				<button class="btn1">temp</button>
 				<a href="${pageContext.request.contextPath}/cart/cartList"
-					class="w3-bar-item w3-button w3-hide-small">Àå¹Ù±¸´Ï</a>
+					class="w3-bar-item w3-button w3-hide-small">ìž¥ë°”êµ¬ë‹ˆ</a>
 
-				<button class="btn1">°áÁ¦ÁøÇà</button>
+				<button class="btn1">ê²°ì œì§„í–‰</button>
 				<div>
 
-					<input type="submit" value="°áÁ¦"
+					<input type="submit" value="ê²°ì œ"
 						onclick="javascript: form.action='${pageContext.request.contextPath}/cart/cartUpdatePro/';" />
 
 				</div>

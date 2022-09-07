@@ -141,6 +141,22 @@ public class MemberController {
 			return "alert";
 		}
 	}
+	
+	@RequestMapping("idcheck")
+	@ResponseBody
+	public String idcheck(String id) throws Exception {
+		Member m = md.selectOne(id);
+		
+		if (m==null) {
+			return "0";   // 가능 
+		} else {
+		
+		return "1";   //불가능 
+		}
+		
+	}
+	
+	
 
 	@RequestMapping("memberUpdateForm")
 	public String memberUpdateForm() throws Exception {
