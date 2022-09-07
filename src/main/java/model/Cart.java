@@ -43,9 +43,11 @@ public class Cart {
 	public int getDtotal() {
 		return dtotal;
 	}
+	
 	public void setDtotal(int dtotal) {
 		this.dtotal = dtotal;
 	}
+	
 	public String getDpicture() {
 		return dpicture;
 	}
@@ -58,6 +60,18 @@ public class Cart {
 	public void setDid(String did) {
 		this.did = did;
 	}
+	/*
+	salePrice와 totalPrice의 변수 값을 초기화 해주는 메서드를 생성해줍니다. 
+	이 두 변수의 값을 변경을 원할 경우 오직 이 메서드를 통해서만 가능하도록 하기 위해, 
+	dtotal의 Setter 메서드 추가해주지 않았습니다.
+	*/
+	
+	/*
+	public void initTotal() {
+		this.dtotal=this.dprice*this.dqty;
+	}
+	*/
+	
 	@Override
 	public String toString() {
 		return "Cart [dnum=" + dnum + ", dname=" + dname + ", dprice=" + dprice + ", dqty=" + dqty + ", dtotal="

@@ -93,5 +93,11 @@ public class CartMybatisDao {
 		
 		session.update(ns + "cartUpdate2", map);
 	}
-
+	
+/*	
+	public int modifyDqty(Cart cart) {
+		
+		return modifyDqty(cart);
+	}
+*/
 } // end class

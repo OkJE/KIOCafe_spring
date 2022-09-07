@@ -28,7 +28,8 @@
 	<insert id="cartInsert" parameterType="cart">
 		insert into kiocafe_cart
 		values
-		(#{dnum},#{dname},#{dprice},#{dqty},#{dtotal},#{dpicture},#{did}, #{dpay})
+		(#{dnum},#{dname},#{dprice},#{dqty},#{dtotal},#{dpicture},#{did},
+		#{dpay})
 	</insert>
 
 
@@ -53,8 +54,10 @@
 			dnum = #{item}
 		</foreach>
 	</update>
-
-
-
+ 
+	<!-- 카트 수량 수정 -->
+	<!-- <update id="modifyDqty">
+		update kiocafe_cart set dqty=#{dqty} where dnum = #{dnum}
+	</update> -->
 
 </mapper> 

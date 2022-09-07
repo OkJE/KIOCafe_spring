@@ -153,4 +153,13 @@ public class CartController {
 		return "/cart/cartList";
 
 	}
+/*	
+	@RequestMapping("updateDqtyPro")
+	public String updateDqtyPro(Cart cart) {
+		cd.modifyDqty(cart);
+		
+		return "redirect:/cart/cartList";
+				
+	}
+	*/
 }

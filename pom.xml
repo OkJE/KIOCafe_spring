@@ -1,10 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>kiocafe.com</groupId>
-	<artifactId>KIOCafe</artifactId>
+	<groupId>ok.com</groupId>
+	<artifactId>springmvc</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>KIOCafe Maven Webapp</name>
+	<name>springmvc Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -56,22 +56,13 @@
 			<version>${spring.version}</version>
 		</dependency>
 
-		<dependency>
+		<dependency>        
 			<groupId>oracle</groupId>
 			<artifactId>ojdbc11</artifactId>
 			<version>11</version>
 		</dependency>
-		
-		<!-- Error attempting to get column 'ID' from result set. Cause: java.sql.SQLException: 지원되지 않는 문자 집합(클래스 경로에 orai18n.jar 추가) -->
-		<dependency>
-			<groupId>com.oracle.ojdbc</groupId>
-			<artifactId>orai18n</artifactId>
-			<version>19.3.0.0</version>
-		</dependency>
-		
-		
+
 		<!-- jstl 설정-->
-		
 		<dependency>
 			<groupId>jstl</groupId>
 			<artifactId>jstl</artifactId>
@@ -130,7 +121,8 @@
 			<scope>runtime</scope>
 		</dependency>
 	</dependencies>
-
+    
+  
 	<build>
 		<finalName>springmvc</finalName>
 		<plugins>

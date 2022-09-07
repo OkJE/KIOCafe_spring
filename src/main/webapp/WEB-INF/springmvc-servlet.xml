@@ -20,7 +20,7 @@
     <!--   css, js, html 웹에서 제공되는 파일의 기본 기능 제외  -->
       <mvc:default-servlet-handler/>
       
-      <mvc:view-controller path="/index" view-name="index"/>
+      <mvc:view-controller path="/mainpage" view-name="mainpage"/>
       
       <bean id="viewResolber" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
       <property name="prefix" value="/view/"/>
@@ -44,8 +44,8 @@
 <bean id="dataSource"   class="com.mchange.v2.c3p0.ComboPooledDataSource"
          destroy-method="close">
          <property name="driverClass"><value>oracle.jdbc.OracleDriver</value></property>
-         <property name="jdbcUrl"><value>jdbc:oracle:thin:@localhost:1521:orcl</value></property>
-         <property name="user"><value>c##kic</value></property>
+         <property name="jdbcUrl"><value>jdbc:oracle:thin:@localhost:1521:xe</value></property>
+         <property name="user"><value>kic</value></property>
          <property name="password"><value>1111</value></property>
          <property name="maxPoolSize"><value>20</value></property><!-- 최대 연결 객체 갯수 -->
          <property name="minPoolSize"><value>3</value></property> <!-- 최소 연결 객체 갯수 -->
