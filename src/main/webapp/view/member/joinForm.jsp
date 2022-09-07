@@ -265,14 +265,14 @@
 
             <tbody>
 
-
                 <p class="title">필수항목</p>
                 <tr>
                     <th scope="row">아이디</th>
-                    <td><input type="text" placeholder="아이디를 입력해주세요." class="text" name="id" id="inputId"  style="width:200px;">
-                    <p class="id_check">아이디 사용 가능</p>
-                    <p class="id_already">바꿔</p>
-                    
+                    <td style="display: flex;"><input type="text" placeholder="아이디를 입력해주세요." class="text" name="id" id="inputId"  style="width:200px;">
+                    <div style="margin-top: 21px">
+                    	<p class="id_check" style="" >사용 가능한 아이디입니다.</p>
+                    	<p class="id_already" style="color:red; font-weight: bold;" >이미 사용중인 아이디입니다. </p>
+                  </div>
               		<!-- <div class="check_font" id="id_check"></div> -->
                     </td>
                 </tr>
@@ -358,36 +358,36 @@
     <!--  -->
 </form>
 <script>
+
 jQuery(document).ready(function() {
+    $('.id_check').hide(); 
+    $('.id_already').hide(); 
+
+    
 });
-}
 $('#inputId').keyup(function() {
 	
 	var id = $('#inputId').val(); //id값이 "id"인 입력란의 값을 저장
-	console.log(id)
     
+	/* 
+		id_already = 이미 사용중인 아이디입니다. 
+	   	id_check = 사용 가능한 아이디입니다.
+	*/
+	
 	$.ajax({
         url:'${pageContext.request.contextPath}/member/idcheck', //Controller에서 요청 받을 주소
         type:'post', //POST 방식으로 전달
         data:{id:id},
         success:function(cnt){ //컨트롤러에서 넘어온 cnt값을 받는다 
-           console.log(cnt)
-           
-              $('.id_ok').css("display","hidden"); 
-              $('.id_already').css("display", "hidden"); 
         	if(cnt == 0){ 
-        		 console.log("가능")
-            	//cnt가 0일 경우 -> 사용 가능한 아이디 
-                $('.id_ok').css("display","inline-block"); 
-                $('.id_already').css("display", "none"); 
-           
+            	//cnt가 0일 경우 -> 사용 가능한 아이디  id_check이 보이도록
+                $('.id_already').hide(); 
+            	$('.id_check').show(); 
             } else { 
-            	 console.log("불가능")
             	// cnt가 1일 경우 -> 이미 존재하는 아이디
-                $('.id_already').css("display","inline-block");
-                $('.id_ok').css("display", "none");
-              //  alert("아이디를 다시 입력해주세요");
-                $('#id').val('');
+                $('.id_already').show(); 
+                $('.id_check').hide(); 
+                /* $('#inputId').val(""); 텍스트 초기화 */
             }
         },
         error:function(){
