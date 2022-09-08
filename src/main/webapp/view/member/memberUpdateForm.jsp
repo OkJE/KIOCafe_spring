@@ -70,16 +70,6 @@
                         $('#inputPass1').focus();
                         return false;
 
-                    } else if ($('#inputPass2').val() == "") {
-                        alert("비밀번호를 확인 입력해주세요");
-                        $('#inputPass2').focus();
-                        return false;
-
-                    } else if ($('#inputPass1').val() != $('#inputPass2').val()) {
-                        alert("입력하신 비밀번호가 일치 하지 않습니다.");
-                        $('#inputPass2').focus();
-                        return false;
-
                     } else if ($('#inputName').val() == "") {
                         alert("이름을 입력해주세요");
                         $('#inputName').focus();
