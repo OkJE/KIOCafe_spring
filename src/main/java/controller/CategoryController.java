@@ -21,7 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import model.Cart;
 import model.Category;
-import service.CartMybatisDao;
+
 import service.CategoryMybatisDao;
 
 @Controller
