@@ -125,9 +125,7 @@ public class CartController {
 	public String cartUpdatePro(Cart cart) throws Exception {
 		System.out.println("Controller cartUpdatePro  ");
 		String userId = "1";
-		
-		
-		
+
 		String[] dnums = request.getParameterValues("did");
 		
 		String dpay = request.getParameter("dpay");
@@ -148,9 +146,12 @@ public class CartController {
 		else {
 			System.out.println(" dpay : " + dpay);
 		}
-
+		
+		
+		cd.cartQtyUpdate(userId,dnums);
+		
 		System.out.println("ctr end");
-		return "/cart/cartList";
+		return "redirect:/cart/orderList";
 
 	}
 /*	

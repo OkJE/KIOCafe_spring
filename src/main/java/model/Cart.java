@@ -41,7 +41,7 @@ public class Cart {
 		this.dqty = dqty;
 	}
 	public int getDtotal() {
-		return dtotal;
+		return this.dprice*this.dqty;
 	}
 	
 	public void setDtotal(int dtotal) {

@@ -42,6 +42,7 @@
 	                    $("#qtx" + id).text(parseInt(qtx) + 1);
 	                    let nowQtx = $("#qtx" + id).text();
 	                    priceMulFunc(id, price, nowQtx);
+	                   
 	                }
 	
 	                function minusQtxFunc(id) {
@@ -51,21 +52,25 @@
 	                        $("#qtx" + id).text(parseInt(qtx) - 1);
 	                        let nowQtx = $("#qtx" + id).text();
 	                        priceMulFunc(id, price, nowQtx);
+		                    
 	                    }
+	                    
 	                }
 	
 	       
 	                function priceMulFunc(id, price, qtx) {
 	                    $("#priceMul" + id).text(parseInt(price) * parseInt(qtx));
 	                    allPriceSum();
+	                   
+	                    $('#qtx').val(parseInt(qtx));
+	                    console.log ( typeof qtx );
 	                }
 	          	
 	              function allPriceSum() {
-	              	console.log("hi");
+	              	
 	                  let totalPrice = document.getElementsByName("dtotal");
 	                  let priceSumResult = 0;
-	                  console.log(totalPrice[0]);
-	                  console.log(totalPrice[1]);
+	                 
 	                  for (let i = 0; i < totalPrice.length; i++) {
 	                      priceSumResult += parseInt(totalPrice[i].innerHTML);
 	                  }
@@ -75,7 +80,7 @@
 	              /*  */
 	              /*  */
 	              /*  */
-                console.log(${numList});
+               
                     function checkBoxValueOnOff(id) {
                         let chBoxCheckState = document.getElementById(id);
                         if (chBoxCheckState.checked == true) {
@@ -83,21 +88,20 @@
                         } else {
                             chBoxCheckState.value = "";
                         }
-                        console.log(chBoxCheckState);
-                        console.log(chBoxCheckState.checked);
+                        
 
                     }
 
                     function checkAll() {
                         let allCheck = document.getElementById("allCheck");
                         let checkBoxAll = document.getElementsByName("did");
-                        console.log(allCheck.checkd);
+                        
                         if (allCheck.checked == true) {
                             for (let i = 0; i < checkBoxAll.length; i++) {
                                 checkBoxAll[i].checked = true;
                                 checkBoxValueOnOff(checkBoxAll[i].getAttribute("id"));
                             }
-                            console.log("true");
+                            
                         } else {
                             for (let i = 0; i < checkBoxAll.length; i++) {
                                 checkBoxAll[i].checked = false;
@@ -115,8 +119,7 @@
         	              
         	                  let totalPrice = document.getElementsByName("dtotal");
         	                  let priceSumResult = 0;
-        	                  console.log(totalPrice[0]);
-        	                  console.log(totalPrice[1]);
+        	                 
         	                  for (let i = 0; i < totalPrice.length; i++) {
         	                      priceSumResult += parseInt(totalPrice[i].innerHTML);
         	                  }
@@ -130,86 +133,7 @@
                     	
 
                     })
-                   /*  $(document).ready(function () {
-
-                        let cntA = 0;
-                        let cntB = 0;
-                        let cntC = 0;
-                        let allPrice = 0;
-
-
-
-                        $('.plusA-btn').click(function () {
-                            cntA++;
-                            $(".productA-cnt-p").html(cntA);
-                            allPrice = (cntA + cntB + cntC) * 1000 + "원";
-
-                            $(".productATotalPrice").html(cntA * 1000 + "원");
-                            $(".allPrice").html(allPrice);
-
-
-                            console.log("cntA : "+ cntA);
-                        })
-                        $('.minusA-btn').click(function () {
-                            if (cntA != 0) {
-                                cntA--;
-                                $(".productA-cnt-p").html(cntA);
-                                console.log(cntA);
-
-                                $(".productATotalPrice").html(cntA * 1000 + "원");
-                                allPrice = (cntA + cntB + cntC) * 1000;
-                                $(".allPrice").html(allPrice);
-                            }
-                        })
-                        // 
-                        $('.plusB-btn').click(function () {
-                            cntB++;
-                            $(".productB-cnt-p").html(cntB);
-
-                            $(".productBTotalPrice").html(cntB * 1000 + "원");
-                            allPrice = (cntA + cntB + cntC) * 1000 + "원";
-                            $(".allPrice").html(allPrice);
-                            console.log(cntB);
-                        })
-                        $('.minusB-btn').click(function () {
-                            if (cntB != 0) {
-                                cntB--;
-                                $(".productB-cnt-p").html(cntB);
-
-                                $(".productBTotalPrice").html(cntB * 1000 + "원");
-                                allPrice = (cntA + cntB + cntC) * 1000 + "원";
-                                $(".allPrice").html(allPrice);
-                                console.log(cntB);
-                            }
-                        })
-                        $('.plusC-btn').click(function () {
-                            cntC++;
-                            $(".productC-cnt-p").html(cntC);
-
-                            $(".productCTotalPrice").html(cntC * 1000 + "원");
-                            allPrice = (cntA + cntB + cntC) * 1000 + "원";
-                            $(".allPrice").html(allPrice);
-                            console.log(cntC);
-                        })
-                        $('.minusC-btn').click(function () {
-                            if (cntC != 0) {
-                                cntC--;
-                                $(".productC-cnt-p").html(cntC);
-
-                                $(".productCTotalPrice").html(cntC * 1000);
-                                allPrice = (cntA + cntB + cntC) * 1000;
-                                $(".allPrice").html(allPrice);
-                                console.log(cntC);
-                            }
-                        })
-
-                        $('.mi').click(function () {
-                            alert("hi");
-                            console.log("hi");
-                        })
-
-                    });
- */
+                   
 
                 </script>
                 <style>
@@ -319,6 +243,7 @@
                                             <p>
                                                 <input type="checkbox" class="w3-check" id="${c.dnum}" value=""
                                                     name="did" onclick="checkBoxValueOnOff(this.id)">
+                                                    <input type="hidden" value="${c.dnum }" name="dnum">
 
                                                 <label>${c.dname }</label>
                                             </p>
@@ -341,6 +266,8 @@
 
                                         <td>
                                             <p class="count productA-cnt-p" style="text-align: center" id="qtx${c.dnum }">${c.dqty }</p>
+                                            <input type="hidden" id="qtx" value="" name="dqty">
+                                          
                                         <td class="btn-td" style="text-align: left">
                                             <button type="button" class="w3-button w3-white plusA-btn   count-btn" id="plus${c.dnum}" onclick="getClickIdFunc(this.id)"
                                                 style="border: 1px black solid; border-radius: 8px;">

@@ -80,18 +80,34 @@ public class CartMybatisDao {
 	}
 
 	public void cartUpdate2(String userId, String[] dnums) {
-	System.out.println("Dao cartUpdate1 " + userId);
+	System.out.println("Dao cartUpdate2 " + userId);
 		
 		String[] didlist = dnums;
 
-		for (String string : didlist) {
-			System.out.println("string : "+string);
-		}
+		/*
+		 * for (String string : didlist) { System.out.println("string : "+string); }
+		 */
 		System.out.println("userId : " + userId);
 		map.put("userid", userId);
 		map.put("dnumlist", didlist);
 		
 		session.update(ns + "cartUpdate2", map);
+	}
+	
+	public int cartQtyUpdate(String userId,String[] dnums) {
+		String[] didlist = dnums;
+	
+		map.clear();
+		for (String string : didlist) {
+			System.out.println("string : "+string);
+		}
+		
+		map.put("userId", userId);
+		map.put("didlist", didlist);
+		
+		
+		int num=session.update(ns + "cartQtyUpdate", map);
+		return num;
 	}
 	
 /*	
