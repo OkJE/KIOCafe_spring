@@ -31,11 +31,11 @@
    
    
    <update id="categoryUpdate" parameterType="category">
-      update kiocafe_category set cname = #{cname} , ctext = #{ctext} , 
-      cpicture = #{cpicture} where cnum = #{cnum}      
-   </update>
 
-
+update kiocafe_category set cname = #{cname} , cmenu = #{cmenu} , 
+ 	   ctext = #{ctext} , cprice = #{cprice}, cqty = #{cqty} ,  cpicture = #{cpicture} 
+  	 where cnum = #{cnum}  
+</update>
    <delete id="categoryDelete" parameterType="int">
    delete from kiocafe_category where cnum= #{cnum}   
    </delete> 

@@ -74,12 +74,12 @@ public int categoryUpdate(Category category) {
    
    return num;
 }
-public int categoryDelete(int num) {
+public int categoryDelete(int cnum) {
    
-   int n = session.delete(ns+"categoryDelete", num);
+   int c = session.delete(ns+"categoryDelete", cnum);
    
    
-   return n;
+   return c;
 }
 
 }   //end class

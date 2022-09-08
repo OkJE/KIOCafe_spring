@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+
 import model.Cart;
 import model.Category;
 import service.CartMybatisDao;
@@ -244,6 +245,69 @@ public class CategoryController {
 		request.setAttribute("category", category);
 		return "category/categoryInfo";
 	}
+	
+	@RequestMapping("categoryUpdateForm")
+	   public String categoryUpdateForm(int cnum) throws Exception {
+    	   
+	      Category category = bd.categoryOne(cnum);
+
+	  	request.setAttribute("category", category);
+	      return "category/categoryUpdateForm";
+	   }
+
+	   @RequestMapping("categoryUpdatePro")
+	   public String boardUpdatePro(Category category) throws Exception {
+
+	   // String path = request.getServletContext().getRealPath("/") + "view/board/img/";
+	      String msg = "";
+	      String url = "";
+	      
+	      	
+	   
+	         // 수정하기
+	         if (bd.categoryUpdate(category) > 0) {
+	            msg = "수정 완료";
+	            url = "/category/categoryInfo?cnum="+category.getCnum();
+	         } else {
+	            msg = "수정 실패";
+	         
+	      }
+	   
+	      request.setAttribute("msg", msg);
+	      request.setAttribute("url", url);
+	      return "alert";
+	   }
+
+
+		/*
+		 * @RequestMapping("categoryDeleteForm") public String categoryDeleteForm(int
+		 * cnum) {
+		 * 
+		 * request.setAttribute("cnum", cnum); return "category/categoryDeleteForm"; }
+		 */
+
+	   @RequestMapping("categoryDeletePro")
+	   public String categoryDeletePro(int cnum) {
+	       
+		 
+	      String msg = "";
+	      String url = "";
+	    		/*  "/board/boardDeleteForm?cnum=" + cnum;*/
+	      
+	         // 수정하기
+	         if (bd.categoryDelete(cnum) > 0) {
+	            msg = "게시글이 삭제 되었습니다";
+	            url = "/category/categoryList";
+	         } else {
+	            msg = " 게시글 삭제를 실패 하였습니다.";
+	         
+	      }
+	      request.setAttribute("msg", msg);
+	      request.setAttribute("url", url);
+	      return "alert";
+
+	   }
+	
 
 	@RequestMapping("pictureimgForm")
 	public String pictureimgForm() throws Exception {
