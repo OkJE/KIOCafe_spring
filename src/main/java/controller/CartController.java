@@ -105,7 +105,23 @@ public class CartController {
 		System.out.println("cartPro Controller ");
 		System.out.println("cartPro : " + cart);
 //		String userId = "1";
-		int num = cd.cartInsert(cart);
+		
+		
+		Cart cartChk=cd.cartOne(cart.getDnum());
+		System.out.println(cartChk);
+		
+		
+		if(cartChk!=null) {
+			String msg="장바구니에 같은 제품이 있습니다. 확인해 주세요";
+			String url="/cart/cartList";
+			
+			session.setAttribute("msg", msg);
+			session.setAttribute("url", url);
+			
+			return "alert";
+		} else {
+			int num = cd.cartInsert(cart);
+		}
 
 		return "redirect:/cart/cartList";
 	}

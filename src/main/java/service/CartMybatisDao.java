@@ -48,6 +48,14 @@ public class CartMybatisDao {
 		int num = session.insert(ns + "cartInsert", cart);
 		return num;
 	}
+	
+	//
+	public Cart cartOne(int dnum) {
+
+		Cart cart =session.selectOne(ns+"cartOne",dnum);
+	
+		return cart;
+	}
 //	장바구니 제품 삭제
 	public void cartDelete(String userId, String[] dids ) {
 		

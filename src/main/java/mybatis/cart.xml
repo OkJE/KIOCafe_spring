@@ -4,6 +4,11 @@
 
 <mapper namespace="cart">
 
+		<select id="cartOne" resultType="cart">
+		select * from kiocafe_cart where dnum = #{dnum}
+		
+		</select>
+
 	<select id="cartList" parameterType="map" resultType="cart">
 		select *
 		from kiocafe_cart where did = #{id} and dpay = 0

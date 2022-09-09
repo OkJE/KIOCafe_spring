@@ -70,7 +70,7 @@
                         $('#inputPass1').focus();
                         return false;
 
-                    } else if ($('#inputName').val() == "") {
+                    }  else if ($('#inputName').val() == "") {
                         alert("이름을 입력해주세요");
                         $('#inputName').focus();
                         return false;
