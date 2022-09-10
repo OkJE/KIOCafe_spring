@@ -522,7 +522,7 @@ input[type="checkbox"] {
 			<div class="center" style="margin: 30px;">
 				<div>
 					<input type="submit" value="주문취소" style="margin-right: 15px;"
-						onclick="javascript: form.action='${pageContext.request.contextPath}/cart/cartList';" />
+						onclick="javascript: form.action='${pageContext.request.contextPath}/cart/cancleOrder';" />
 					<input type="submit" value="결제진행"
 						onclick="javascript: form.action='${pageContext.request.contextPath}/cart/cartUpdatePro/';" />
 				</div>

@@ -91,8 +91,10 @@ public class CartController {
 		}
 		String referer = request.getHeader("Referer"); // 헤더에서 이전 페이지를 읽는다.
 
-		return "redirect:" + referer; // 이전 페이지로 리다이렉
-
+//		return "redirect:" + referer; // 이전 페이지로 리다이렉
+		request.setAttribute("msg", msg);
+		request.setAttribute("url", url);
+		return "alert";
 	}
 
 	@RequestMapping("cartPro")
@@ -144,55 +146,82 @@ public class CartController {
 		String[] dnum = request.getParameterValues("did");
 		String[] dqty = request.getParameterValues("dqty");
 		String[] dtotal = request.getParameterValues("dtotal");
-	
+
 		ArrayList<String> dqtyArrList = new ArrayList<>();
 		ArrayList<String> dtotalArrList = new ArrayList<>();
 
 //		 dqty 값 중 ""값이 아닌 값들 dqtyArrList에 추가
-		for (String string : dqty) {
-			if (string != "") {
-				dqtyArrList.add(string);
-			}
-		}
-		
-		for (String string : dtotal) {
-			if (string != "") {
-				dtotalArrList.add(string);
-				System.out.println(string);
-			}
-		}
-
-//		for (int i = 0; i < dqtyArrList.size(); i++) {
-//			dqty[i] = dqtyArrList.get(i);
-//		}
-
-		for (String string : dqty) {
-			if (string != null) {
-				dtotalArrList.add(string);
-			}
-		}
 
 		String userId = "1";
 		String dpay = request.getParameter("dpay");
-		
+
 		if (dpay.equals("0")) {
+
+			for (String string : dqty) {
+				if (string != "") {
+					dqtyArrList.add(string);
+				}
+			}
+
+			for (String string : dtotal) {
+				if (string != "") {
+					dtotalArrList.add(string);
+					System.out.println(string);
+				}
+			}
+
+			for (String string : dqty) {
+				if (string != null) {
+					dtotalArrList.add(string);
+				}
+			}
+
 			cd.cartUpdate1(userId, dnum, dqtyArrList, dtotalArrList);
 		}
-//
-//		if (dpay.equals("1")) {
-//			System.out.println("Ctr cartUpdatePro dpay = 2");
-//			cd.cartUpdate2(userId, dnums);
-//		}
-//		
-//		else {
-//			System.out.println(" dpay : " + dpay);
-//		}
 
-//		
-//		cd.cartQtyUpdate(userId,dnums);
-//		
-//		System.out.println("ctr end");
+		if (dpay.equals("1")) {
+			cd.cartUpdate2(userId, dnum);
+		}
+
+		else {
+			System.out.println(" dpay : " + dpay);
+		}
+
 		return "redirect:/cart/orderList";
+
+	}
+
+	@RequestMapping("cancleOrder")
+	public String cancleOrder() throws Exception {
+		String[] dnum = request.getParameterValues("did");
+
+		String msg = "";
+		String url = "";
+		msg = " 품목 삭제를 실패 하였습니다.";
+		url = "/cart/cartList";
+	
+		System.out.println("dnum " + dnum);
+
+		String userId = "1";
+	
+		if (dnum != null) {
+			System.out.println();
+			int confirm = cd.cancleOrder(userId, dnum);
+			if (confirm > 0) {
+				System.out.println("삭제");
+				msg = "상품이 삭제 되었습니다";
+				url = "/cart/cartList";
+			} else {
+				System.out.println("실패!");
+				msg = " 상품 삭제를 실패 하였습니다.";
+				url = "/cart/cartList";
+			}
+		}
+
+		
+		request.setAttribute("msg", msg);
+		request.setAttribute("url", url);
+		return "alert";
 
 	}
 
