@@ -1,9 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR" %>
+
+
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+
+
  <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- À§ 3°³ÀÇ ¸ŞÅ¸ ÅÂ±×´Â *¹İµå½Ã* head ÅÂ±×ÀÇ Ã³À½¿¡ ¿Í¾ßÇÕ´Ï´Ù; ¾î¶² ´Ù¸¥ ÄÜÅÙÃ÷µéÀº ¹İµå½Ã ÀÌ ÅÂ±×µé *´ÙÀ½¿¡* ¿Í¾ß ÇÕ´Ï´Ù -->
+    <!-- ìœ„ 3ê°œì˜ ë©”íƒ€ íƒœê·¸ëŠ” *ë°˜ë“œì‹œ* head íƒœê·¸ì˜ ì²˜ìŒì— ì™€ì•¼í•©ë‹ˆë‹¤; ì–´ë–¤ ë‹¤ë¥¸ ì½˜í…ì¸ ë“¤ì€ ë°˜ë“œì‹œ ì´ íƒœê·¸ë“¤ *ë‹¤ìŒì—* ì™€ì•¼ í•©ë‹ˆë‹¤ -->
     <title>t</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
@@ -29,26 +33,26 @@
         function sample4_execDaumPostcode() {
             new daum.Postcode({
                 oncomplete: function (data) {
-                    // ÆË¾÷¿¡¼­ °Ë»ö°á°ú Ç×¸ñÀ» Å¬¸¯ÇßÀ»¶§ ½ÇÇàÇÒ ÄÚµå¸¦ ÀÛ¼ºÇÏ´Â ºÎºĞ.
+                    // íŒì—…ì—ì„œ ê²€ìƒ‰ê²°ê³¼ í•­ëª©ì„ í´ë¦­í–ˆì„ë•Œ ì‹¤í–‰í•  ì½”ë“œë¥¼ ì‘ì„±í•˜ëŠ” ë¶€ë¶„.
 
-                    // µµ·Î¸í ÁÖ¼ÒÀÇ ³ëÃâ ±ÔÄ¢¿¡ µû¶ó ÁÖ¼Ò¸¦ Ç¥½ÃÇÑ´Ù.
-                    // ³»·Á¿À´Â º¯¼ö°¡ °ªÀÌ ¾ø´Â °æ¿ì¿£ °ø¹é('')°ªÀ» °¡Áö¹Ç·Î, ÀÌ¸¦ Âü°íÇÏ¿© ºĞ±â ÇÑ´Ù.
-                    var roadAddr = data.roadAddress; // µµ·Î¸í ÁÖ¼Ò º¯¼ö
-                    var extraRoadAddr = ''; // Âü°í Ç×¸ñ º¯¼ö
-                    // ¹ıÁ¤µ¿¸íÀÌ ÀÖÀ» °æ¿ì Ãß°¡ÇÑ´Ù. (¹ıÁ¤¸®´Â Á¦¿Ü)
-                    // ¹ıÁ¤µ¿ÀÇ °æ¿ì ¸¶Áö¸· ¹®ÀÚ°¡ "µ¿/·Î/°¡"·Î ³¡³­´Ù.
+                    // ë„ë¡œëª… ì£¼ì†Œì˜ ë…¸ì¶œ ê·œì¹™ì— ë”°ë¼ ì£¼ì†Œë¥¼ í‘œì‹œí•œë‹¤.
+                    // ë‚´ë ¤ì˜¤ëŠ” ë³€ìˆ˜ê°€ ê°’ì´ ì—†ëŠ” ê²½ìš°ì—” ê³µë°±('')ê°’ì„ ê°€ì§€ë¯€ë¡œ, ì´ë¥¼ ì°¸ê³ í•˜ì—¬ ë¶„ê¸° í•œë‹¤.
+                    var roadAddr = data.roadAddress; // ë„ë¡œëª… ì£¼ì†Œ ë³€ìˆ˜
+                    var extraRoadAddr = ''; // ì°¸ê³  í•­ëª© ë³€ìˆ˜
+                    // ë²•ì •ë™ëª…ì´ ìˆì„ ê²½ìš° ì¶”ê°€í•œë‹¤. (ë²•ì •ë¦¬ëŠ” ì œì™¸)
+                    // ë²•ì •ë™ì˜ ê²½ìš° ë§ˆì§€ë§‰ ë¬¸ìê°€ "ë™/ë¡œ/ê°€"ë¡œ ëë‚œë‹¤.
 
                     // console.log(data.buildingName);
 
-                    if (data.bname !== '' && /[µ¿|·Î|°¡]$/g.order - (data.bname)) {
+                    if (data.bname !== '' && /[ë™|ë¡œ|ê°€]$/g.order - (data.bname)) {
                         extraRoadAddr += data.bname;
                     }
                     console.log(data);
-                    // °Ç¹°¸íÀÌ ÀÖ°í, °øµ¿ÁÖÅÃÀÏ °æ¿ì Ãß°¡ÇÑ´Ù.
+                    // ê±´ë¬¼ëª…ì´ ìˆê³ , ê³µë™ì£¼íƒì¼ ê²½ìš° ì¶”ê°€í•œë‹¤.
                     if (data.buildingName !== '' && data.apartment === 'Y') {
                         extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
                     }
-                    // Ç¥½ÃÇÒ Âü°íÇ×¸ñÀÌ ÀÖÀ» °æ¿ì, °ıÈ£±îÁö Ãß°¡ÇÑ ÃÖÁ¾ ¹®ÀÚ¿­À» ¸¸µç´Ù.
+                    // í‘œì‹œí•  ì°¸ê³ í•­ëª©ì´ ìˆì„ ê²½ìš°, ê´„í˜¸ê¹Œì§€ ì¶”ê°€í•œ ìµœì¢… ë¬¸ìì—´ì„ ë§Œë“ ë‹¤.
                     if (extraRoadAddr !== '') {
                         extraRoadAddr = ' (' + extraRoadAddr + ')';
                     }
@@ -58,10 +62,11 @@
                     if (data.buildingName) {
                         inputAddress = data.roadAddress + " (" + data.buildingName + ")"
                     }
-                    // ¿ìÆí¹øÈ£¿Í ÁÖ¼Ò Á¤º¸¸¦ ÇØ´ç ÇÊµå¿¡ ³Ö´Â´Ù.
-                    // ¿ìÆí¹øÈ£
-                    document.getElementById("addressInput1").value = data.zonecode;
-                    document.getElementById('addressInput2').value = inputAddress;
+                    // ìš°í¸ë²ˆí˜¸ì™€ ì£¼ì†Œ ì •ë³´ë¥¼ í•´ë‹¹ í•„ë“œì— ë„£ëŠ”ë‹¤.
+                    // ìš°í¸ë²ˆí˜¸
+                    document.getElementById("addressInput1").value = "("+data.zonecode+")" + inputAddress;
+
+
 
                 }
             }).open();
@@ -73,36 +78,36 @@
     $(function(){
     	$('#JBtn').click(function(){
     		if($('#inputId').val()==""){
-    			alert("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä");
+    			alert("ì•„ì´ë””ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”");
     			$('#inputId').focus();
     			return false;
     			
     		}else if($('#inputPass1').val()==""){
-    			alert("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä");
+    			alert("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”");
     			$('#inputPass1').focus();
     			return false;
     			
     		}else if($('#inputPass2').val()==""){
-    			alert("ºñ¹Ğ¹øÈ£¸¦ È®ÀÎ ÀÔ·ÂÇØÁÖ¼¼¿ä");
+    			alert("ë¹„ë°€ë²ˆí˜¸ë¥¼ í™•ì¸ ì…ë ¥í•´ì£¼ì„¸ìš”");
     			$('#inputPass2').focus();
     			return false;
     			
     		}else if($('#inputPass1').val()!=$('#inputPass2').val()){
-    			alert("ÀÔ·ÂÇÏ½Å ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ ÇÏÁö ¾Ê½À´Ï´Ù.");
+    			alert("ì…ë ¥í•˜ì‹  ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜ í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
     			$('#inputPass2').focus();
     			return false;	
     			
     		}else if($('#inputName').val()==""){
-    			alert("ÀÌ¸§À» ÀÔ·ÂÇØÁÖ¼¼¿ä");
+    			alert("ì´ë¦„ì„ ì…ë ¥í•´ì£¼ì„¸ìš”");
     			$('#inputName').focus();
     			return false;
     			
     		}else if($('#addressInput1').val()==""){
-    			alert("ÁÖ¼Ò¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä");
+    			alert("ì£¼ì†Œë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”");
     			$('#addressInput1').focus();
     			return false;
     		}else if($('#rcvMobile').val()==""){
-    			alert("¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä");
+    			alert("ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”");
     			$('#rcvMobile').focus();
     			return false;
     		}
@@ -126,7 +131,7 @@
 
         html {
             line-height: 1.15;
-            /*±âº» Çà°£ ³ôÀÌ*/
+            /*ê¸°ë³¸ í–‰ê°„ ë†’ì´*/
         }
 
         * {
@@ -253,7 +258,7 @@
         <!--  -->
         <!--  -->
         <div class="head-title">
-            <span>È¸¿ø°¡ÀÔ</span>
+            <span>íšŒì›ê°€ì…</span>
         </div>
         <table class="board_write">
 
@@ -265,48 +270,46 @@
 
             <tbody>
 
-                <p class="title">ÇÊ¼öÇ×¸ñ</p>
+                <p class="title">í•„ìˆ˜í•­ëª©</p>
                 <tr>
-                    <th scope="row">¾ÆÀÌµğ</th>
-                    <td style="display: flex;"><input type="text" placeholder="¾ÆÀÌµğ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä." class="text" name="id" id="inputId"  style="width:200px;">
+                    <th scope="row">ì•„ì´ë””</th>
+                    <td style="display: flex;"><input type="text" placeholder="ì•„ì´ë””ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”." class="text" name="id" id="inputId"  style="width:200px;">
                     <div style="margin-top: 21px">
-                    	<p class="id_check" style="" >»ç¿ë °¡´ÉÇÑ ¾ÆÀÌµğÀÔ´Ï´Ù.</p>
-                    	<p class="id_already" style="color:red; font-weight: bold;" >ÀÌ¹Ì »ç¿ëÁßÀÎ ¾ÆÀÌµğÀÔ´Ï´Ù. </p>
+                    	<p class="id_check" style="" >ì‚¬ìš© ê°€ëŠ¥í•œ ì•„ì´ë””ì…ë‹ˆë‹¤.</p>
+                    	<p class="id_already" style="color:red; font-weight: bold;" >ì´ë¯¸ ì‚¬ìš©ì¤‘ì¸ ì•„ì´ë””ì…ë‹ˆë‹¤. </p>
                   </div>
               		<!-- <div class="check_font" id="id_check"></div> -->
                     </td>
                 </tr>
                 <tr>
-                    <th scope="row">ºñ¹Ğ¹øÈ£</th>
-                    <td><input type="password" placeholder="ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä." class="text" name="pass" id="inputPass1" style="width:200px;">
+                    <th scope="row">ë¹„ë°€ë²ˆí˜¸</th>
+                    <td><input type="password" placeholder="ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”." class="text" name="pass" id="inputPass1" style="width:200px;">
 
                     </td>
                 </tr>
            <tr>
-                    <th scope="row">ºñ¹Ğ¹øÈ£È®ÀÎ</th>
-                    <td><input type="password" placeholder="ºñ¹Ğ¹øÈ£¸¦ ÀçÀÔ·Â ÀÔ·ÂÇØÁÖ¼¼¿ä." class="text" name="pass2" id="inputPass2"style="width:200px;">
+                    <th scope="row">ë¹„ë°€ë²ˆí˜¸í™•ì¸</th>
+                    <td><input type="password" placeholder="ë¹„ë°€ë²ˆí˜¸ë¥¼ ì¬ì…ë ¥ ì…ë ¥í•´ì£¼ì„¸ìš”." class="text" name="pass2" id="inputPass2"style="width:200px;">
                     </td>
                 </tr> 
                 <tr>
-                    <th scope="row">ÀÌ¸§</th>
+                    <th scope="row">ì´ë¦„</th>
                     <td><input type="text" class="text" name="name" id="inputName" style="width:200px;">
                     </td>
                 </tr>
                 <tr>
-                    <th scope="row">ÁÖ¼Ò</th>
+                    <th scope="row">ì£¼ì†Œ</th>
                     <td class="address-input">
                         <div>
-                            <input type="text" id="addressInput1" class="text" name="address" style="width:200px;">
+                            <input type="text" id="addressInput1" class="text" name="address" style="width:350px;">
                             <input type="button" class="btn1" onclick="sample4_execDaumPostcode()"
-                                value="¿ìÆí¹øÈ£Ã£±â"></input>
+                                value="ìš°í¸ë²ˆí˜¸ì°¾ê¸°"></input>
                         </div>
-                        <div>
-                            <input type="text" class="text" style="width:533px;" id="addressInput2">
-                        </div>
+                    
                     </td>
                 </tr>
                 <tr>
-                    <th scope="row">ÀüÈ­¹øÈ£</th>
+                    <th scope="row">ì „í™”ë²ˆí˜¸</th>
                     <td>
                         <input type="tel" id="rcvMobile" class="text" name="tel" numberonly="true" maxlength="20" value="">
                     </td>
@@ -321,19 +324,19 @@
                 <col>
             </colgroup>
             <tbody>
-                <p class="title">¼±ÅÃÇ×¸ñ</p>
+                <p class="title">ì„ íƒí•­ëª©</p>
             <!--    <tr>
-                    <th scope="row">»ı³â¿ùÀÏ</th>
+                    <th scope="row">ìƒë…„ì›”ì¼</th>
                     <td><input type="text" class="text" name="birthday" style="width:200px;">
                     </td>
                 </tr>
                 <tr> --> 
-                    <th scope="row">ÀÌ¸ŞÀÏ</th>
+                    <th scope="row">ì´ë©”ì¼</th>
                     <td><input type="email" class="text" name="email" style="width:200px;">
                     </td>
                 </tr>
                 <tr>
-                    <th scope="row">´Ğ³×ÀÓ</th>
+                    <th scope="row">ë‹‰ë„¤ì„</th>
                     <td><input type="text" class="text" name="nickname" style="width:200px;">
                     </td>
                 </tr>
@@ -346,7 +349,7 @@
         <!--  -->
 
         <div class="center" style="margin-top: 40px;">
-            <button class="btn1" type="submit" id="JBtn">°¡ÀÔ</button>
+            <button class="btn1" type="submit" id="JBtn">ê°€ì…</button>
         </div>
 
     </div>
@@ -367,31 +370,31 @@ jQuery(document).ready(function() {
 });
 $('#inputId').keyup(function() {
 	
-	var id = $('#inputId').val(); //id°ªÀÌ "id"ÀÎ ÀÔ·Â¶õÀÇ °ªÀ» ÀúÀå
+	var id = $('#inputId').val(); //idê°’ì´ "id"ì¸ ì…ë ¥ë€ì˜ ê°’ì„ ì €ì¥
     
 	/* 
-		id_already = ÀÌ¹Ì »ç¿ëÁßÀÎ ¾ÆÀÌµğÀÔ´Ï´Ù. 
-	   	id_check = »ç¿ë °¡´ÉÇÑ ¾ÆÀÌµğÀÔ´Ï´Ù.
+		id_already = ì´ë¯¸ ì‚¬ìš©ì¤‘ì¸ ì•„ì´ë””ì…ë‹ˆë‹¤. 
+	   	id_check = ì‚¬ìš© ê°€ëŠ¥í•œ ì•„ì´ë””ì…ë‹ˆë‹¤.
 	*/
 	
 	$.ajax({
-        url:'${pageContext.request.contextPath}/member/idcheck', //Controller¿¡¼­ ¿äÃ» ¹ŞÀ» ÁÖ¼Ò
-        type:'post', //POST ¹æ½ÄÀ¸·Î Àü´Ş
+        url:'${pageContext.request.contextPath}/member/idcheck', //Controllerì—ì„œ ìš”ì²­ ë°›ì„ ì£¼ì†Œ
+        type:'post', //POST ë°©ì‹ìœ¼ë¡œ ì „ë‹¬
         data:{id:id},
-        success:function(cnt){ //ÄÁÆ®·Ñ·¯¿¡¼­ ³Ñ¾î¿Â cnt°ªÀ» ¹Ş´Â´Ù 
+        success:function(cnt){ //ì»¨íŠ¸ë¡¤ëŸ¬ì—ì„œ ë„˜ì–´ì˜¨ cntê°’ì„ ë°›ëŠ”ë‹¤ 
         	if(cnt == 0){ 
-            	//cnt°¡ 0ÀÏ °æ¿ì -> »ç¿ë °¡´ÉÇÑ ¾ÆÀÌµğ  id_checkÀÌ º¸ÀÌµµ·Ï
+            	//cntê°€ 0ì¼ ê²½ìš° -> ì‚¬ìš© ê°€ëŠ¥í•œ ì•„ì´ë””  id_checkì´ ë³´ì´ë„ë¡
                 $('.id_already').hide(); 
             	$('.id_check').show(); 
             } else { 
-            	// cnt°¡ 1ÀÏ °æ¿ì -> ÀÌ¹Ì Á¸ÀçÇÏ´Â ¾ÆÀÌµğ
+            	// cntê°€ 1ì¼ ê²½ìš° -> ì´ë¯¸ ì¡´ì¬í•˜ëŠ” ì•„ì´ë””
                 $('.id_already').show(); 
                 $('.id_check').hide(); 
-                /* $('#inputId').val(""); ÅØ½ºÆ® ÃÊ±âÈ­ */
+                /* $('#inputId').val(""); í…ìŠ¤íŠ¸ ì´ˆê¸°í™” */
             }
         },
         error:function(){
-           // alert("¿¡·¯ÀÔ´Ï´Ù");
+           // alert("ì—ëŸ¬ì…ë‹ˆë‹¤");
         }
     });
 	

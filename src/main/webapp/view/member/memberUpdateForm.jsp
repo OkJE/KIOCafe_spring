@@ -70,7 +70,17 @@
                         $('#inputPass1').focus();
                         return false;
 
-                    }  else if ($('#inputName').val() == "") {
+                    } else if ($('#inputPass2').val() == "") {
+                        alert("비밀번호를 확인 입력해주세요");
+                        $('#inputPass2').focus();
+                        return false;
+
+                    } else if ($('#inputPass1').val() != $('#inputPass2').val()) {
+                        alert("입력하신 비밀번호가 일치 하지 않습니다.");
+                        $('#inputPass2').focus();
+                        return false;
+
+                    } else if ($('#inputName').val() == "") {
                         alert("이름을 입력해주세요");
                         $('#inputName').focus();
                         return false;
@@ -281,7 +291,7 @@
                             <td class="address-input">
                                 <div>
                                     <input type="text" id="addressInput1" class="text" name="address"
-                                        value="${m.address}" style="width:300px;">
+                                        value="${m.address}" style="width: 350px;">
                                     <input type="button" class="btn1" onclick="sample4_execDaumPostcode()"
                                         value="우편번호찾기"></input>
                                 </div>
