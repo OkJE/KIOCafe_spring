@@ -23,7 +23,7 @@
 			<table class="w3-table w3-bordered w3-hoverable">
 				<tbody>
 					<tr>
-					<th>날짜</th>
+					<th>날짜  </th>
 					</tr>
 				</tbody>
 				<tbody>
