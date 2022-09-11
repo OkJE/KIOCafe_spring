@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="order">
+
+	<insert id="orderInsert" parameterType="order">
+		insert into
+		kiocafe_order
+		values
+		(#{dnum},#{dname},#{dqty},#{dprice},#{dtotal},to_char('yyyy/mm/dd',sysdate),0,#{did},#{daddress},#{dpaym})
+	</insert>
+	
+	<select id="orderList" parameterType="map" resultType="order">
+	select * from kiocafe_order where orderdate=#{orderdate};
+	
+	</select>
+<!-- 
+	<select id="allorderList" resultType="order">
+	select * from kiocafe_order
+	
+	</select>
+ -->	
+</mapper> 

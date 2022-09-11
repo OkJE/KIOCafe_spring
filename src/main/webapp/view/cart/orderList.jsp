@@ -61,26 +61,21 @@
 			}
 		}).open();
 	}
-	$(document).ready(function() {
-		$('#did').serialize()
-
-		let dtotal = $('[name="dtotal"]').val();
-		
-		let totalPrice = 0;
-		for (let i = 0; i < dtotal.length; i++) {
-			totalPrice = totalPrice + parseInt($("input[name='dtotal']").eq(i).attr("value"));
-			
-		}
-		
-		function numberWithCommas(x) {
-		    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-		}
-		
-		$("#payPrice").text(numberWithCommas(totalPrice)+"원");
-		$("#orderPrice").text(numberWithCommas(totalPrice)+"원");
-		console.log(totalPrice);
-		console.log("hdi");
-	});
+	   $(document).ready(function() {
+		      let dtotal = $('[name="dtotal"]').val();
+		      let dtotalLength = $("input[name=dtotal]").length;
+		      
+		      let totalPrice = 0;
+		      for (let i = 0; i < dtotalLength; i++) {
+		         totalPrice = parseInt(totalPrice) + parseInt($("input[name='dtotal']").eq(i).attr("value"));
+		      }
+		      function numberWithCommas(x) {
+		          return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		      }
+		      
+		      $("#payPrice").text(numberWithCommas(totalPrice)+"원");
+		      $("#orderPrice").text(numberWithCommas(totalPrice)+"원");
+		   });
 </script>
 
 <style>

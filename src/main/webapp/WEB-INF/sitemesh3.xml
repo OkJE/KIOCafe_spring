@@ -4,6 +4,7 @@
 	<mapping path="/member/*" decorator="/layout/layout.jsp" />
 	<mapping path="/category/*" decorator="/layout/layout.jsp" />
 	<mapping path="/cart/*" decorator="/layout/layout.jsp" />
+	<mapping path="/order/*" decorator="/layout/layout.jsp" />
 	<mapping path="/mainpage" decorator="/layout/layout.jsp" />
 
 
