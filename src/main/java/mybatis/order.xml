@@ -4,21 +4,43 @@
 
 <mapper namespace="order">
 
-	<insert id="orderInsert" parameterType="order">
+	<insert id="orderInsert" parameterType="map">
 		insert into
 		kiocafe_order
 		values
-		(#{dnum},#{dname},#{dqty},#{dprice},#{dtotal},to_char('yyyy/mm/dd',sysdate),0,#{did},#{daddress},#{dpaym})
+
+		(#{dnum},#{dname},#{dqty},#{dprice},#{dtotal},to_char(sysdate,'yyyy/mm/dd'),0,#{did},#{daddress},#{dpaym},order_id_seq.currval) 
 	</insert>
-	
+
 	<select id="orderList" parameterType="map" resultType="order">
-	select * from kiocafe_order where orderdate=#{orderdate};
-	
+
+		select * from kiocafe_order where did = #{did} order by  orderid desc 
+
 	</select>
-<!-- 
-	<select id="allorderList" resultType="order">
-	select * from kiocafe_order
-	
+
+	<select id="selectOrderId" resultType="int">
+		select
+		order_id_seq.nextval from dual
 	</select>
- -->	
+
+	<!-- 카트 수량 수정 -->
+	<update id="modifyDqty" parameterType="hashmap">
+		update kiocafe_category
+		set
+		cqty = cqty - #{dqty}
+		where cnum = #{dnum}
+	</update>
+
+	<delete id="deleteCart" parameterType="hashmap">
+		DELETE FROM kiocafe_cart
+		where did = #{userid}
+		and dnum IN
+		<foreach collection="dnums" item="item" index="index"
+			separator="," open="(" close=")">
+			#{item}
+		</foreach>
+	</delete>
+
+	<!-- <select id="allorderList" resultType="order"> select * from kiocafe_order 
+		</select> -->
 </mapper> 

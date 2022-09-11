@@ -61,21 +61,25 @@
 			}
 		}).open();
 	}
-	   $(document).ready(function() {
-		      let dtotal = $('[name="dtotal"]').val();
-		      let dtotalLength = $("input[name=dtotal]").length;
-		      
-		      let totalPrice = 0;
-		      for (let i = 0; i < dtotalLength; i++) {
-		         totalPrice = parseInt(totalPrice) + parseInt($("input[name='dtotal']").eq(i).attr("value"));
-		      }
-		      function numberWithCommas(x) {
-		          return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-		      }
-		      
-		      $("#payPrice").text(numberWithCommas(totalPrice)+"원");
-		      $("#orderPrice").text(numberWithCommas(totalPrice)+"원");
-		   });
+	$(document).ready(
+			function() {
+				let dtotal = $('[name="dtotal"]').val();
+				let dtotalLength = $("input[name=dtotal]").length;
+
+				let totalPrice = 0;
+				for (let i = 0; i < dtotalLength; i++) {
+					totalPrice = parseInt(totalPrice)
+							+ parseInt($("input[name='dtotal']").eq(i).attr(
+									"value"));
+				}
+				function numberWithCommas(x) {
+					return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				}
+
+				$("#payPrice").text(numberWithCommas(totalPrice) + "원");
+				$("#orderPrice").text(numberWithCommas(totalPrice) + "원");
+				$("#lastPrice").text(numberWithCommas(totalPrice) + "원");
+			});
 </script>
 
 <style>
@@ -390,19 +394,25 @@ input[type="checkbox"] {
 								</div>
 							</td>
 							<td>대전배송</td>
-							<td>${c.dqty }<input type="hidden" value="${c.dqty }"
-								name="dqty">
-							</td>
+							<td>${c.dqty }</td>
 							<td>${c.dprice }</td>
 							<td>${c.dtotal }원</td>
 							<td>0원</td>
 						</tr>
+
+						<input type="hidden" value="${c.dnum}" name="dnum">
+						<input type="hidden" value="${c.dname}" name="dname">
+						<input type="hidden" value="${c.dqty }" name="dqty">
+						<input type="hidden" value="${c.dprice}" name="dprice">
 						<input type="hidden" value="${c.dtotal }" name="dtotal">
-						<input type="hidden" class="w3-check" id="${c.dnum}"
-							value="${c.dnum }" name="did" />
-						<input type="hidden" id="${c.dpay }" value="${c.dpay }"
-							name="dpay">
+												
+						<input type="hidden" class="w3-check" id="${did}"
+							value="1" name="did" />
+					 
 					</c:forEach>
+						<input type="hidden" value="${c.dpay}" name="dpay">
+												
+					
 					<!--  -->
 					<!--  -->
 
@@ -413,7 +423,7 @@ input[type="checkbox"] {
 			<div class="order-div1">
 				<div class="order-div11">
 					<div class="head-box">
-						<label for="" >주문금액</label> <span id="orderPrice">16,000</span>
+						<label for="">주문금액</label> <span id="orderPrice">16,000</span>
 					</div>
 				</div>
 				<!--  -->
@@ -426,7 +436,7 @@ input[type="checkbox"] {
 				<!--  -->
 				<div class="order-div13">
 					<div class="head-box">
-						<label   for="">결제예정금액</label> <span id="payPrice" >0</span>
+						<label for="">결제예정금액</label> <span id="payPrice">0</span>
 					</div>
 				</div>
 			</div>
@@ -443,12 +453,12 @@ input[type="checkbox"] {
 					<tr class="bd_top">
 						<th scope="row">이름</th>
 						<td><input type="text" class="text" style="width: 200px;"
-							value="김명준"></td>
+							value=""></td>
 					</tr>
 					<tr>
 						<th scope="row">휴대폰번호</th>
 						<td><input type="text" class="text" numberonly="true"
-							maxlength="20" value="010-2093-5924" placeholder="휴대폰 입력 (숫자만)">
+							maxlength="20" value="" placeholder="휴대폰 입력 (숫자만)">
 						</td>
 					</tr>
 				</tbody>
@@ -469,7 +479,7 @@ input[type="checkbox"] {
 				<tbody>
 					<tr class="bd_top">
 						<th scope="row">배송지</th>
-						<td><label for=""> <input type="radio" class="text">새로
+						<td><label for=""> <input type="radio" class="text"  >새로
 								입력
 						</label>
 							<button class="btn1" style="margin-left: 10px;"
@@ -492,7 +502,7 @@ input[type="checkbox"] {
 						<td class="address-input">
 							<div>
 								<input type="text" id="addressInput1" class="text"
-									name="address" style="width: 350px;"> <input
+									name="daddress" style="width: 350px;"> <input
 									type="button" class="btn1" onclick="sample4_execDaumPostcode()"
 									value="우편번호찾기"></input>
 							</div>
@@ -519,14 +529,14 @@ input[type="checkbox"] {
 				<tbody>
 					<tr class="bd_top">
 						<th scope="row">총 결제금액</th>
-						<td style="padding: 15px"><span class="price">61,000 원</span>
+						<td style="padding: 15px"><span class="price" id="lastPrice"></span>
 						</td>
 					</tr>
 					<tr>
 						<th scope="row">결제방법</th>
-						<td style="padding: 15px"><input type='radio' name='payment'
-							value="" style="margin-right: 5px;" /><label>무통장입금</label> <input
-							type='radio' name='payment' value=""
+						<td style="padding: 15px"><input type='radio' name='dpaym'
+							value="0" style="margin-right: 5px;" /><label>무통장입금</label> <input
+							type='radio' name='dpaym' value="1"
 							style="margin-right: 5px; margin-left: 15px;" /><label>신용카드</label>
 						</td>
 					</tr>
@@ -545,7 +555,7 @@ input[type="checkbox"] {
 					<input type="submit" value="주문취소" style="margin-right: 15px;"
 						onclick="javascript: form.action='${pageContext.request.contextPath}/cart/cancleOrder';" />
 					<input type="submit" value="결제진행"
-						onclick="javascript: form.action='${pageContext.request.contextPath}/cart/cartUpdatePro/';" />
+						onclick="javascript: form.action='${pageContext.request.contextPath}/order/payment';" />
 				</div>
 			</div>
 		</form>

@@ -80,7 +80,7 @@
 			</div>
 
 
-			<a href="#" class="w3-bar-item w3-button">배송조회</a>
+			<a href="${pageContext.request.contextPath}/order/myOrderList" class="w3-bar-item w3-button">배송조회</a>
 
 			<!-- 검색창 시작-->
 			<!--<div class="w3-right" style="margin-right: 7rem;">

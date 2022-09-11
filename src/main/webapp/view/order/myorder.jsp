@@ -39,17 +39,17 @@
 					</tr>
 				</tbody>
 				<tbody>
-					<%-- <c:forEach var="c" items="${list}"> --%>
+					<c:forEach var="c" items="${list}">
 						<tr>
-							<td>상품코드 </td>						
-							<td>상품이르 </td>
-							<td>구매수량 </td>
-							<td>상품가격 </td>
-							<td>총가격 </td>
-							<td>주문날짜 </td>
-							<td>배송현황</td>
+							<td>${c.dnum } </td>						
+							<td>${c.dname} </td>						
+							<td>${c.dqty} </td>						
+							<td>${c.dprice} </td>						
+							<td>${c.dtotal} </td>						
+							<td>${c.orderdate} </td>						
+							<td>${c.delvery} </td>						
 						</tr>
-					<%-- </c:forEach> --%>
+					</c:forEach>
 				</tbody>
 			</table>
 			

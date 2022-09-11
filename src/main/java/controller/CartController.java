@@ -78,7 +78,7 @@ public class CartController {
 		String userId = "1";
 		String[] dids = request.getParameterValues("did");
 
-		String msg = "";
+		String msg = "삭제 성공";
 		String url = "/cart/cartList";
 
 		if (dids == null) {
@@ -182,13 +182,6 @@ public class CartController {
 			cd.cartUpdate1(userId, dnum, dqtyArrList, dtotalArrList);
 		}
 
-		if (dpay.equals("1")) {
-			System.out.println();
-			
-			System.out.println();
-			cd.cartUpdate2(userId, dnum);
-			cd.modifyDqty(userId, dnum, dqty);
-		}
 
 		else {
 			System.out.println(" dpay : " + dpay);
