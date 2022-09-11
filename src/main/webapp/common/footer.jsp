@@ -15,12 +15,12 @@ footer.center {
 footer>address {
 	margin: auto;
 	height: 10rem;
-	width: 60rem;
+	width: 30rem;
 }
 
 footer>address>p {
-	font-size: 1.1rem;
-	line-height: 1.1rem;
+	font-size: 15px;
+	line-height: 15px;
 	color: gray;
 }
 
@@ -30,13 +30,13 @@ footer>address>p {
 
 footer>img {
 	margin: auto;
-	width: 15rem;
-	height: 15rem;
+	width: 20rem;
+	height: 200px;
 }
 </style>
 </head>
 <body>
-	<div style="width: 80%; margin: auto;">
+	<div style="width: 100%; margin: auto;">
 		<div class="w3-panel w3-border-bottom w3-light-gray" >
 
 		</div>
@@ -47,11 +47,11 @@ footer>img {
 					&nbsp;&nbsp;&nbsp; 전화 : 1588-8800</p>
 				<p class="email">E-mail : KIO@KIObakerycafe.co.kr</p>
 				<p>주소 : 서울특별시 강남구 테헤란로1길 10 세경빌딩 3층</p>
-				<p>사업자 등록 번호 : 111-11-111 &nbsp;&nbsp;&nbsp; 통신판매 신고 :
-					2022-서울강남-11호</p>
+				<p>사업자 등록 번호 : 111-11-111 </p>
+				 <p>통신판매 신고 : 2022-서울강남-11호</p>
 			</address>
 			<img alt="로고 삽입"
-				src="${pageContext.request.contextPath}/common/img/kic_project_logo_last.png">
+				src="${pageContext.request.contextPath}/common/img/kic_project_logo_last.png" >
 		</footer>
 	</div>
 	<br>
