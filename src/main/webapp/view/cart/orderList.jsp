@@ -9,6 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- 위 3개의 메타 태그는 *반드시* head 태그의 처음에 와야합니다; 어떤 다른 콘텐츠들은 반드시 이 태그들 *다음에* 와야 합니다 -->
+<script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
 <title>t</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
@@ -18,7 +19,7 @@
 
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script>
+<script defer>
 	function sample4_execDaumPostcode() {
 		new daum.Postcode({
 			oncomplete : function(data) {
@@ -47,18 +48,39 @@
 					extraRoadAddr = ' (' + extraRoadAddr + ')';
 				}
 
-			    let inputAddress = "";
-                inputAddress = data.roadAddress;
-                if (data.buildingName) {
-                    inputAddress = data.roadAddress + " (" + data.buildingName + ")"
-                }
-                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                // 우편번호
-                document.getElementById("addressInput1").value = "("+data.zonecode+")" + inputAddress;
+				let inputAddress = "";
+				inputAddress = data.roadAddress;
+				if (data.buildingName) {
+					inputAddress = data.roadAddress + " (" + data.buildingName
+							+ ")"
+				}
+				// 우편번호와 주소 정보를 해당 필드에 넣는다.
+				// 우편번호
+				document.getElementById("addressInput1").value = "("
+						+ data.zonecode + ")" + inputAddress;
 			}
 		}).open();
 	}
-	 
+	$(document).ready(function() {
+		$('#did').serialize()
+
+		let dtotal = $('[name="dtotal"]').val();
+		
+		let totalPrice = 0;
+		for (let i = 0; i < dtotal.length; i++) {
+			totalPrice = totalPrice + parseInt($("input[name='dtotal']").eq(i).attr("value"));
+			
+		}
+		
+		function numberWithCommas(x) {
+		    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		}
+		
+		$("#payPrice").text(numberWithCommas(totalPrice)+"원");
+		$("#orderPrice").text(numberWithCommas(totalPrice)+"원");
+		console.log(totalPrice);
+		console.log("hdi");
+	});
 </script>
 
 <style>
@@ -373,13 +395,14 @@ input[type="checkbox"] {
 								</div>
 							</td>
 							<td>대전배송</td>
-							<td>${c.dqty }
-							<input type="hidden" value="${c.dqty }" name="dqty">
+							<td>${c.dqty }<input type="hidden" value="${c.dqty }"
+								name="dqty">
 							</td>
 							<td>${c.dprice }</td>
 							<td>${c.dtotal }원</td>
 							<td>0원</td>
 						</tr>
+						<input type="hidden" value="${c.dtotal }" name="dtotal">
 						<input type="hidden" class="w3-check" id="${c.dnum}"
 							value="${c.dnum }" name="did" />
 						<input type="hidden" id="${c.dpay }" value="${c.dpay }"
@@ -395,7 +418,7 @@ input[type="checkbox"] {
 			<div class="order-div1">
 				<div class="order-div11">
 					<div class="head-box">
-						<label for="">주문금액</label> <span>16,000원</span>
+						<label for="" >주문금액</label> <span id="orderPrice">16,000</span>
 					</div>
 				</div>
 				<!--  -->
@@ -408,7 +431,7 @@ input[type="checkbox"] {
 				<!--  -->
 				<div class="order-div13">
 					<div class="head-box">
-						<label for="">결제예정금액</label> <span>0</span>
+						<label   for="">결제예정금액</label> <span id="payPrice" >0</span>
 					</div>
 				</div>
 			</div>
@@ -478,7 +501,7 @@ input[type="checkbox"] {
 									type="button" class="btn1" onclick="sample4_execDaumPostcode()"
 									value="우편번호찾기"></input>
 							</div>
-							
+
 						</td>
 					</tr>
 					<tr>
