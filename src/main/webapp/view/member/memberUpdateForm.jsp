@@ -305,7 +305,7 @@
                 <!--  -->
 
                 <div class="center" style="margin-top: 40px;">
-                    <button class="btn1" type="submit" style="width: 140px; " id="JBtn">회원정보수정</button>
+                    <button class="btn1 w3-pale-red" type="submit" style="width: 140px; " id="JBtn">회원정보수정</button>
                 </div>
             </div>
             <!--  -->

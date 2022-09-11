@@ -22,8 +22,10 @@ function passChk(form){
 </script>
 </head>
 <body>
-
+<div style="width:400px; margin: auto;">
 <form class="w3-container" action="${pageContext.request.contextPath}/member/memberPassPro" method="post" onsubmit="return passChk(this)">
+  <br>
+  <br>
   <p> 
   <label>현재 비밀번호</label>
   <input class="w3-input" type="password" name="pass"></p>
@@ -34,8 +36,9 @@ function passChk(form){
    <label>변경 비밀번호 재입력</label>
   <input class="w3-input" type="password" name="chgpass2"></p>
   <p>
-  <input class="w3-input" type="submit"  value="확인"></p>
+  <input class="w3-input w3-pale-red" type="submit" value="확인"></p>
 </form>
 
+</div>
 </body>
 </html>

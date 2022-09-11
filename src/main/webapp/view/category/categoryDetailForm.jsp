@@ -36,7 +36,7 @@
                 	if(cntA<maxQty){
                 		cntA++; } 
                 	else {
-                        alert("그만올리라우");
+                        alert("최대 수량 입니다.");
                         } 
                 	console.log("plus start ");
                     $(".productA-cnt-p").html(cntA);
@@ -132,16 +132,7 @@
 							<input hidden value="1" name="did">
 						</ul>
 
-						<ul class="thmb_1st">
-							<span class="thmb"> <img
-								src="${pageContext.request.contextPath}/view/category/img/${category.cpicture}"
-								class="w3-round testsm  w3-opacity-min" border="1" width="70"></a>
-							</span>
-							<span class="thmb"> <img
-								src="${pageContext.request.contextPath}/view/category/img/${category.cpicture}"
-								class="w3-round testsm  w3-opacity-min" border="1" width="70"></a>
-							</span>
-						</ul>
+					
 
 					</div>
 
@@ -154,7 +145,7 @@
 						<div class="prod-text">
 							<h3 class="tbl-text w3-left-align"
 								style="font-size: 0.9rem; line-height: 1.2rem; font-weight: bold; padding-top: 0.6rem;">
-								딸기가 살아있는 아주 상콤하고 달콤한 마카롱 <br> 지친 오후의 한입 사이즈 간식
+								${category.ctext }
 							</h3>
 						</div>
 
@@ -271,8 +262,7 @@
 					style="max-width: 1400px">
 
 					<div id="navbar">
-						<a href="#productDetail">상세설명</a> <a href="#review">리뷰</a> <a
-							href="#qna">QnA</a>
+						<a href="#productDetail">상세설명</a> <a href="#review">리뷰</a>
 					</div>
 
 					<!-- 상세설명 페이지 -->
@@ -290,7 +280,7 @@
 							href="#">리뷰 남기기</a>
 					</div>
 					<!-- QnA 페이지 -->
-					<div class="mainBody w3-white" id="qna">
+					<!--<div class="mainBody w3-white" id="qna">
 						<div class="w3-container w3-content w3-center w3-padding-64"
 							style="max-width: 1100px" id="qna">
 							<h3 class="w3-center">QnA</h3>
@@ -299,7 +289,7 @@
 								href="#">질문하기</a>
 
 						</div>
-					</div>
+					</div>-->
 					<!-- 맨 위로 버튼 -->
 					<div class="w3-container w3-content w3-center w3-padding-64"
 						style="max-width: 800px" id="top"></div>

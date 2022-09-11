@@ -9,12 +9,12 @@
 
    <select id="categoryList" parameterType="map" resultType="category">
       select * from
-      (select rownum rnum, a.* from (select * from kiocafe_category where cid = #{cid}) a )
+      (select rownum rnum, a.* from (select * from kiocafe_category where cid = #{cid} ) a order by cnum desc)
       where rnum between #{start} and #{end}      
    </select>
    
     <select id="menuList" parameterType="map" resultType="category">
-      select * from kiocafe_category where cmenu = #{cmenu}     
+      select * from kiocafe_category where cmenu = #{cmenu} order by cnum desc    
    </select>
    
    

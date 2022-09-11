@@ -349,7 +349,7 @@
         <!--  -->
 
         <div class="center" style="margin-top: 40px;">
-            <button class="btn1" type="submit" id="JBtn">가입</button>
+            <button class="btn1 w3-pale-red" type="submit" id="JBtn">가입</button>
         </div>
 
     </div>
