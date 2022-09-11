@@ -23,7 +23,7 @@
 			<table class="w3-table w3-bordered w3-hoverable">
 				<tbody>
 					<tr>
-					<th>날짜</th>
+					<th>날짜  </th>
 					</tr>
 				</tbody>
 				<tbody>
@@ -33,6 +33,7 @@
 						<th>상품이름</th>
 						<th>구매수량</th>
 						<th>상품가격</th>
+						<th>총가격</th>
 						<th>주문날짜</th>
 						<th>배송현황</th>
 					</tr>
@@ -44,6 +45,7 @@
 							<td>상품이르 </td>
 							<td>구매수량 </td>
 							<td>상품가격 </td>
+							<td>총가격 </td>
 							<td>주문날짜 </td>
 							<td>배송현황</td>
 						</tr>
