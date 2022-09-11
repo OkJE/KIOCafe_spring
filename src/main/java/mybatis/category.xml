@@ -29,7 +29,13 @@
    </select>
 
    
-   
+   	<select id="categoryQtySelectOne" resultType="String">
+		select cqty from kiocafe_category
+		 where
+			cnum = #{dnum}
+	</select>
+	
+	
    <update id="categoryUpdate" parameterType="category">
 
 update kiocafe_category set cname = #{cname} , cmenu = #{cmenu} , 

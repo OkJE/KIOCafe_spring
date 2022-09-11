@@ -21,7 +21,8 @@
 	integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
 	crossorigin="anonymous">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/view/cart/css/cartlist.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/view/cart/css/cartlist.css">
 
 <title>Document</title>
 
@@ -77,8 +78,8 @@
 		let priceSumResult = 0;
 
 		for (let i = 0; i < totalPrice.length; i++) {
-			console.log("dtotal : [" + i + " ]"
-					+ document.getElementsByName("dtotal")[i].value);
+			/* console.log("dtotal : [" + i + " ]"
+					+ document.getElementsByName("dtotal")[i].value); */
 			if (document.getElementsByName("dtotal")[i].value == "") {
 				priceSumResult += 0;
 			} else {
@@ -86,7 +87,7 @@
 			}
 
 		}
-		console.log("priceSumResult :  " + priceSumResult)
+		// console.log("priceSumResult :  " + priceSumResult)
 		$("#allPrice").text(priceSumResult);
 	}
 
@@ -95,16 +96,16 @@
 	/*  */
 
 	function checkBoxValueOnOff(id) {
-		console.log(" checkBoxValueOnOff ");
+		// console.log(" checkBoxValueOnOff ");
 
 		let chBoxCheckState = document.getElementById(id);
 		let chQtx = $("#qtx" + id).val()
 
-		console.log(" dtotal.val(); : " + $("#dtotalInput" + id).val());
+		// console.log(" dtotal.val(); : " + $("#dtotalInput" + id).val());
 		if (chBoxCheckState.checked == true) {
 			chBoxCheckState.value = id;
 
-			console.log("price Mul : " + $("#priceMul" + id).val());
+			//console.log("price Mul : " + $("#priceMul" + id).val());
 
 			$("#dtotalInput" + id).val($("#priceMul" + id).text());
 			$("#qtxInput" + id).val($("#qtx" + id).text());
@@ -152,16 +153,53 @@
 		 $("#allPrice").text(priceSumResult);
 		 */
 
-	});
-	$(document).ready(function() {
+	
+
+	$('.plusA-btn').click(function() {
+
+		// var id = $('#inputId').val(); //id값이 "id"인 입력란의 값을 저장
+		let clickBtnId = $(this).attr("id");
+		let idNum="";
+	 
+		idNum = clickBtnId.substr(4);
+	
+
+
+		console.log("idNum : " + idNum);
+		
+	 
+
+		$.ajax({
+			url : '${pageContext.request.contextPath}/category/categoryQtySelectOne', //Controller에서 요청 받을 주소
+			type : 'post', //POST 방식으로 전달
+			data : {
+				dnum : idNum // 클릭한 아이디 전달
+			},
+			success : function(cqty) { //컨트롤러에서 넘어온 cnt값을 받는다
+				let qtx = $("#qtx"+idNum).text();
+				console.log("qtx : " + qtx);
+				console.log("cqty : " + cqty);
+				 
+				if (parseInt(qtx) >parseInt(cqty)) {
+					 $("#qtx"+idNum).text(qtx-1);
+					alert("최대 수량입니다")
+				} else {
+				
+				}
+			},
+			error : function() {
+				// alert("에러입니다");
+			}
+		});
 
 	})
-</script> 
+	});
+</script>
+
+
 </head>
 
 <body>
-
-
 	<form method="post" name="form">
 
 		<div style="width: 80%; margin: auto;">

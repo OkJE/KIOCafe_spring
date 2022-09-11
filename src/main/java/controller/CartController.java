@@ -12,8 +12,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import model.Cart;
+import model.Member;
 import service.CartMybatisDao;
 
 @Controller
@@ -146,7 +148,8 @@ public class CartController {
 		String[] dnum = request.getParameterValues("did");
 		String[] dqty = request.getParameterValues("dqty");
 		String[] dtotal = request.getParameterValues("dtotal");
-
+		
+		
 		ArrayList<String> dqtyArrList = new ArrayList<>();
 		ArrayList<String> dtotalArrList = new ArrayList<>();
 
@@ -180,7 +183,11 @@ public class CartController {
 		}
 
 		if (dpay.equals("1")) {
+			System.out.println();
+			
+			System.out.println();
 			cd.cartUpdate2(userId, dnum);
+			cd.modifyDqty(userId, dnum, dqty);
 		}
 
 		else {
@@ -225,4 +232,6 @@ public class CartController {
 
 	}
 
+ 
+	
 }

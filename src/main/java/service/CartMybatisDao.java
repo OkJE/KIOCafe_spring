@@ -25,7 +25,7 @@ public class CartMybatisDao {
 
 	public List<Cart> cartList(String userId) {
 		map.put("id", userId);
-		System.out.println("CartMybatisDao cartList start ");
+//		System.out.println("CartMybatisDao cartList start ");
 		List<Cart> list = session.selectList(ns + "cartList", map);
 		return list;
 	}
@@ -58,7 +58,7 @@ public class CartMybatisDao {
 		map.put("userid", userId);
 		map.put("didlist", didlist);
 
-		System.out.println("didlist map : " + map.get("didlist"));
+//		System.out.println("didlist map : " + map.get("didlist"));
 		session.delete(ns + "cartDelete", map);
 	}
 
@@ -92,6 +92,22 @@ public class CartMybatisDao {
 
 		int c = session.update(ns + "cancleOrder", map);
 		return c;
+	}
+
+	public int modifyDqty(String userId, String[] dnums, String[] dqty) {
+		map.clear();
+		map.put("userid", userId);
+		for (int i = 0; i < dnums.length; i++) {
+			map.put("dnum", dnums[i]);
+			map.put("dqty", dqty[i]);
+			session.update(ns + "modifyDqty", map);
+			System.out.println(dnums[i]);
+			System.out.println(map.get("dnum"));
+			System.out.println(map.get("dqty"));
+			System.out.println();
+		}
+		
+		return 1;
 	}
 
 //	public int cartQtyUpdate(String userId, String[] dnums) {

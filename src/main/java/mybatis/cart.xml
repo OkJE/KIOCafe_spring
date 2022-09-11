@@ -21,7 +21,7 @@
 	</select>
 
 
-	<delete id="cartDelete" parameterType="hashmap" >
+	<delete id="cartDelete" parameterType="hashmap">
 		DELETE FROM kiocafe_cart
 		where did = #{userid}
 		and dnum IN
@@ -31,8 +31,9 @@
 		</foreach>
 	</delete>
 
-	<insert id="cartInsert" parameterType="cart" >
-		insert into kiocafe_cart
+	<insert id="cartInsert" parameterType="cart">
+		insert into
+		kiocafe_cart
 		values
 		(#{dnum},#{dname},#{dprice},#{dqty},#{dtotal},#{dpicture},#{did},
 		#{dpay})
@@ -46,7 +47,8 @@
 		dqty = #{dqty}, dtotal = #{dtotal}, dpay = 1
 		where
 		did =1 and
-		dnum =#{dnum}
+		dnum
+		=#{dnum}
 	</update>
 
 	<update id="cartUpdate2" parameterType="hashmap">
@@ -65,10 +67,15 @@
 			separator=" or" open="" close=" ">
 			dnum = #{item}
 		</foreach>
-	</update> 
+	</update>
 
 	<!-- 카트 수량 수정 -->
-	<!-- <update id="modifyDqty"> update kiocafe_cart set dqty=#{dqty} where 
-		dnum = #{dnum} </update> -->
+	<update id="modifyDqty" parameterType="hashmap">
+		update kiocafe_category  set
+		 cqty = cqty - #{dqty} 
+		where cnum = #{dnum}
+	</update>
+
+
 
 </mapper> 

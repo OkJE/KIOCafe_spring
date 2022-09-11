@@ -58,6 +58,7 @@
 			}
 		}).open();
 	}
+	 
 </script>
 
 <style>
@@ -372,7 +373,9 @@ input[type="checkbox"] {
 								</div>
 							</td>
 							<td>대전배송</td>
-							<td>${c.dqty }</td>
+							<td>${c.dqty }
+							<input type="hidden" value="${c.dqty }" name="dqty">
+							</td>
 							<td>${c.dprice }</td>
 							<td>${c.dtotal }원</td>
 							<td>0원</td>
