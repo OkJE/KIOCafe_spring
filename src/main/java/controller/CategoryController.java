@@ -279,11 +279,16 @@ public class CategoryController {
 	   }
 
 
+		
 		/*
 		 * @RequestMapping("categoryDeleteForm") public String categoryDeleteForm(int
 		 * cnum) {
 		 * 
-		 * request.setAttribute("cnum", cnum); return "category/categoryDeleteForm"; }
+		 * 
+		 * 
+		 * request.setAttribute("cnum", cnum);
+		 * 
+		 * return "category/categoryDeleteForm"; }
 		 */
 
 	   @RequestMapping("categoryDeletePro")

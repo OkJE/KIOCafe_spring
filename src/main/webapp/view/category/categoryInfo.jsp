@@ -78,7 +78,7 @@
 	<a class="w3-button w3-grey w3-right"
 			href="${pageContext.request.contextPath}/category/categoryUpdateForm?cnum=${category.cnum}">게시판수정</a> 
 	<a class="w3-button w3-grey w3-right"
-			href="${pageContext.request.contextPath}/category/categoryDeleteForm?cnum=${category.cnum}">게시판삭제</a> 
+			href="${pageContext.request.contextPath}/category/categoryDeletePro?cnum=${category.cnum}">게시판삭제</a> 
 
 	
 	<!-- 테스트용 코드 -->
