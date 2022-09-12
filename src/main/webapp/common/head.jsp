@@ -50,17 +50,17 @@
 
 	<!-- 메뉴바  -->
 
-	<div class="w3-bar w3-red w3-middle">
+	<div class="w3-bar w3-pale-red w3-middle">
 		<div style="width: 70%; margin: auto;">
 
 
 			<div class="w3-dropdown-hover">
-				<button class="w3-button  w3-red">카테고리</button>
+				<button class="w3-button  w3-pale-red">카테고리</button>
 				<div class="w3-dropdown-content w3-bar-block w3-card-4">
 					<a href="${pageContext.request.contextPath}/category/categoryList"
 						class="w3-bar-item w3-button">상품리스트</a> <a
 						href="${pageContext.request.contextPath}/category/bakeryMain"
-						class="w3-bar-item w3-button">디저트</a> <a
+						class="w3-bar-item w3-button">베이커리</a> <a
 						href="${pageContext.request.contextPath}/category/drinkMain"
 						class="w3-bar-item w3-button">음료</a>
 				</div>
@@ -70,7 +70,7 @@
 				class="w3-bar-item w3-button">HOME</a>
 
 			<div class="w3-dropdown-hover">
-				<button class="w3-button  w3-red">주문조회</button>
+				<button class="w3-button  w3-pale-red">주문조회</button>
 				<div class="w3-dropdown-content w3-bar-block w3-card-4">
 					<a href="${pageContext.request.contextPath}/cart/cartList"
 						class="w3-bar-item w3-button">장바구니</a> <a

@@ -186,7 +186,7 @@
             height: 100%;
             margin: auto;
             font-size: 32px;
-            background: linear-gradient(to top, #FFE400 20%, transparent 40%);
+            background: linear-gradient(to top,#ffe4e1 20%, transparent 40%);
         }
 
         .cont_title01 {

@@ -202,21 +202,42 @@
                     margin: auto;
                     flex-wrap: wrap;
                 }
-                }
+                .head-title {
+		            margin-top: 40px;
+		            text-align: center;
+		        }
+
+                .head-title>span {
+		
+		            width: 100%;
+		            height: 100%;
+		            margin: auto;
+		            font-size: 32px;
+		            background: linear-gradient(to top, #ffe4e1 20%, transparent 40%);
+		        }
+		        .cont_title01 {
+		            margin-top: 20px;
+		            padding: 10px;
+		            font-size: 20px;
+		            line-height: 38px;
+		            font-weight: bold;
+		            text-align: left;
+		        }
+                
+                
             </style>
         </head>
 
         <body>
             <br>
 			<br>
-			<br>
-			<br>
-			<br>
-			<br>
+		
+		
+			 <div class="cont_title01 " style="width: 75%; margin: auto;">
+			<div class="head-title">
+                <span>메인페이지</span>
+          		</div>
             <div id="wrapper">
-
-
-
 
                 <!-- Swiper --> 
                 <div class="swiper mySwiper">
@@ -247,7 +268,7 @@
                     <div class="swiper-pagination"></div>
                 </div>
 
-                <h2 class="line">상품 목록</h2>
+          
                 <div class="flex-div">
                     <!-- 관리자 영역================================================================================= -->
 
@@ -257,114 +278,12 @@
                         <p>등록된 게시물이 없습니다.</p>
                     </c:if>
 
+	</div>
 
-
-                    <c:if test="${boardCount > 0}">
 
 
                         <!-- ============================================================================================================ -->
-                        <c:forEach var="index" begin="1" end="8">
-                            <div class="product-container-div" style="width: 25%; margin-top: 3rem; ">
-
-
-                                <div class=" product-div" style="width: 100%;">
-                                    <img alt="#" src="./img/bread1.png">
-                                </div>
-                                <table>
-                                    <tr>
-                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                        <td style="background-color: #FCE7E2 ;"> Slide 1</td>
-                                        <td rowspan="2">&nbsp;&nbsp;<img alt="#" src="img/Buy.png"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>&nbsp;</td>
-                                        <td style="width: 6rem">30,000원</td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </c:forEach>
-
-                        <br>
-
-                        <div class="w3-bar w3-center w3-small">
-                            <c:if test="${start <= bottomLine}"> <a href="#" class="w3-button  w3-disabled ">[이전]</a>
-                            </c:if>
-
-
-
-                            <c:forEach var="p" begin="${start}" end="${end}">
-                                <a href="${pageContext.request.contextPath}/board/boardList?pageNum=${p}"
-                                    class="w3-button">
-                                    <c:if test="${pageInt==p}"> 목록 </c:if>${p}
-                                </a>
-                            </c:forEach>
-
-                            <c:if test="${end  >= maxPage}">
-                                <a href="#" class="w3-button    w3-disabled ">[다음]</a>
-                            </c:if>
-                        </div>
-                    </c:if>
-                </div>
-            </div>
-
-
-            <div style="width: 80%; margin: auto;">
-                <h2 class="line">마카롱</h2>
-                <!--  -->
-
-                <div class="flex-div">
-
-                    <c:forEach var="index" begin="1" end="8">
-                        <div class="product-container-div" style="width: 25%">
-
-
-                            <div class=" product-div" style="width: 100%;">
-                                <img alt="#" src="./img/chemac.png">
-                            </div>
-                            <table>
-                                <tr>
-                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                    <td style="background-color: #FCE7E2 ;"> Slide 1</td>
-                                    <td rowspan="2">&nbsp;&nbsp;<img alt="#" src="img/Buy.png"></td>
-                                </tr>
-                                <tr>
-                                    <td>&nbsp;</td>
-                                    <td style="width: 6rem">30,000원</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </c:forEach>
-                </div>
-            </div>
-            <div style="width: 80%; margin: auto;">
-                <h2 class="line">베이커리</h2>
-                <!--  -->
-
-                <div class="flex-div">
-
-                    <c:forEach var="index" begin="1" end="8">
-                        <div class="product-container-div" style="width: 25%">
-
-
-                            <div class=" product-div" style="width: 100%;">
-                                <img alt="#" src="./img/chemac.png">
-                            </div>
-                            <table>
-                                <tr>
-                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                    <td style="background-color: #FCE7E2 ;"> Slide 1</td>
-                                    <td rowspan="2">&nbsp;&nbsp;<img alt="#" src="img/Buy.png"></td>
-                                </tr>
-                                <tr>
-                                    <td>&nbsp;</td>
-                                    <td style="width: 6rem">30,000원</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </c:forEach>
-                </div>
-            </div>
-
+                       
 
             <!-- Swiper JS -->
             <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>

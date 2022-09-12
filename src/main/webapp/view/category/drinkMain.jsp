@@ -83,6 +83,27 @@
                     margin: auto;
                     flex-wrap: wrap;
                 }
+                .head-title {
+		            margin-top: 40px;
+		            text-align: center;
+		        }
+
+                .head-title>span {
+		
+		            width: 100%;
+		            height: 100%;
+		            margin: auto;
+		            font-size: 32px;
+		            background: linear-gradient(to top, #ffe4e1 20%, transparent 40%);
+		        }
+		        .cont_title01 {
+		            margin-top: 20px;
+		            padding: 10px;
+		            font-size: 20px;
+		            line-height: 38px;
+		            font-weight: bold;
+		            text-align: left;
+		        }
             </style>
         </head>
 
@@ -94,10 +115,11 @@
             <!--  -->
             <!--  -->
             <!--  -->
-            <div style="width: 80%; margin: auto;">
-                <h1 class="line">드링크</h1>
-                <!--  -->
 
+              <div class="cont_title01 " style="width: 75%; margin: auto;">
+              <div class="head-title">
+                <span>드링크</span>
+          		</div>
                 <div class="flex-div">
 
                     <c:forEach var="list" items="${list}">
