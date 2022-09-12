@@ -50,7 +50,7 @@
 
 	<!-- 메뉴바  -->
 
-	<div class="w3-bar w3-pale-red w3-middle">
+	<div class="w3-bar w3-pale-red w3-middle" style="opacity: 0.6">
 		<div style="width: 70%; margin: auto;">
 
 
