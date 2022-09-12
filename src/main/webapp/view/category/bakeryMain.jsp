@@ -69,7 +69,7 @@
 
                 td>img {
                     width: 25%;
-                    padding-left: 6rem;
+                    padding-left: 10rem;
                     object-fit: contain;
                 }
 
@@ -103,18 +103,18 @@
                     <c:forEach var="list" items="${list}">
                         <div class="product-container-div" style="width: 25%">
                         <a href="${pageContext.request.contextPath}/category/categoryDetailForm?cnum=${list.cnum}">
-							 <img src="${pageContext.request.contextPath}/view/category/img/${list.cpicture}" width="200" height="100" id="pic"></a><br>
+							 <img src="${pageContext.request.contextPath}/view/category/img/${list.cpicture}" width="200" height="200" id="pic"></a><br>
 
                          
                             <table>
                                 <tr>
                                     <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
                                     <td style="background-color: #FCE7E2 ;">${list.cname}</td>
-                                    <td rowspan="2">&nbsp;&nbsp;<img alt="#" src="img/Buy.png"></td>
+                                    
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
-                                    <td style="width: 6rem">${list.cprice}</td>
+                                    <td style="width: 6rem">${list.cprice}원</td>
                                 </tr>
                             </table>
                         </div>

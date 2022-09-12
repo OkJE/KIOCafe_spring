@@ -66,6 +66,18 @@ public int insertCategory(Category category) {
       return category;
    }
    
+   
+   public String categoryQtySelectOne(String dnum) {
+	   System.out.println("categoryQtySelectOne ");
+	  String cqty = session.selectOne(ns+"categoryQtySelectOne", dnum);
+	  
+	  System.out.println("cqty : " + cqty);
+	   
+	   return cqty;
+   }
+   
+   
+   
 
 public int categoryUpdate(Category category) {
    

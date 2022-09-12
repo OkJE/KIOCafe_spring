@@ -9,6 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- 위 3개의 메타 태그는 *반드시* head 태그의 처음에 와야합니다; 어떤 다른 콘텐츠들은 반드시 이 태그들 *다음에* 와야 합니다 -->
+<script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
 <title>t</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
@@ -18,21 +19,7 @@
 
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script>
-	let state = 0;
-	function openAddressModal() {
-		let a = document.querySelector(".myaddress-modal");
-		if (state == 0) {
-			a.style.display = "block"
-			state = 1;
-			console.log(state);
-		} else if (state == 1) {
-			a.style.display = "none"
-			state = 0;
-			console.log(state);
-		}
-	}
-
+<script defer>
 	function sample4_execDaumPostcode() {
 		new daum.Postcode({
 			oncomplete : function(data) {
@@ -69,12 +56,30 @@
 				}
 				// 우편번호와 주소 정보를 해당 필드에 넣는다.
 				// 우편번호
-				document.getElementById("addressInput1").value = data.zonecode;
-				document.getElementById('addressInput2').value = inputAddress;
-
+				document.getElementById("addressInput1").value = "("
+						+ data.zonecode + ")" + inputAddress;
 			}
 		}).open();
 	}
+	$(document).ready(
+			function() {
+				let dtotal = $('[name="dtotal"]').val();
+				let dtotalLength = $("input[name=dtotal]").length;
+
+				let totalPrice = 0;
+				for (let i = 0; i < dtotalLength; i++) {
+					totalPrice = parseInt(totalPrice)
+							+ parseInt($("input[name='dtotal']").eq(i).attr(
+									"value"));
+				}
+				function numberWithCommas(x) {
+					return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				}
+
+				$("#payPrice").text(numberWithCommas(totalPrice) + "원");
+				$("#orderPrice").text(numberWithCommas(totalPrice) + "원");
+				$("#lastPrice").text(numberWithCommas(totalPrice) + "원");
+			});
 </script>
 
 <style>
@@ -258,7 +263,6 @@ input.text {
 .order-div1 {
 	background-color: #fdfdf8;
 	width: 100%;
-	height: 320px;
 	margin: auto;
 	display: flex;
 	justify-content: space-between;
@@ -341,6 +345,10 @@ input.text {
 	width: 400px;
 	height: 200px;
 }
+
+input[type="checkbox"] {
+	margin-right: 5px;
+}
 </style>
 
 
@@ -354,18 +362,6 @@ input.text {
 
 
 
-	<!-- 메뉴바  끝-->
-	<div class="myaddress-modal">
-		<div class="modal-content">
-			Modal 미구현 추후 사용시에 구현 예정
-
-			<button class="" onclick="openAddressModal()">Modal none</button>
-		</div>
-
-
-	</div>
-	<!-- 메뉴바  끝-->
-	<!--  -->
 
 	<div class="cont_title01 " style="width: 75%; margin: auto;">
 		<h3>주문작성/결제</h3>
@@ -403,10 +399,20 @@ input.text {
 							<td>${c.dtotal }원</td>
 							<td>0원</td>
 						</tr>
-						<input type="hidden" class="w3-check" id="${c.dnum}" value="${c.dnum }"
-										name="did" />
-						<input type="hidden" id="${c.dpay }" value="${c.dpay }" name="dpay">
+
+						<input type="hidden" value="${c.dnum}" name="dnum">
+						<input type="hidden" value="${c.dname}" name="dname">
+						<input type="hidden" value="${c.dqty }" name="dqty">
+						<input type="hidden" value="${c.dprice}" name="dprice">
+						<input type="hidden" value="${c.dtotal }" name="dtotal">
+												
+						<input type="hidden" class="w3-check" id="${did}"
+							value="1" name="did" />
+					 
 					</c:forEach>
+						<input type="hidden" value="${c.dpay}" name="dpay">
+												
+					
 					<!--  -->
 					<!--  -->
 
@@ -414,33 +420,10 @@ input.text {
 				</tbody>
 			</table>
 			<!--  -->
-
 			<div class="order-div1">
 				<div class="order-div11">
 					<div class="head-box">
-						<label for="">주문금액</label> <span>16,000원</span>
-					</div>
-					<div>
-						<div>
-							<div class="space-between">
-								<span>쿠폰</span> <span> <input type="text" value="0"
-									class="price-input" readonly="true">원
-								</span>
-
-							</div>
-							<div class="space-between">
-								<span>적립금</span> <span> <input type="text" value="0"
-									class="price-input" readonly="true">원
-								</span>
-							</div>
-							<div class="space-between">
-								<span style="margin-right: 45px;">모바일상품권</span> <span> <input
-									type="text" value="" class="price-input" placeholder="교환권 코드"
-									style="width: 150px;" readonly="true">원
-								</span>
-							</div>
-
-						</div>
+						<label for="">주문금액</label> <span id="orderPrice">16,000</span>
 					</div>
 				</div>
 				<!--  -->
@@ -448,38 +431,15 @@ input.text {
 					<div class="head-box">
 						<label for="">할인금액</label> <span>0</span>
 					</div>
-					<div>
-						<button class="btn1 coupton-btn" onclick="openCoupon();">쿠폰적용</button>
-						( 보유 <em>0장</em>)
-					</div>
-					<div>
-						<button class="btn1 coupton-btn">모두사용</button>
-						(<em>1000p</em>)
-					</div>
-					<div>
-						<button class="btn1 coupton-btn">유효성 검사</button>
-					</div>
 
 				</div>
 				<!--  -->
 				<div class="order-div13">
 					<div class="head-box">
-						<label for="">결제예정금액</label> <span>0</span>
-					</div>
-					<div style="margin-top: 50px; padding: 36px;">
-						<span>적립혜택</span>
-						<div class="space-between">
-							<span>적립</span>
-							<p>3,050 P</p>
-						</div>
+						<label for="">결제예정금액</label> <span id="payPrice">0</span>
 					</div>
 				</div>
 			</div>
-
-
-			<!--  -->
-
-
 			<!--  -->
 			<!--  -->
 			<!--  -->
@@ -493,12 +453,12 @@ input.text {
 					<tr class="bd_top">
 						<th scope="row">이름</th>
 						<td><input type="text" class="text" style="width: 200px;"
-							value="김명준"></td>
+							value=""></td>
 					</tr>
 					<tr>
 						<th scope="row">휴대폰번호</th>
 						<td><input type="text" class="text" numberonly="true"
-							maxlength="20" value="010-2093-5924" placeholder="휴대폰 입력 (숫자만)">
+							maxlength="20" value="" placeholder="휴대폰 입력 (숫자만)">
 						</td>
 					</tr>
 				</tbody>
@@ -507,7 +467,7 @@ input.text {
 			<!--  -->
 			<!--  -->
 			<h3 class="cont_title01">
-				받으시는분 (상품받으실분) <input type="checkbox"><span
+				받으시는분 (상품받으실분) <input type="checkbox" style="margin: 5px;"><span
 					style="font-size: 14px;">주문자 정보와 동일</span>
 			</h3>
 
@@ -519,8 +479,8 @@ input.text {
 				<tbody>
 					<tr class="bd_top">
 						<th scope="row">배송지</th>
-						<td><label for=""> <input type="radio" class="text"
-								style="margin-right: 0px;">새로 입력
+						<td><label for=""> <input type="radio" class="text"  >새로
+								입력
 						</label>
 							<button class="btn1" style="margin-left: 10px;"
 								onclick="openAddressModal()">나의배송지</button></td>
@@ -541,21 +501,12 @@ input.text {
 						<th scope="row">주소</th>
 						<td class="address-input">
 							<div>
-
-
 								<input type="text" id="addressInput1" class="text"
-									style="width: 200px;"> <input type="button"
-									class="btn1" onclick="sample4_execDaumPostcode()"
+									name="daddress" style="width: 350px;"> <input
+									type="button" class="btn1" onclick="sample4_execDaumPostcode()"
 									value="우편번호찾기"></input>
 							</div>
-							<div>
-								<input type="text" class="text" style="width: 533px;"
-									id="addressInput2">
-							</div>
-							<div>
-								<input type="text" class="text" style="width: 533px;"
-									id="addressInput3">
-							</div>
+
 						</td>
 					</tr>
 					<tr>
@@ -563,23 +514,9 @@ input.text {
 						<td><input type="text" class="text" style="width: 200px;">
 						</td>
 					</tr>
-					<tr>
-						<th scope="row">배송희망일</th>
-						<td>
-							<!-- <input type="text" class="text" style="width:200px;"> --> <input
-							type="date" class="text" required pattern="\d{4}-\d{2}-\d{2}">
-
-						</td>
-					</tr>
-					<tr>
-						<th scope="row">배송시간</th>
-						<td><input type="text" class="text" style="width: 200px;">
-						</td>
-					</tr>
 
 				</tbody>
 			</table>
-
 			<!--  -->
 			<!--  -->
 			<!--  -->
@@ -592,25 +529,17 @@ input.text {
 				<tbody>
 					<tr class="bd_top">
 						<th scope="row">총 결제금액</th>
-						<td style="padding: 15px"><span class="price">61,000 원</span>
+						<td style="padding: 15px"><span class="price" id="lastPrice"></span>
 						</td>
 					</tr>
 					<tr>
 						<th scope="row">결제방법</th>
-						<td style="padding: 15px">
-							<div class="label_group">
-
-								<label for="pay1" class="check_label"> <input
-									type="radio" class="radio" value="CARD" checked="true">
-									신용카드
-								</label> <label for="pay10" class="check_label hide"> <input
-									type="radio" class="radio" value="gifty"> 카카오 기프티콘
-								</label>
-							</div>
+						<td style="padding: 15px"><input type='radio' name='dpaym'
+							value="0" style="margin-right: 5px;" /><label>무통장입금</label> <input
+							type='radio' name='dpaym' value="1"
+							style="margin-right: 5px; margin-left: 15px;" /><label>신용카드</label>
 						</td>
 					</tr>
-
-
 				</tbody>
 			</table>
 
@@ -622,28 +551,15 @@ input.text {
 					class="openClause">[약관보기]</a>
 			</div>
 			<div class="center" style="margin: 30px;">
-				<button class="btn1">temp</button>
-				<a href="${pageContext.request.contextPath}/cart/cartList"
-					class="w3-bar-item w3-button w3-hide-small">장바구니</a>
-
-				<button class="btn1">결제진행</button>
 				<div>
-
-					<input type="submit" value="결제"
-						onclick="javascript: form.action='${pageContext.request.contextPath}/cart/cartUpdatePro/';" />
-
+					<input type="submit" value="주문취소" style="margin-right: 15px;"
+						onclick="javascript: form.action='${pageContext.request.contextPath}/cart/cancleOrder';" />
+					<input type="submit" value="결제진행"
+						onclick="javascript: form.action='${pageContext.request.contextPath}/order/payment';" />
 				</div>
 			</div>
-
 		</form>
 	</div>
-
-
-	<!--  -->
-	<!--  -->
-	<!--  -->
-	<!--  -->
-
 </body>
 
 </html>

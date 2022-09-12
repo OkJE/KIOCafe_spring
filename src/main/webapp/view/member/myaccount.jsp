@@ -173,7 +173,7 @@
             </colgroup>
 
             <tbody class="body-table">
-                <p class="title">필수항목</p>
+                <p class="title">${m.nickname}의 정보</p>
                 <tr>
                     <th scope="row">아이디</th>
                     <td> ${sessionScope.id }
@@ -198,14 +198,14 @@
                 </tr>
             </tbody>
         </table>
-        <div class="btn-right" style="margin-top: 40px;">
-            <a class="w3-button w3-black" href="${pageContext.request.contextPath}/member/memberUpdateForm">회원정보수정</a>
-            <a class="w3-button w3-black" href="${pageContext.request.contextPath}/member/memberDelete">회원탈퇴</a>
-			<a class="w3-button w3-black" href="${pageContext.request.contextPath}/member/memberPassUpdate">비밀번호수정</a>		
+        <div class="btn-right" style="margin-top: 30px;">
+            <a class="w3-button w3-pale-red" href="${pageContext.request.contextPath}/member/memberUpdateForm">회원정보수정</a>
+            <a class="w3-button w3-pale-red" href="${pageContext.request.contextPath}/member/memberDelete">회원탈퇴</a>
+			<a class="w3-button w3-pale-red" href="${pageContext.request.contextPath}/member/memberPassUpdate">비밀번호수정</a>		
         </div>
 
 
-        <table class="board_write">
+      <!--  <table class="board_write">
             <colgroup>
                 <col style="width:172px">
                 <col>
@@ -377,7 +377,7 @@
 
 
             </tbody>
-        </table>
+        </table>-->
 
         <!--  -->
         <!--  -->

@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 
@@ -336,4 +337,16 @@ public class CategoryController {
 
 		return "category/picturePro";
 	}
+	
+	@RequestMapping("categoryQtySelectOne")
+	@ResponseBody
+	public String categoryQtySelectOne(String dnum) throws Exception {
+		System.out.println(dnum);
+		String dqty = bd.categoryQtySelectOne(dnum);
+//		System.out.println("dqty : " + dqty);
+
+		return dqty;
+	}
+
+	
 }

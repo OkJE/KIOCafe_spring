@@ -104,20 +104,20 @@
                         <div class="product-container-div" style="width: 25%">
 
 
-                            <div class=" product-div" style="width: 100%;">
+                            
                                <a href="${pageContext.request.contextPath}/category/categoryDetailForm?cnum=${list.cnum}">
-                               <img src="${pageContext.request.contextPath}/view/category/img/${list.cpicture}" width="200" height="100" id="pic"><br>
+                               <img src="${pageContext.request.contextPath}/view/category/img/${list.cpicture}" width="200" height="200" id="pic"><br>
                                </a>
-                            </div>
+                           
                             <table>
                                 <tr>
                                     <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
                                     <td style="background-color: #FCE7E2 ;">${list.cname}</td>
-                                    <td rowspan="2">&nbsp;&nbsp;<img alt="#" src="img/Buy.png"></td>
+                                    
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
-                                    <td style="width: 6rem">${list.cprice}</td>
+                                    <td style="width: 6rem">${list.cprice}원</td>
                                 </tr>
                             </table>
                         </div>
