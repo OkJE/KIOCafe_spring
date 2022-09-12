@@ -78,6 +78,25 @@ public class OrderMybatisDao {
 		List<Order> list = session.selectList(ns + "orderList", map);
 		return list;
 	}
+	public List<Object> myOrderListInfo(String did) {
+		System.out.println("dao myOrderListInfo");
+		map.put("did", did);
+		List<Object> list = session.selectList(ns + "myOrderListInfo");
+		for (Object object : list) {
+			System.out.println("object : " + object);
+		}
+		System.out.println("list ===== " + list.get(0));
+	 
+		return list;
+	}
+	
+	public List<Object> myOrderDateList(String did) {
+		map.put("did", did);
+		List<Object> list1 = session.selectList(ns + "myOrderDateList", map);
+		System.out.println("list1 : " + list1);
+		map.put(list1, list1);
+		return list1;
+	}
 	public void selectOrderId() {
 		int orderId = session.selectOne(ns + "selectOrderId" );
 		System.out.println(orderId + " ============== ");

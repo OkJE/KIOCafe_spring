@@ -17,33 +17,36 @@
 	<br>
 	<div class="w3-container w3-center" style="width: 90%; margin: auto;">
 		<h2>주문현황</h2>
-	
-		
-			
-			<table class="w3-table w3-bordered w3-hoverable">
-				<
-				<tbody>
 
+
+		<table class="w3-table w3-bordered w3-hoverable">
+
+			<tbody>
+
+				<tr>
+				
+					<th>제품번호</th>
+					<th>제품날짜</th>
+					<th>제품명</th>
+					<th>구매수량</th>
+					<th>총가격</th>
+				</tr>
+			</tbody>
+			<tbody>
+				<c:forEach var="c" items="${list}">
 					<tr>
-						<th>제품명</th>
-						<th>구매수량</th>
-						<th>제품가격</th>
-						<th>총가격</th>
+						<td><span> ${c.ORDERID}</span></td>
+						<td><span> ${c.ORDERDATE}</span></td>
+						<td><span> ${c.DNAME } <c:if test="${c.COUNT > 1}"> 외 
+								 ${c.COUNT}개 </c:if>
+						</span></td>
+						<td><span> ${c.DQTY }</span></td>
+						<td><span> ${c.DPRICE}</span>원</td>
 					</tr>
-				</tbody>
-				<tbody>
-					<%-- <c:forEach var="c" items="${list}"> --%>
-						<tr>
-							<td>제품명 </td>						
-							<td>구매수량 </td>
-							<td>제품가격</td>
-							<td>총가격</td>
-							
-						</tr>
-					<%-- </c:forEach> --%>
-				</tbody>
-			</table>
-			
+				</c:forEach>
+			</tbody>
+		</table>
+
 	</div>
 </body>
 </html>

@@ -59,7 +59,7 @@
 				<button class="w3-button  w3-pale-red">카테고리</button>
 				<div class="w3-dropdown-content w3-bar-block w3-card-4">
 				
-				<c:if test="${sessionScope.id==admin and sessionScope.id!=null}">
+				<c:if test="${sessionScope.id=='admin' and sessionScope.id!=null}">
 					<a href="${pageContext.request.contextPath}/category/categoryList"
 						class="w3-bar-item w3-button">상품리스트</a>
 				</c:if>
@@ -84,7 +84,7 @@
 			</div>
 
 
-			<a href="${pageContext.request.contextPath}/order/myOrderList"
+			<a href="${pageContext.request.contextPath}/order/myOrderListInfo"
 				class="w3-bar-item w3-button">주문조회</a>
 
 			<!-- 검색창 시작-->

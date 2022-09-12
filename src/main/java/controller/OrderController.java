@@ -52,12 +52,35 @@ public class OrderController {
 	 */
 
 	@RequestMapping("myOrderList")
-	public String cartList() throws Exception {
+	public String myOrderList() throws Exception {
 		String did = "1";
 		List<Order> list = cd.orderList(did);
 		request.setAttribute("list", list);
 		return "/order/myorder";
 	}
+	
+	@RequestMapping("myOrderDateList")
+	public String myOrderDateList() throws Exception {
+		String did = "1";
+		List<Object> list = cd.myOrderDateList(did);
+//		request.setAttribute("dateList", list);
+//		System.out.println(list);
+		return "";
+	}
+	
+	
+	@RequestMapping("myOrderListInfo")
+	public String myOrderListInfo() throws Exception {
+		System.out.println("myOrderListInfo");
+		String did = "1";
+		List<Object> list = cd.myOrderListInfo(did);
+		System.out.println("list cont ====== " + list);
+		request.setAttribute("list", list);
+//		System.out.println(list);
+		return "/order/myOrderListInfo";
+	}
+	
+	
 
 	@RequestMapping("payment")
 	public String payment(Order order) throws Exception {
