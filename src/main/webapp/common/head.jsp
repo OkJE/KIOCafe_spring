@@ -53,12 +53,17 @@
 	<div class="w3-bar w3-pale-red w3-middle" style="opacity: 0.6">
 		<div style="width: 70%; margin: auto;">
 
-
+			<a href="${pageContext.request.contextPath}/mainpage"
+				class="w3-bar-item w3-button">HOME</a>
 			<div class="w3-dropdown-hover">
 				<button class="w3-button  w3-pale-red">카테고리</button>
 				<div class="w3-dropdown-content w3-bar-block w3-card-4">
+				
+				<c:if test="${sessionScope.id==admin and sessionScope.id!=null}">
 					<a href="${pageContext.request.contextPath}/category/categoryList"
-						class="w3-bar-item w3-button">상품리스트</a> <a
+						class="w3-bar-item w3-button">상품리스트</a>
+				</c:if>
+						 <a
 						href="${pageContext.request.contextPath}/category/bakeryMain"
 						class="w3-bar-item w3-button">베이커리</a> <a
 						href="${pageContext.request.contextPath}/category/drinkMain"
@@ -66,11 +71,10 @@
 				</div>
 			</div>
 
-			<a href="${pageContext.request.contextPath}/mainpage"
-				class="w3-bar-item w3-button">HOME</a>
+
 
 			<div class="w3-dropdown-hover">
-				<button class="w3-button  w3-pale-red">주문조회</button>
+				<button class="w3-button  w3-pale-red">장바구니</button>
 				<div class="w3-dropdown-content w3-bar-block w3-card-4">
 					<a href="${pageContext.request.contextPath}/cart/cartList"
 						class="w3-bar-item w3-button">장바구니</a> <a
@@ -80,7 +84,8 @@
 			</div>
 
 
-			<a href="${pageContext.request.contextPath}/order/myOrderList" class="w3-bar-item w3-button">배송조회</a>
+			<a href="${pageContext.request.contextPath}/order/myOrderList"
+				class="w3-bar-item w3-button">주문조회</a>
 
 			<!-- 검색창 시작-->
 			<!--<div class="w3-right" style="margin-right: 7rem;">

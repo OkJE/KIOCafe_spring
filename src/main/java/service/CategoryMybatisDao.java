@@ -38,14 +38,11 @@ public class CategoryMybatisDao {
       return list;
    }
    
-	public List<Category> menuList(/* int pageInt, int limit, */String cmenu){
+	public List<Category> menuList(String cmenu){
 	      
 	      map.clear();
 	      map.put("cmenu", cmenu);
-			/*
-			 * map.put("start", (pageInt-1)*limit+1); map.put("end", (pageInt*limit));
-			 */
-	      //System.out.println(map);
+			
 	      List<Category> list = session.selectList(ns+"menuList",map);
 	      System.out.println(list);
 	      return list;
