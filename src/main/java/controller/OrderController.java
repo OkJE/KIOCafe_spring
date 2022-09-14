@@ -55,59 +55,41 @@ public class OrderController {
 	public String myOrderList() throws Exception {
 		String did = "1";
 		List<Order> list = cd.orderList(did);
-		request.setAttribute("list", list);
+		m.addAttribute("list", list);
 		return "/order/myorder";
 	}
-	
-	@RequestMapping("myOrderDateList")
-	public String myOrderDateList() throws Exception {
-		String did = "1";
-		List<Object> list = cd.myOrderDateList(did);
-//		request.setAttribute("dateList", list);
-//		System.out.println(list);
-		return "";
-	}
-	
-	
+
 	@RequestMapping("myOrderListInfo")
 	public String myOrderListInfo() throws Exception {
 		System.out.println("myOrderListInfo");
 		String did = "1";
 		List<Object> list = cd.myOrderListInfo(did);
-		System.out.println("list cont ====== " + list);
-		request.setAttribute("list", list);
-//		System.out.println(list);
+		m.addAttribute("list", list);
 		return "/order/myOrderListInfo";
 	}
-	
-	
 
+	@RequestMapping("myOrderDetailList")
+	public String myOrderDetailList(Order order, String orderId) throws Exception {
+		String did = "1";
+		List<Order> list = cd.myOrderDetailList(did, orderId);
+		m.addAttribute("list", list);
+		return "/order/myOrderDetailList";
+	}
+
+	
 	@RequestMapping("payment")
-	public String payment(Order order) throws Exception {
+	public String payment(Order order, String[] dnum, String[] dname, String[] dqty, String[] dprice, String[] dtotal)
+			throws Exception {
 		String msg = "";
 		String url = "";
 		String userId = "1";
 		cd.selectOrderId();
-		String[] dnum = request.getParameterValues("dnum");
-		String[] dname = request.getParameterValues("dname");
-		String[] dqty = request.getParameterValues("dqty");
-		String[] dprice = request.getParameterValues("dprice");
-		String[] dtotal = request.getParameterValues("dtotal");
-		String did = request.getParameter("did");
-		String daddress = request.getParameter("daddress");
-		String dpaym = request.getParameter("dpaym");
-		String dpay = request.getParameter("dpay");
 
-		System.out.println("did : " + did);
-		System.out.println("dpaym : " + dpaym);
-		cd.orderInsert(dnum, dname, dqty, dprice, dtotal, did, daddress, dpaym);
-
-		System.out.println();
-
-		System.out.println();
+		cd.orderInsert(dnum, dname, dqty, dprice, dtotal, order);
+//
 		cd.modifyDqty(userId, dnum, dqty);
 		int confirm = cd.deleteCart(userId, dnum);
-		
+
 		if (confirm > 0) {
 			System.out.println("삭제");
 			msg = "결제가 왼료되었습니다.";
@@ -117,8 +99,8 @@ public class OrderController {
 			msg = "실패 하였습니다.";
 			url = "/cart/cartList";
 		}
-		request.setAttribute("msg", msg);
-		request.setAttribute("url", url);
+		m.addAttribute("msg", msg);
+		m.addAttribute("url", url);
 		return "alert";
 	}
 }
