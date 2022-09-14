@@ -49,14 +49,12 @@ public class CategoryController {
 	}
 
 	@RequestMapping("bakeryMain")
-	public String bakeryMain() {
-		  HttpSession session = request.getSession();
-	      String cmenu=(String) session.getAttribute("cmenu");
+	public String bakeryMain(String cmenu) {
 	      cmenu="1";
 	      List<Category> list=bd.menuList(cmenu);
 	      
-	      request.setAttribute("cmenu", cmenu);
-	      request.setAttribute("list", list);
+	     m.addAttribute("cmenu", cmenu);
+	     m.addAttribute("list", list);
 	         
 	      System.out.println(list);
 	     
@@ -64,14 +62,12 @@ public class CategoryController {
 	}
 
 	@RequestMapping("drinkMain")
-	public String drinkMain() {
-			  HttpSession session = request.getSession();
-		      String cmenu=(String) session.getAttribute("cmenu");
-		      cmenu="2";
+	public String drinkMain(String cmenu) {
+			  cmenu="2";
 		      List<Category> list=bd.menuList(cmenu);
 		      
-		      request.setAttribute("cmenu", cmenu);
-		      request.setAttribute("list", list);
+		      m.addAttribute("cmenu", cmenu);
+		      m.addAttribute("list", list);
 		         
 		      System.out.println(list);
 		     
@@ -81,14 +77,14 @@ public class CategoryController {
 	
 
 	@RequestMapping("categoryDetailForm")
-	public String categoryDetailForm(int cnum) throws Exception {
-		Category category = bd.categoryOne(cnum);
+	public String categoryDetailForm(int cnum, Category category) throws Exception {
+		category = bd.categoryOne(cnum);
 		System.out.println(cnum);
 		int dprice=category.getCprice();
 		System.out.println(dprice);
 		System.out.println(category);
 		
-		request.setAttribute("category", category);
+		m.addAttribute("category", category);
 		
 
 		return "category/categoryDetailForm";
@@ -100,14 +96,12 @@ public class CategoryController {
 	}
 
 	@RequestMapping("menuUpdatePro")
-	public String menuUpdatePro(Category category) throws Exception {
+	public String menuUpdatePro(Category category, String cid) throws Exception {
 
 		String filename = null;
 		String msg = "제품 등록 실패";
 		String url = "category/menuUpdate";
-		HttpSession session = request.getSession();
-
-		String cid = (String) session.getAttribute("cid");
+		
 		if (cid == null)
 			cid = "1";
 		category.setCid(cid); // 우선 공지사항
@@ -122,32 +116,32 @@ public class CategoryController {
 
 		System.out.println(category);
 
-		request.setAttribute("filename", filename);
-		request.setAttribute("msg", msg);
-		request.setAttribute("url", url);
+		m.addAttribute("filename", filename);
+		m.addAttribute("msg", msg);
+		m.addAttribute("url", url);
 		return "alert";
 	}
 
 
 	@RequestMapping("categoryList")
-	public String categoryList() {
+	public String categoryList(String cid, String pageNum) {
 
 		session = request.getSession();
-		if (request.getParameter("cid") != null) {
-			session.setAttribute("cid", request.getParameter("cid"));
+		if (cid!= null) {
+			session.setAttribute("cid", cid);
 			session.setAttribute("pageNum", "1");
 		}
-		String cid = (String) session.getAttribute("cid");
+
 		if (cid == null)
 			cid = "1";
 		// 다른 게시판으로 갈때 다시 1로 넘어갈수 있도록 명령어를 넣어준다. 만약 없으면 자동으로 동일한 page로 들어가서 해당 page의 갯수가
 		// 없으면 야예 없는 null이 뜨게 한다.
 
-		if (request.getParameter("pageNum") != null) {
-			session.setAttribute("pageNum", request.getParameter("pageNum"));
+		if (pageNum != null) {
+			session.setAttribute("pageNum", pageNum);
 		}
 
-		String pageNum = request.getParameter("pageNum");
+		pageNum = (String) session.getAttribute("pageNum");
 		if (pageNum == null)
 			pageNum = "1";
 		int pageInt = Integer.parseInt(pageNum);
@@ -178,88 +172,38 @@ public class CategoryController {
 		int categoryNum = categoryCount - (pageInt - 1) * limit;
 		// ----------------------------------페이지
 
-		request.setAttribute("pageInt", pageInt);
-		request.setAttribute("list", list);
-		// request.setAttribute("boardName", boardName);
-		request.setAttribute("categoryCount", categoryCount);
-		request.setAttribute("categoryNum", categoryNum);
-		request.setAttribute("start", start);
-		request.setAttribute("end", end);
-		request.setAttribute("bottomLine", bottomLine);
-		request.setAttribute("maxPage", maxPage);
+		m.addAttribute("pageInt", pageInt);
+		m.addAttribute("list", list);
+		// m.addAttribute("boardName", boardName);
+		m.addAttribute("categoryCount", categoryCount);
+		m.addAttribute("categoryNum", categoryNum);
+		m.addAttribute("start", start);
+		m.addAttribute("end", end);
+		m.addAttribute("bottomLine", bottomLine);
+		m.addAttribute("maxPage", maxPage);
 
 		return "category/categoryList";
 
 	}
 	
-/*	
 
-	  @RequestMapping("cartPro")
-	  	public String cartPro(Category category,int cnum) throws Exception {
-		  	request.setCharacterEncoding("UTF-8");
-	    	category=bd.categoryOne(cnum);
-	    	System.out.println(cnum);
-	    	System.out.println(category);
-		   
-		  	CartMybatisDao cd=new CartMybatisDao();
-		  	
-		  	String msg = "수량 확인 바랍니다.";
-	  		String url = "/category/categoryDetailForm?cnum="+cnum;
-
-	    	/*
-	    	int dnum=c.getCnum();
-	  		String dname=c.getCname();
-	  		int dprice=c.getCprice();
-	  		int dqty=c.getCqty();
-	  		String dpicture=c.getCpicture();
-	  		
-	  		
-	  		int dtotal=dprice*dqty;
-	  		
-	  	
-	  		System.out.println(dnum+":"+dname+":"+dprice+":"+dqty+":"+dpicture);
-
-	  		String msg = "수량 확인 바랍니다.";
-	  		String url = "/category/categoryDetailForm?cnum="+dnum;
-	 
-
-	  		int num = cd.insertCart(cart);
-
-	  		if (num > 0) {
-	  			msg = "장바구니 확인 해주세요!";
-	  			url = "/cart/cartList";
-	  		}
-
-	  		System.out.println(cart);
-*/
-	/*
-	  		request.setAttribute("msg", msg);
-	  		request.setAttribute("url", url);
-	  		return "alert";
-	  		
-	  	}
-*/
 	@RequestMapping("categoryInfo")
-	public String categoryInfo(int cnum) throws Exception {
-		Category category = bd.categoryOne(cnum);
-
-		request.setAttribute("category", category);
+	public String categoryInfo(int cnum, Category category) throws Exception {
+		m.addAttribute("category", category);
 		return "category/categoryInfo";
 	}
 	
 	@RequestMapping("categoryUpdateForm")
-	   public String categoryUpdateForm(int cnum) throws Exception {
+	   public String categoryUpdateForm(int cnum, Category category) throws Exception {
     	   
-	      Category category = bd.categoryOne(cnum);
-
-	  	request.setAttribute("category", category);
+	  	m.addAttribute("category", category);
 	      return "category/categoryUpdateForm";
 	   }
 
 	   @RequestMapping("categoryUpdatePro")
 	   public String boardUpdatePro(Category category) throws Exception {
 
-	   // String path = request.getServletContext().getRealPath("/") + "view/board/img/";
+	 
 	      String msg = "";
 	      String url = "";
 	      
@@ -274,24 +218,14 @@ public class CategoryController {
 	         
 	      }
 	   
-	      request.setAttribute("msg", msg);
-	      request.setAttribute("url", url);
+	      m.addAttribute("msg", msg);
+	      m.addAttribute("url", url);
 	      return "alert";
 	   }
 
 
 		
-		/*
-		 * @RequestMapping("categoryDeleteForm") public String categoryDeleteForm(int
-		 * cnum) {
-		 * 
-		 * 
-		 * 
-		 * request.setAttribute("cnum", cnum);
-		 * 
-		 * return "category/categoryDeleteForm"; }
-		 */
-
+		
 	   @RequestMapping("categoryDeletePro")
 	   public String categoryDeletePro(int cnum) {
 	       
@@ -308,8 +242,8 @@ public class CategoryController {
 	            msg = " 게시글 삭제를 실패 하였습니다.";
 	         
 	      }
-	      request.setAttribute("msg", msg);
-	      request.setAttribute("url", url);
+	      m.addAttribute("msg", msg);
+	      m.addAttribute("url", url);
 	      return "alert";
 
 	   }
@@ -333,7 +267,7 @@ public class CategoryController {
 			filename = multipartFile.getOriginalFilename();
 		}
 
-		request.setAttribute("filename", filename);
+		m.addAttribute("filename", filename);
 
 		return "category/picturePro";
 	}
