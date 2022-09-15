@@ -9,23 +9,26 @@
 		kiocafe_order
 		values
 
-		(#{dnum},#{dname},#{dqty},#{dprice},#{dtotal},to_char(sysdate,'yyyy/mm/dd'),0,#{did},#{daddress},#{dpaym},order_id_seq.currval) 
+		(#{dnum},#{dname},#{dqty},#{dprice},#{dtotal},to_char(sysdate,'yyyy/mm/dd'),0,#{did},#{daddress},#{dpaym},order_id_seq.currval)
 	</insert>
 
 	<select id="orderList" parameterType="map" resultType="order">
 
-		select * from kiocafe_order where did = #{did} order by  orderid desc 
+		select *
+		from kiocafe_order where did = #{did} order by orderid desc
 
 	</select>
 
-	<select id="myOrderDateList" parameterType="map" resultType="String">
-
-		select orderdate from kiocafe_order where did = #{did} order by  orderid desc 
-
+	<select id="myOrderDetailList" parameterType="hashmap" resultType="order">
+		 select * from kiocafe_order where did = 1 and orderid = #{orderId}
 	</select>
 
-	<select id="myOrderListInfo" parameterType="map" resultType="java.util.LinkedHashMap">
-		select count(orderID) as count, orderdate as orderdate,max(dname) as DNAME, sum(dqty) as dqty, sum(dprice) as dprice, orderid from kiocafe_order group by orderid,orderdate order by orderid desc
+	<select id="myOrderListInfo" parameterType="map"
+		resultType="java.util.LinkedHashMap">
+		select count(orderID) as count, orderdate as
+		orderdate,max(dname) as DNAME, sum(dqty) as dqty, sum(dprice) as
+		dprice, orderid from kiocafe_order group by orderid,orderdate order by
+		orderid desc
 	</select>
 
 	<select id="selectOrderId" resultType="int">

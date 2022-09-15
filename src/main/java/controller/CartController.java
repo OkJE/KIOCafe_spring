@@ -39,22 +39,10 @@ public class CartController {
 	@RequestMapping("cartList")
 	public String cartList() throws Exception {
 
-//		System.out.println("Controller cartList start");
-
 		String userId = "1";
 		List<Cart> list = cd.cartList(userId);
 
-		request.setAttribute("list", list);
-		Object mylistObj = request.getAttribute("list");
-//	    List<String> mylistStr =	(List<String>) request.getAttribute("list");
-
-//	  List<Integer> dnumList = null ;
-
-//	    for (Cart string : list) {
-//			System.out.println("num : " + string.getDnum());
-//			dnumList.add(string.getDnum());
-//		}
-//		request.setAttribute("dnumList", dnumList);
+		m.addAttribute("list", list);
 
 		System.out.println("cartList :  " + list);
 		return "/cart/cartList";
@@ -62,40 +50,32 @@ public class CartController {
 
 	@RequestMapping("orderList")
 	public String orderList() throws Exception {
-
-//		System.out.println("Controller cartList start");
-
+		
 		String userId = "1";
 		List<Cart> list = cd.orderList(userId);
-		request.setAttribute("list", list);
-//		System.out.println("orderList :  " + list);
-
+		m.addAttribute("list", list);
+	
 		return "/cart/orderList";
 	}
 
 	@RequestMapping("cartDelete")
-	public String basketDelete() throws Exception {
+	public String basketDelete(String[] dids) throws Exception {
 		String userId = "1";
-		String[] dids = request.getParameterValues("did");
 
 		String msg = "삭제 성공";
 		String url = "/cart/cartList";
 
 		if (dids == null) {
 			msg = "삭제할 상품의 체크박스를 클릭해주세요";
-			request.setAttribute("msg", msg);
-			request.setAttribute("url", url);
+			m.addAttribute("msg", msg);
+			m.addAttribute("url", url);
 
 			return "alert";
 		} else {
 			cd.cartDelete(userId, dids);
-
 		}
-		String referer = request.getHeader("Referer"); // 헤더에서 이전 페이지를 읽는다.
-
-//		return "redirect:" + referer; // 이전 페이지로 리다이렉
-		request.setAttribute("msg", msg);
-		request.setAttribute("url", url);
+		m.addAttribute("msg", msg);
+		m.addAttribute("url", url);
 		return "alert";
 	}
 
@@ -118,8 +98,8 @@ public class CartController {
 			String msg = "장바구니에 같은 제품이 있습니다. 확인해 주세요";
 			String url = "/cart/cartList";
 
-			session.setAttribute("msg", msg);
-			session.setAttribute("url", url);
+			m.addAttribute("msg", msg);
+			m.addAttribute("url", url);
 
 			return "alert";
 		} else {
@@ -142,21 +122,16 @@ public class CartController {
 
 // 장바구니 결제버튼 클릭 
 	@RequestMapping("cartUpdatePro")
-	public String cartUpdatePro() throws Exception {
+	public String cartUpdatePro(String[] did, String[] dqty, String[] dtotal, String dpay) throws Exception {
 		System.out.println("Controller cartUpdatePro  ");
 // id는 체크된 값만 들어온다. dqty, dtotal 2개의 "" 값 제거 필요
-		String[] dnum = request.getParameterValues("did");
-		String[] dqty = request.getParameterValues("dqty");
-		String[] dtotal = request.getParameterValues("dtotal");
-		
-		
+
 		ArrayList<String> dqtyArrList = new ArrayList<>();
 		ArrayList<String> dtotalArrList = new ArrayList<>();
 
 //		 dqty 값 중 ""값이 아닌 값들 dqtyArrList에 추가
 
 		String userId = "1";
-		String dpay = request.getParameter("dpay");
 
 		if (dpay.equals("0")) {
 
@@ -179,9 +154,8 @@ public class CartController {
 				}
 			}
 
-			cd.cartUpdate1(userId, dnum, dqtyArrList, dtotalArrList);
+			cd.cartUpdate1(userId, did, dqty, dtotal);
 		}
-
 
 		else {
 			System.out.println(" dpay : " + dpay);
@@ -192,18 +166,17 @@ public class CartController {
 	}
 
 	@RequestMapping("cancleOrder")
-	public String cancleOrder() throws Exception {
-		String[] dnum = request.getParameterValues("did");
+	public String cancleOrder(String[] dnum) throws Exception {
 
 		String msg = "";
 		String url = "";
 		msg = " 품목 삭제를 실패 하였습니다.";
 		url = "/cart/cartList";
-	
+
 		System.out.println("dnum " + dnum);
 
 		String userId = "1";
-	
+
 		if (dnum != null) {
 			System.out.println();
 			int confirm = cd.cancleOrder(userId, dnum);
@@ -217,14 +190,9 @@ public class CartController {
 				url = "/cart/cartList";
 			}
 		}
-
-		
-		request.setAttribute("msg", msg);
-		request.setAttribute("url", url);
+		m.addAttribute("msg", msg);
+		m.addAttribute("url", url);
 		return "alert";
-
 	}
 
- 
-	
 }

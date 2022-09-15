@@ -12,23 +12,21 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>Insert title here</title>
+
 <script>
- 
+	history.replaceState({}, numm, location.pathname);
 </script>
 </head>
-
 <body>
 	<br>
 	<div class="w3-container w3-center" style="width: 90%; margin: auto;">
-		<h2>주문현황</h2>
-
+		<h2>주문상세현황</h2>
 
 		<table class="w3-table w3-bordered w3-hoverable">
 
 			<tbody>
 				<tr>
 					<th>제품번호</th>
-					<th>주문날짜</th>
 					<th>제품명</th>
 					<th>구매수량</th>
 					<th>총가격</th>
@@ -36,17 +34,12 @@
 			</tbody>
 			<tbody>
 				<c:forEach var="c" items="${list}">
-					<tr style="cursor: pointer"
-						onclick="javascript:location.href='${pageContext.request.contextPath}/order/myOrderDetailList?orderId=${c.ORDERID}'">
-						<!-- <tr onclick="location.href"='naver.com';"> -->
-						<td><span> ${c.ORDERID}</span></td>
-						<td><span> ${c.ORDERDATE}</span></td>
-						<td><span> ${c.DNAME } <c:if test="${c.COUNT > 1}"> 외 
-								 ${c.COUNT}개 </c:if>
-						</span></td>
-						<td><span> ${c.DQTY }</span></td>
-						<td><span> ${c.DPRICE}</span>원</td>
-						</a>
+				
+					<tr>
+						<td><span> ${c.dnum}</span></td>
+						<td><span> ${c.dname } </span></td>
+						<td><span> ${c.dqty }</span></td>
+						<td><span> ${c.dprice}</span>원</td>
 					</tr>
 				</c:forEach>
 			</tbody>

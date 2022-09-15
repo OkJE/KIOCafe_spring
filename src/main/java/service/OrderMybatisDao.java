@@ -21,10 +21,11 @@ public class OrderMybatisDao {
 
 	private static final String ns = "order.";
 	private Map map = new HashMap<>();
+	private HashMap hashMap = new HashMap<>();
 
-	public int orderInsert(String[] dnum, String[] dname, String[] dqty, String[] dprice, String[] dtotal, String did,
-			String daddress, String dpaym) {
-
+	public int orderInsert(String[] dnum, String[] dname, String[] dqty, String[] dprice, String[] dtotal,
+			Order order) {
+		System.out.println(order.getDaddress());
 		for (int i = 0; i < dnum.length; i++) {
 //		System.out.println(	dnum[i] + " " + dname[i] + " " + dqty[i] + " " + dprice[i]);
 			map.clear();
@@ -33,15 +34,15 @@ public class OrderMybatisDao {
 			map.put("dqty", dqty[i]);
 			map.put("dprice", dprice[i]);
 			map.put("dtotal", dtotal[i]);
-			map.put("did", did);
-			map.put("daddress", daddress);
-			map.put("dpaym", dpaym);
+			map.put("did", "1");
+			map.put("daddress", order.getDaddress());
+			map.put("dpaym", order.getDpaym());
 			int num = session.insert(ns + "orderInsert", map);
 		}
 
 		return 0;
 	}
-	
+
 	public int modifyDqty(String userId, String[] dnums, String[] dqty) {
 		map.clear();
 		map.put("userid", userId);
@@ -49,16 +50,12 @@ public class OrderMybatisDao {
 			map.put("dnum", dnums[i]);
 			map.put("dqty", dqty[i]);
 			session.update(ns + "modifyDqty", map);
-			System.out.println(dnums[i]);
-			System.out.println(map.get("dnum"));
-			System.out.println(map.get("dqty"));
 		}
 
 		return 1;
 	}
-	
-	public int deleteCart(String userId, String[] dnums) {
 
+	public int deleteCart(String userId, String[] dnums) {
 
 		map.put("userid", userId);
 		map.put("dnums", dnums);
@@ -68,37 +65,32 @@ public class OrderMybatisDao {
 		int confirm = session.update(ns + "deleteCart", map);
 		return confirm;
 	}
-//	public int orderInsert(Order order) {
-//		int num = session.insert(ns + "orderInsert", order);
-//		return num;
-//	}
+ 
 
 	public List<Order> orderList(String did) {
 		map.put("did", did);
 		List<Order> list = session.selectList(ns + "orderList", map);
 		return list;
 	}
+
 	public List<Object> myOrderListInfo(String did) {
 		System.out.println("dao myOrderListInfo");
 		map.put("did", did);
-		List<Object> list = session.selectList(ns + "myOrderListInfo");
-		for (Object object : list) {
-			System.out.println("object : " + object);
-		}
-		System.out.println("list ===== " + list.get(0));
-	 
+		List<Object> list = session.selectList(ns + "myOrderListInfo", map);
+
 		return list;
 	}
-	
-	public List<Object> myOrderDateList(String did) {
-		map.put("did", did);
-		List<Object> list1 = session.selectList(ns + "myOrderDateList", map);
-		System.out.println("list1 : " + list1);
-		map.put(list1, list1);
-		return list1;
+
+	public List<Order> myOrderDetailList(String did, String orderId) {
+		System.out.println("dao myOrderListInfo");
+		hashMap.put("did", did);
+		hashMap.put("orderId", orderId);
+		List<Order> list = session.selectList(ns + "myOrderDetailList", hashMap);
+		return list;
 	}
+
 	public void selectOrderId() {
-		int orderId = session.selectOne(ns + "selectOrderId" );
+		int orderId = session.selectOne(ns + "selectOrderId");
 		System.out.println(orderId + " ============== ");
 	}
 
