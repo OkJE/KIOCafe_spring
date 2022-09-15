@@ -68,7 +68,7 @@ public class CategoryController {
 		      
 		      m.addAttribute("cmenu", cmenu);
 		      m.addAttribute("list", list);
-		         
+		          
 		      System.out.println(list);
 		     
 	    return "category/drinkMain";
