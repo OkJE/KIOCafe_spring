@@ -60,21 +60,20 @@ public class CartController {
 	}
 
 	@RequestMapping("cartDelete")
-	public String basketDelete(String[] dids) throws Exception {
+	public String basketDelete(String[] did) throws Exception {
 		String userId = "1";
 		
-
 		String msg = "삭제 성공";
 		String url = "/cart/cartList";
 
-		if (dids == null) {
+		if (did == null) {
 			msg = "삭제할 상품의 체크박스를 클릭해주세요";
 			m.addAttribute("msg", msg);
 			m.addAttribute("url", url);
 
 			return "alert";
 		} else {
-			cd.cartDelete(userId, dids);
+			cd.cartDelete(userId, did);
 
 		}
 		String referer = request.getHeader("Referer"); // 헤더에서 이전 페이지를 읽는다.

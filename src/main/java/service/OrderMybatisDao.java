@@ -83,6 +83,7 @@ public class OrderMybatisDao {
 
 	public List<Order> myOrderDetailList(String did, String orderId) {
 		System.out.println("dao myOrderListInfo");
+		System.out.println(orderId);
 		hashMap.put("did", did);
 		hashMap.put("orderId", orderId);
 		List<Order> list = session.selectList(ns + "myOrderDetailList", hashMap);

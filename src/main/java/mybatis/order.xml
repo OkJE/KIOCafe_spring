@@ -19,8 +19,9 @@
 
 	</select>
 
-	<select id="myOrderDetailList" parameterType="hashmap" resultType="order">
-		 select * from kiocafe_order where did = 1 and orderid = #{orderId}
+	<select id="myOrderDetailList" parameterType="hashmap"
+		resultType="order">
+		select * from kiocafe_order where did = 1 and orderid = #{orderId}
 	</select>
 
 	<select id="myOrderListInfo" parameterType="map"
