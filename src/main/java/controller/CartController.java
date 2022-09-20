@@ -127,7 +127,7 @@ public class CartController {
 
 // 장바구니 결제버튼 클릭 
 	@RequestMapping("cartUpdatePro")
-	public String cartUpdatePro(String[] dnum, String[] dqty,String[] dtotal, String dpay ) throws Exception {
+	public String cartUpdatePro(String[] did, String[] dqty,String[] dtotal, String dpay ) throws Exception {
 		System.out.println("Controller cartUpdatePro  ");
 // id는 체크된 값만 들어온다. dqty, dtotal 2개의 "" 값 제거 필요	
 		ArrayList<String> dqtyArrList = new ArrayList<>();
@@ -157,7 +157,7 @@ public class CartController {
 				}
 			}
 
-			cd.cartUpdate1(userId, dnum, dqtyArrList, dtotalArrList);
+			cd.cartUpdate1(userId, did, dqtyArrList, dtotalArrList);
 		}
 
 		else {
@@ -182,10 +182,6 @@ public class CartController {
 		String userId = "1";
 	
 		if (dnum != null) {
-			
-			
-			
-			
 			System.out.println();
 			int confirm = cd.cancleOrder(userId, dnum);
 			if (confirm > 0) {
