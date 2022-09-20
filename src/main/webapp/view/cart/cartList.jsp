@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 
@@ -21,12 +20,16 @@
 	integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
 	crossorigin="anonymous">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/view/cart/css/cartlist.css">
+<%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/view/cart/css/cartlist.css"> --%>
 
 <title>Document</title>
 
 <script defer>
+	/* 가격 콤마 찍는 함수 */
+	function numberWithCommas(x) {
+		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+
 	function getClickIdFunc(id) {
 		let sendId = 0; // 001, 002 같은 id 담을 변수
 		// 클릭한 id값이 plus/minus 인지 구별
@@ -66,10 +69,14 @@
 	}
 
 	function priceMulFunc(id, price, qtx) {
+
 		$("#priceMul" + id).text(parseInt(price) * parseInt(qtx));
+		$("#viewPriceMul" + id).text(
+				numberWithCommas(parseInt(price) * parseInt(qtx)));
 
 		$('#qtx').val(parseInt(qtx));
 		/* console.log ("priceMul : "  + $("#priceMul" + id).text()); */
+		$("#priceMul" + id).text(parseInt(price) * parseInt(qtx));
 	}
 
 	function allPriceSum() {
@@ -79,7 +86,7 @@
 
 		for (let i = 0; i < totalPrice.length; i++) {
 			/* console.log("dtotal : [" + i + " ]"
-					+ document.getElementsByName("dtotal")[i].value); */
+			        + document.getElementsByName("dtotal")[i].value); */
 			if (document.getElementsByName("dtotal")[i].value == "") {
 				priceSumResult += 0;
 			} else {
@@ -88,7 +95,8 @@
 
 		}
 		// console.log("priceSumResult :  " + priceSumResult)
-		$("#allPrice").text(priceSumResult);
+
+		$("#allPrice").text(numberWithCommas(priceSumResult));
 	}
 
 	/*  */
@@ -142,60 +150,180 @@
 
 	// this.id를 이용해 클릭한 id값 id에 담아주는 함수
 
-	jQuery(document).ready(function() {
+	jQuery(document)
+			.ready(
+					function() {
 
-		let totalPrice = document.getElementsByName("0");
-		let priceSumResult = 0;
-		/* 
-		 for (let i = 0; i < totalPrice.length; i++) {
-		     priceSumResult += parseInt(totalPrice[i].innerHTML);
-		 }
-		 $("#allPrice").text(priceSumResult);
-		 */
+						let getDid = "";
+						let getMulPrice = "";
+						let getPrice = "";
+						let commaMulPrice = "";
+						let commaPrice = "";
+						for (let i = 0; i < $('[name="did"]').length; i++) {
+							getDid = $('[name="did"]').eq(i).attr("id");
+							
+							getMulPrice = $("#viewPriceMul" + getDid).text();							
+							commaMulPrice  = numberWithCommas(getMulPrice);
+							$("#viewPriceMul" + getDid).text(commaMulPrice );
+							
+							
+							getPrice  = $("#price" + getDid).text();
+							commaPrice  = numberWithCommas(getPrice);
+							$("#price1" + getDid).text(commaPrice);
+						 
+							
+						}
+						let totalPrice = document.getElementsByName("0");
+						let priceSumResult = 0;
+						/* 
+						 for (let i = 0; i < totalPrice.length; i++) {
+						     priceSumResult += parseInt(totalPrice[i].innerHTML);
+						 }
+						 $("#allPrice").text(priceSumResult);
+						 */
 
-	
+						$('.plusA-btn')
+								.click(
+										function() {
+							
+											;
+											// var id = $('#inputId').val(); //id값이 "id"인 입력란의 값을 저장
+											let clickBtnId = $(this).attr("id");
+											let idNum = "";
 
-	$('.plusA-btn').click(function() {
+											idNum = clickBtnId.substr(4);
 
-		// var id = $('#inputId').val(); //id값이 "id"인 입력란의 값을 저장
-		let clickBtnId = $(this).attr("id");
-		let idNum="";
-	 
-		idNum = clickBtnId.substr(4);
-	
+											console.log("idNum : " + idNum);
 
+											$
+													.ajax({
+														url : '${pageContext.request.contextPath}/category/categoryQtySelectOne', //Controller에서 요청 받을 주소
+														type : 'post', //POST 방식으로 전달
+														data : {
+															dnum : idNum
+														// 클릭한 아이디 전달
+														},
+														success : function(cqty) { //컨트롤러에서 넘어온 cnt값을 받는다
+															let qtx = $(
+																	"#qtx"
+																			+ idNum)
+																	.text();
+															console
+																	.log("qtx : "
+																			+ qtx);
+															console
+																	.log("cqty : "
+																			+ cqty);
 
-		console.log("idNum : " + idNum);
-		
-	 
+															if (parseInt(qtx) > parseInt(cqty)) {
+																$(
+																		"#qtx"
+																				+ idNum)
+																		.text(
+																				qtx - 1);
+																alert("최대 수량입니다")
+															} else {
 
-		$.ajax({
-			url : '${pageContext.request.contextPath}/category/categoryQtySelectOne', //Controller에서 요청 받을 주소
-			type : 'post', //POST 방식으로 전달
-			data : {
-				dnum : idNum // 클릭한 아이디 전달
-			},
-			success : function(cqty) { //컨트롤러에서 넘어온 cnt값을 받는다
-				let qtx = $("#qtx"+idNum).text();
-				console.log("qtx : " + qtx);
-				console.log("cqty : " + cqty);
-				 
-				if (parseInt(qtx) >parseInt(cqty)) {
-					 $("#qtx"+idNum).text(qtx-1);
-					alert("최대 수량입니다")
-				} else {
-				
-				}
-			},
-			error : function() {
-				// alert("에러입니다");
-			}
-		});
+															}
+														},
+														error : function() {
+															// alert("에러입니다");
+														}
+													});
 
-	})
-	});
+										})
+					});
 </script>
+<style type="text/css">
+.head-title>span {
+	width: 100%;
+	height: 100%;
+	margin: auto;
+	font-size: 32px;
+	background: linear-gradient(to top, #ffe4e1 20%, transparent 40%);
+}
 
+.productATotalPrice{
+	display: none;
+}
+
+.price {
+	display: none;
+}
+
+table {
+	text-align: center;
+	margin: 0px;
+}
+
+tr {
+	border-top: 1px solid #fec5e5;;
+	border-bottom: 1px solid #fec5e5;;
+}
+
+th, td {
+	align-items: center;
+	min-width: 100px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+td:not(.btn-td) {
+	line-height: 165px;
+}
+
+img {
+	width: 150px;
+}
+
+.count {
+	height: 28px;
+}
+
+.count-btn {
+	width: 45px;
+	height: 35px;
+	display: block;
+	display: flex;
+	align-items: center;
+}
+
+.up {
+	background-image: url('./img/up.png');
+}
+
+.down {
+	background-image: url('./img/down.png');
+}
+
+.checkbox {
+	position: absolute;
+	bottom: 3px;
+}
+
+/*  */
+.pay-div {
+	width: 80%;
+	margin: auto;
+	display: flex;
+	justify-content: end;
+	border: 1px black solid;
+	border-radius: 6px;
+	margin-top: 45px;
+}
+
+.pay-div>h4 {
+	margin-right: 10px;
+}
+
+.pay-btn {
+	margin: 10px;
+}
+
+button {
+	background: #fcfcfb;
+}
+</style>
 
 </head>
 
@@ -205,20 +333,20 @@
 		<div style="width: 80%; margin: auto;">
 			<div class="w3-bar w3-middle">
 
-				<section>
-					<h4 style="margin-top: 15px;">빵바구니</h4>
+				<section class="head-title"
+					style="margin-top: 25px; margin-bottom: 25px;">
+					<span>빵바구니</span> <br> <br>
 				</section>
 
 				<div style="display: flex; justify-content: space-between;">
 
 					<!-- <div>
-						<span>전체선택</span> <input type="checkbox" id="allCheck"
-							class="w3-check" onclick="checkAll()">
-					</div> -->
+                    <span>전체선택</span> <input type="checkbox" id="allCheck"
+                        class="w3-check" onclick="checkAll()">
+                </div> -->
 
 				</div>
-				<table class="w3-table w3-bordered"
-					style="width: 95%; margin-left: 30px;">
+				<table class="w3-table " style="width: 95%; margin-left: 30px;">
 					<!--  -->
 					<thead>
 						<tr>
@@ -230,17 +358,17 @@
 								</div>
 							</th>
 							<th scope="col"
+								style="text-align: center; vertical-align: middle;">이미지</th>
+							<th scope="col"
 								style="text-align: center; vertical-align: middle;">제품코드</th>
 							<th scope="col"
 								style="text-align: center; vertical-align: middle;">제품명</th>
-							<th scope="col"
-								style="text-align: center; vertical-align: middle;">제품</th>
 							<th scope="col"
 								style="text-align: center; vertical-align: middle;">개당가격</th>
 							<th scope="col"
 								style="text-align: center; vertical-align: middle;">구매수량</th>
 							<th scope="col"
-								style="text-align: center; vertical-align: middle;">구매가격</th>
+								style="text-align: center; vertical-align: middle;">합계</th>
 						</tr>
 					</thead>
 					<!--  -->
@@ -253,17 +381,24 @@
 										value="" name="did" onclick="checkBoxValueOnOff(this.id)">
 								</span></td>
 
-
-
-								<td style="text-align: center; vertical-align: middle;"><span>${c.dnum }</span></td>
-								<td style="text-align: center; vertical-align: middle;"><span>${c.dname }</span></td>
-
 								<td style="text-align: center; vertical-align: middle;"><img
 									src="<%=request.getContextPath()%>/view/cart/img/${c.dpicture}"
 									alt=""></td>
 
-								<td style="text-align: center; vertical-align: middle;"><span
-									id="price${c.dnum}">${c.dprice }</span></td>
+
+								<td style="text-align: center; vertical-align: middle;"><span>${c.dnum }</span>
+								</td>
+								<td style="text-align: center; vertical-align: middle;"><span>${c.dname }</span>
+								</td>
+
+
+								<td style="text-align: center; vertical-align: middle;">
+								<span class="price"
+									id="price${c.dnum}">${c.dprice }</span>
+									
+										<span
+									id="price1${c.dnum}">${c.dprice }</span>
+									</td>
 								<!--  -->
 
 
@@ -275,8 +410,11 @@
 											id="minus${c.dnum}" onclick="getClickIdFunc(this.id)"
 											style="border: 1px black solid; border-radius: 8px;">
 											<span>-</span>
-										</button> <span class="count productA-cnt-p" style="text-align: center"
-										id="qtx${c.dnum }">${c.dqty }</span> <input type="hidden"
+										</button> 
+										<span class="count productA-cnt-p" style="text-align: center"
+										id="qtx${c.dnum }">${c.dqty }</span>
+
+										<input type="hidden"
 										id="qtxInput${c.dnum}" value="" name="dqty">
 
 										<button type="button"
@@ -289,8 +427,9 @@
 								<!--  -->
 								<td style="text-align: center; vertical-align: middle;"><span
 									class="productATotalPrice" id="priceMul${c.dnum}">${c.dtotal}</span>
-									<input type="hidden" id="dtotalInput${c.dnum}" value=""
-									name="dtotal"></td>
+									<span class="productATotalPrice1" id="viewPriceMul${c.dnum}"
+									name="viewPriceMul">${c.dtotal}</span> <input type="hidden"
+									id="dtotalInput${c.dnum}" value="" name="dtotal"></td>
 
 							</tr>
 
@@ -302,8 +441,10 @@
 		</div>
 		<div>
 			<div class="pay-div">
-				<h4 class="pay-p allPrice">
-					상품금액 : <span id="allPrice">0</span>
+				<h4 class="pay-p allPrice"
+					style="font-size: 25px; font-weight: 500;">
+					상품금액 : <span id="allPrice"
+						style="font-size: 25px; font-weight: 500;">0</span>
 				</h4>
 				<div style="text-align: center; vertical-align: middle;">
 
@@ -311,9 +452,11 @@
 
 
 					<input class="pay-btn" type="submit" value="삭제"
+						style="background: #fec5e5; border: none;"
 						onclick="javascript: form.action='${pageContext.request.contextPath}/cart/cartDelete';" />
 
 					<input class="pay-btn" type="submit" value="결제"
+						style="background: #fec5e5; border: none;"
 						onclick="javascript: form.action='${pageContext.request.contextPath}/cart/cartUpdatePro';" />
 
 

@@ -38,29 +38,31 @@ public class CartController {
 
 	@RequestMapping("cartList")
 	public String cartList() throws Exception {
-
 		String userId = "1";
 		List<Cart> list = cd.cartList(userId);
-
-		m.addAttribute("list", list);
-
+	
+	    m.addAttribute("list", list);
 		System.out.println("cartList :  " + list);
 		return "/cart/cartList";
 	}
 
 	@RequestMapping("orderList")
 	public String orderList() throws Exception {
-		
+
+//		System.out.println("Controller cartList start");
+
 		String userId = "1";
 		List<Cart> list = cd.orderList(userId);
 		m.addAttribute("list", list);
-	
+//		System.out.println("orderList :  " + list);
+
 		return "/cart/orderList";
 	}
 
 	@RequestMapping("cartDelete")
 	public String basketDelete(String[] dids) throws Exception {
 		String userId = "1";
+		
 
 		String msg = "삭제 성공";
 		String url = "/cart/cartList";
@@ -73,7 +75,11 @@ public class CartController {
 			return "alert";
 		} else {
 			cd.cartDelete(userId, dids);
+
 		}
+		String referer = request.getHeader("Referer"); // 헤더에서 이전 페이지를 읽는다.
+
+//		return "redirect:" + referer; // 이전 페이지로 리다이렉
 		m.addAttribute("msg", msg);
 		m.addAttribute("url", url);
 		return "alert";
@@ -98,8 +104,8 @@ public class CartController {
 			String msg = "장바구니에 같은 제품이 있습니다. 확인해 주세요";
 			String url = "/cart/cartList";
 
-			m.addAttribute("msg", msg);
-			m.addAttribute("url", url);
+			session.setAttribute("msg", msg);
+			session.setAttribute("url", url);
 
 			return "alert";
 		} else {
@@ -122,17 +128,15 @@ public class CartController {
 
 // 장바구니 결제버튼 클릭 
 	@RequestMapping("cartUpdatePro")
-	public String cartUpdatePro(String[] did, String[] dqty, String[] dtotal, String dpay) throws Exception {
+	public String cartUpdatePro(String[] dnum, String[] dqty,String[] dtotal, String dpay ) throws Exception {
 		System.out.println("Controller cartUpdatePro  ");
-// id는 체크된 값만 들어온다. dqty, dtotal 2개의 "" 값 제거 필요
-
+// id는 체크된 값만 들어온다. dqty, dtotal 2개의 "" 값 제거 필요	
 		ArrayList<String> dqtyArrList = new ArrayList<>();
 		ArrayList<String> dtotalArrList = new ArrayList<>();
 
 //		 dqty 값 중 ""값이 아닌 값들 dqtyArrList에 추가
 
 		String userId = "1";
-
 		if (dpay.equals("0")) {
 
 			for (String string : dqty) {
@@ -154,7 +158,7 @@ public class CartController {
 				}
 			}
 
-			cd.cartUpdate1(userId, did, dqty, dtotal);
+			cd.cartUpdate1(userId, dnum, dqtyArrList, dtotalArrList);
 		}
 
 		else {
@@ -166,18 +170,23 @@ public class CartController {
 	}
 
 	@RequestMapping("cancleOrder")
-	public String cancleOrder(String[] dnum) throws Exception {
+	public String cancleOrder(String[] dnum ) throws Exception {
+	
 
 		String msg = "";
 		String url = "";
 		msg = " 품목 삭제를 실패 하였습니다.";
 		url = "/cart/cartList";
-
+	
 		System.out.println("dnum " + dnum);
 
 		String userId = "1";
-
+	
 		if (dnum != null) {
+			
+			
+			
+			
 			System.out.println();
 			int confirm = cd.cancleOrder(userId, dnum);
 			if (confirm > 0) {
@@ -190,9 +199,14 @@ public class CartController {
 				url = "/cart/cartList";
 			}
 		}
+
+		
 		m.addAttribute("msg", msg);
 		m.addAttribute("url", url);
 		return "alert";
+
 	}
 
+ 
+	
 }

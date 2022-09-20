@@ -42,6 +42,7 @@ public class MemberMybatisDao {
 		return num;
 	}
 
+
 	public int changePass(String id, String pass) {
 		Map map = new HashMap();
 		map.put("id", id);
@@ -56,13 +57,7 @@ public class MemberMybatisDao {
 		return list;
 	}
 	
-	/*
-	public String idCheck(String id) {
-		List<Member> list=session.selectList(NS + "idCheck");
-		
-		return 
-	}
-	*/
+
 	
 }
 // end member

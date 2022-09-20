@@ -32,6 +32,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <body>
+<c:if test="${param.id eq 'login'}">
+<script> alert("login 하세요")</script>
+</c:if>
+<c:if test="${param.id eq 'forbidden'}">
+<script> alert("금지되어 있습니다.")</script>
+</c:if>
+
 <div style="width:800px; margin: auto;">
 <form class="w3-container" action="${pageContext.request.contextPath}/member/loginPro" method="post">
   <br>

@@ -55,7 +55,7 @@ public int insertCategory(Category category) {
    
    return num;
 }
-   //xml에 없음 
+ 
    public Category categoryOne(int cnum) {
       
       Category category = session.selectOne(ns+"categoryOne", cnum);

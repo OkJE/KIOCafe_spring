@@ -173,7 +173,7 @@
             </colgroup>
 
             <tbody class="body-table">
-                <p class="title">${m.nickname}의 정보</p>
+                <p class="title">${mb.nickname}의 정보</p>
                 <tr>
                     <th scope="row">아이디</th>
                     <td> ${sessionScope.id }
@@ -181,19 +181,19 @@
                 </tr>
                 <tr>
                     <th scope="row">이름</th>
-                    <td>${m.name }
+                    <td>${mb.name }
                     </td>
                 </tr>
                 <tr>
                     <th scope="row">현 주소</th>
                     <td>
-                        ${m.address }
+                        ${mb.address }
                     </td>
                 </tr>
                 <tr>
                     <th scope="row">이메일</th>
                     <td>
-                       ${m.email }
+                       ${mb.email }
                     </td>
                 </tr>
             </tbody>
@@ -205,190 +205,8 @@
         </div>
 
 
-      <!--  <table class="board_write">
-            <colgroup>
-                <col style="width:172px">
-                <col>
-            </colgroup>
-            <tbody class="text-td">
-                <p class="title">주문정보(주문상세)</p>
-                <tr>
-                    <th scope="row">주문날짜</th>
-                    <th scope="row">주문내역</th>
-                    <th scope="row">배송현황</th>
-                </tr>
-
-                <tr>
-                    <td>20220818
-                    </td>
-                    <td>20220818
-                    </td>
-                    <td>20220818
-                    </td>
-                </tr>
-                <tr>
-                    <td>20220818
-                    </td>
-                    <td>20220818
-                    </td>
-                    <td>20220818
-                    </td>
-                </tr>
-
-
-            </tbody>
-        </table>
-
-        <table class="board_write">
-            <colgroup>
-                <col style="width:172px">
-                <col>
-            </colgroup>
-            <tbody class="text-td">
-                <p class="title">장바구니</p>
-                <tr>
-                    <th scope="row">선택</th>
-                    <th scope="row">상품명</th>
-                    <th scope="row">가격</th>
-                    <th scope="row">수량</th>
-                    <th scope="row">총가격</th>
-                </tr>
-
-                <tr>
-                    <td>20220818
-                    </td>
-                    <td>20220818
-                    </td>
-                    <td>20220818
-                    </td>
-                    <td>20220818
-                    </td>
-                    <td>20220818
-                    </td>
-                </tr>
-                <tr>
-                    <td>20220818
-                    </td>
-                    <td>20220818
-                    </td>
-                    <td>20220818
-                    </td>
-                    <td>20220818
-                    </td>
-                    <td>20220818
-                    </td>
-                </tr>
-
-
-
-                <tr class="border-none-td">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>상품금액</td>
-                    <td></td>
-                </tr>
-                <tr class="border-none-td">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>총 금액</td>
-                    <td></td>
-                </tr>
-                <tr class="border-none-td">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>총 금액</td>
-                    <td></td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div class="btn-right" style="margin-top: 40px;">
-            <button class="btn1">구매</button>
-        </div>
-
-        <table class="board_write ">
-            <colgroup>
-                <col style="width:172px">
-                <col>
-            </colgroup>
-            <tbody class="text-td">
-                <p class="title">문의</p>
-                <tr>
-                    <th scope="row">번호</th>
-                    <th scope="row">날짜</th>
-                    <th scope="row">문의분류</th>
-                    <th scope="row">제목</th>
-                    <th scope="row">처리현황</th>
-                </tr>
-
-                <tr>
-                    <td>20220818
-                    </td>
-                    <td>20220818
-                    </td>
-                    <td>20220818
-                    </td>
-                    <td>20220818
-                    </td>
-                    <td>20220818
-                    </td>
-                </tr>
-                <tr>
-                    <td>20220818
-                    </td>
-                    <td>20220818
-                    </td>
-                    <td>20220818
-                    </td>
-                    <td>20220818
-                    </td>
-                    <td>20220818
-                    </td>
-                </tr>
-
-
-            </tbody>
-        </table>
-        <table class="board_write" style="margin-bottom:40px;">
-            <colgroup>
-                <col style="width:172px">
-                <col>
-            </colgroup>
-            <tbody class="text-td">
-                <p class="title">리뷰</p>
-                <tr>
-                    <th scope="row">날짜</th>
-                    <th scope="row">상품</th>
-                    <th scope="row">리뷰제목</th>
-                </tr>
-
-
-                <tr>
-                    <td>20220818
-                    </td>
-                    <td>20220818
-                    </td>
-                    <td>20220818
-                    </td>
-                </tr>
-
-
-            </tbody>
-        </table>-->
-
-        <!--  -->
-        <!--  -->
-
     </div>
 
-
-    <!--  -->
-    <!--  -->
-    <!--  -->
-    <!--  -->
 
 </body>
 

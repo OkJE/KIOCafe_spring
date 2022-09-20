@@ -25,21 +25,21 @@ import service.MemberMybatisDao;
 @Controller
 @RequestMapping("/member/")
 public class MemberController {
-	
+
 	@Autowired
 	MemberMybatisDao md;
-	
+
 	HttpServletRequest request;
 	Model m;
 	HttpSession session;
-	
+
 	@ModelAttribute
 	void init(HttpServletRequest request, Model m) {
 		this.request = request;
 		this.m = m;
 		this.session = request.getSession();
 	}
-	
+
 	@RequestMapping("mainpage")
 	public String mainpage() throws Exception {
 
@@ -54,40 +54,38 @@ public class MemberController {
 
 	@RequestMapping("joinPro")
 	public String joinPro(Member mem) throws Exception {
-		
+
 		int num = md.insertMember(mem);
 		String msg = "";
 		String url = "";
 
 		if (num > 0) {
-			if(mem.getNickname()!=null) {
-			msg = mem.getNickname() + "님 반갑습니다^^!";
-			url = "/member/loginForm";
+			if (mem.getNickname() != null) {
+				msg = mem.getNickname() + "님 반갑습니다^^!";
+				url = "/member/loginForm";
 			} else {
 				msg = mem.getName() + "님 반갑습니다^^!";
 				url = "/member/loginForm";
 			}
-		
+
 		}
-			
-		request.setAttribute("msg", msg);
-		request.setAttribute("url", url);
+
+		m.addAttribute("msg", msg);
+		m.addAttribute("url", url);
 
 		return "alert";
-	
+
 	}
-	
-	
+
 	@RequestMapping("loginForm")
 	public String loginForm() throws Exception {
 
 		return "member/loginForm";
 	}
 
-
 	@RequestMapping("loginPro")
-	public String loginPro(String id,String pass) throws Exception {
-		
+	public String loginPro(String id, String pass) throws Exception {
+
 		Member mem = md.selectOne(id);
 
 		String msg = "아이디를 확인하세요";
@@ -104,8 +102,8 @@ public class MemberController {
 				msg = "비밀번호를 확인하세요";
 			}
 		}
-		request.setAttribute("msg", msg);
-		request.setAttribute("url", url);
+		m.addAttribute("msg", msg);
+		m.addAttribute("url", url);
 
 		return "alert";
 	}
@@ -118,91 +116,67 @@ public class MemberController {
 		String msg = login + "님 로그아웃되었습니다.";
 		String url = "/member/loginForm";
 
-		request.setAttribute("msg", msg);
-		request.setAttribute("url", url);
+		m.addAttribute("msg", msg);
+		m.addAttribute("url", url);
 
 		return "alert";
 	}
 
 	@RequestMapping("myaccount")
 	public String myaccount() throws Exception {
-		String id = (String) session.getAttribute("id");
+		String id=(String) session.getAttribute("id");
+		Member mb = md.selectOne(id);
+		m.addAttribute("mb", mb);
+		return "member/myaccount";
 
-		if (id != null && !id.equals("")) {
-			Member m = md.selectOne(id);
-			request.setAttribute("m", m);
-			return "member/myaccount";
-			
-		} else {
-			String msg = "로그인이 필요 합니다.";
-			String url = "/member/loginForm";
-			request.setAttribute("msg", msg);
-			request.setAttribute("url", url);
-			return "alert";
-		}
 	}
-	
+
 	@RequestMapping("idcheck")
 	@ResponseBody
 	public String idcheck(String id) throws Exception {
 		Member m = md.selectOne(id);
-		
-		if (m==null) {
-			return "0";   // 가능 
+
+		if (m == null) {
+			return "0"; // 가능
 		} else {
-		
-		return "1";   //불가능 
+
+			return "1"; // 불가능
 		}
-		
+
 	}
-	
-	
 
 	@RequestMapping("memberUpdateForm")
 	public String memberUpdateForm() throws Exception {
 		String id = (String) session.getAttribute("id");
+		Member mb = md.selectOne(id);
+		m.addAttribute("mb", mb);
+		return "member/memberUpdateForm";
 
-		if (id != null && !id.equals("")) {
-			Member m = md.selectOne(id);
-			request.setAttribute("m", m);
-			return "member/memberUpdateForm";
-
-		} else {
-			String msg = "로그인이 필요 합니다.";
-			String url = "/member/loginForm";
-			request.setAttribute("msg", msg);
-			request.setAttribute("url", url);
-			return "alert";
-		}
 	}
 
 	@RequestMapping("memberUpdatePro")
 	public String memberUpdatePro(Member mem) throws Exception {
 		String id = (String) session.getAttribute("id");
-		String msg = "로그인이 필요합니다.";
-		String url = "/member/loginForm";
+		String msg = "";
+		String url = "";
 
-		if (id != null && !id.equals("")) {
-			Member dbm = md.selectOne(id);
-			if (dbm != null) {
-				if (dbm.getPass().equals(mem.getPass())) {
-					int num = md.updateMember(mem);
-					if (num > 0) {
-						msg = mem.getName() + "님의 정보 수정이 되었습니다.";
-						url = "/member/myaccount";
-					} else {
-						msg = "정보 수정이 실패했습니다.";
-						url = "/member/memberUpdateForm";
-					}
-				} else {
-					msg = "비밀번호가 틀렸습니다.";
-					url = "/member/memberUpdateForm";
-				}
+		Member dbm = md.selectOne(id);
+		if (dbm.getPass().equals(mem.getPass())) {
+			int num = md.updateMember(mem);
+			if (num > 0) {
+				msg = mem.getName() + "님의 정보 수정이 되었습니다.";
+				url = "/member/myaccount";
+			} else {
+				msg = "정보 수정이 실패했습니다.";
+				url = "/member/memberUpdateForm";
 			}
-
+		} else {
+			msg = "비밀번호가 틀렸습니다.";
+			url = "/member/memberUpdateForm";
 		}
-		request.setAttribute("msg", msg);
-		request.setAttribute("url", url);
+
+		m.addAttribute("msg", msg);
+		m.addAttribute("url", url);
 
 		return "alert";
 
@@ -211,130 +185,82 @@ public class MemberController {
 	@RequestMapping("memberDelete")
 	public String memberDelete() throws Exception {
 		String id = (String) session.getAttribute("id");
-		String msg = "로그인이 필요합니다.";
-		String url = "/member/loginForm";
-		if (id != null && !id.equals("")) {
-			return "member/memberDelete";
-		}
-
-		request.setAttribute("msg", msg);
-		request.setAttribute("url", url);
-		return "alert";
+		return "member/memberDelete";
 	}
 
 	@RequestMapping("memberDeletePro")
 	public String memberDeletePro(String pass) throws Exception {
-		HttpSession session = request.getSession();		
 		String id = (String) session.getAttribute("id");
-		String msg = "로그인이 필요합니다.";
-		String url = "/member/loginForm";
+		String msg = "";
+		String url = "";
 
-		if (id != null && !id.equals("")) {
-			Member dbm = md.selectOne(id);
-			if (dbm != null) {
-				if (dbm.getPass().equals(pass)) {
+		Member dbm = md.selectOne(id);
+		if (dbm != null) {
+			if (dbm.getPass().equals(pass)) {
 
-					int num = md.deleteMember(id);
-					if (num > 0) {
-						msg = id + "님이 탈퇴 처리 되었습니다.";
-						session.invalidate();
-						url = "/member/loginForm";
-					} else {
-						msg = "회원탈퇴가 실패 했습니다.";
-						url = "/member/memberDelete";
-					}
+				int num = md.deleteMember(id);
+				if (num > 0) {
+					msg = id + "님이 탈퇴 처리 되었습니다.";
+					session.invalidate();
+					url = "/member/loginForm";
 				} else {
-					msg = "비밀번호가 틀렸습니다.";
+					msg = "회원탈퇴가 실패 했습니다.";
 					url = "/member/memberDelete";
 				}
+			} else {
+				msg = "비밀번호가 틀렸습니다.";
+				url = "/member/memberDelete";
 			}
-
 		}
-		request.setAttribute("msg", msg);
-		request.setAttribute("url", url);
+
+		m.addAttribute("msg", msg);
+		m.addAttribute("url", url);
 		return "alert";
 	}
-	
-	
-	
+
 	@RequestMapping("memberPassUpdate")
 	public String memberPassUpdate() throws Exception {
-		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
-		String msg = "로그인이 필요합니다.";
-		String url = "/member/loginForm";
-		if (id != null && !id.equals("")) {
-			return "member/memberPassUpdate";
-		}
-
-		request.setAttribute("msg", msg);
-		request.setAttribute("url", url);
-		return "alert";
+		return "member/memberPassUpdate";
 	}
-	
-	
-	
-	
+
 	@RequestMapping("memberPassPro")
 	public String memberPassPro(String pass, String chgpass1) throws Exception {
-		
-		String id=(String)session.getAttribute("id");
-		
-		String msg="로그인이 필요합니다.";
-		String url="/member/loginForm";
+		String id = (String) session.getAttribute("id");
+		String msg = "";
+		String url = "";
 
-		if(id!=null && !id.equals("")){
-			
-			Member dbm=md.selectOne(id);
-			
-		if(dbm!=null){
-			
-			if(dbm.getPass().equals(pass)){
-				int num=md.changePass(id, chgpass1);
-				if(num>0){
+		Member dbm = md.selectOne(id);
+
+		if (dbm != null) {
+
+			if (dbm.getPass().equals(pass)) {
+				int num = md.changePass(id, chgpass1);
+				if (num > 0) {
 					msg = id + "님이 비밀번호가 수정 되었습니다.";
-					url="/member/myaccount";
-				} else{
-					msg="비밀번호 변경이 실패하였습니다.";
-					url="/member/memberPassUpdate";
+					url = "/member/myaccount";
+				} else {
+					msg = "비밀번호 변경이 실패하였습니다.";
+					url = "/member/memberPassUpdate";
 				}
-			}else {
-				msg="비밀번호가 틀렸습니다.";
-				url="/member/memberPassUpdate";
+			} else {
+				msg = "비밀번호가 틀렸습니다.";
+				url = "/member/memberPassUpdate";
 			}
 		}
 
-
-		}
-		request.setAttribute("msg", msg);
-		request.setAttribute("url", url);
+		m.addAttribute("msg", msg);
+		m.addAttribute("url", url);
 		return "alert";
 	}
-	
-	
-	
+
 	@RequestMapping("memberList")
 	public String memberList() throws Exception {
-		HttpSession session = request.getSession();
-		
-	
-		//String id=(String)session.getAttribute("id");
-		//String msg="로그인이 필요합니다.";
-		//String url="/member/loginForm";
-		
-		//if (id!= null && id.equals("admin")) {
-			List<Member> li = new ArrayList<Member>();
-			li = md.memberList();	
-			request.setAttribute("li", li);
-			return "/member/memberList";
-		//}
-		
-		//request.setAttribute("msg", msg);
-		//request.setAttribute("url", url);
+		List<Member> li = new ArrayList<Member>();
+		li = md.memberList();
+		m.addAttribute("li", li);
+		return "/member/memberList";
 
-		//return "alert";
 	}
-	
-	
-		
+
 }// end class

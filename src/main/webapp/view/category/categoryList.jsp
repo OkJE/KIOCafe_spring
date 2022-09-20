@@ -74,7 +74,7 @@
 						<tr>
 							<td><a href="${pageContext.request.contextPath}/category/categoryInfo?cnum=${c.cnum}">${c.cnum}</a></td>
 							<td>${c.cname}</td>						
-							<td>${c.cmenu}</td>
+							<td>${c.cmenu==1?"베이커리":"드링크"}</td>
 							<td>${c.ctext}</td>
 							<td>${c.cprice}</td>
 							<td>${c.cqty}</td>

@@ -41,15 +41,15 @@
 				</tr>
 			</tbody>
 			<tbody>
-				<c:forEach var="m" items="${li}">
+				<c:forEach var="mb" items="${li}">
 					<tr>
-						<td>${m.id}</td>
-						<td>${m.pass}</td>
-						<td>${m.name}</td>
-						<td>${m.tel}</td>
-						<td>${m.address}</td>
-						<td>${m.email}</td>
-						<td>${m.nickname}</td>
+						<td>${mb.id}</td>
+						<td>${mb.pass}</td>
+						<td>${mb.name}</td>
+						<td>${mb.tel}</td>
+						<td>${mb.address}</td>
+						<td>${mb.email}</td>
+						<td>${mb.nickname}</td>
 					</tr>
 				</c:forEach>
 			</tbody>

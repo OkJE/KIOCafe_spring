@@ -68,7 +68,7 @@
                     }
                 })
             });
-            console.log("hi");
+         
         </script>
 <style>
 #navbar {
