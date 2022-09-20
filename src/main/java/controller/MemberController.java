@@ -200,7 +200,7 @@ public class MemberController {
 
 				int num = md.deleteMember(id);
 				if (num > 0) {
-					msg = id + "님이 탈퇴 처리 되었습니다.";
+					msg = id + "님 탈퇴 처리 되었습니다."+id +"님 그동안 이용해주셔서 감사합니다.";
 					session.invalidate();
 					url = "/member/loginForm";
 				} else {

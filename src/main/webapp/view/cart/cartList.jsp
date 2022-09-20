@@ -235,13 +235,27 @@
 					});
 </script>
 <style type="text/css">
-.head-title>span {
-	width: 100%;
-	height: 100%;
-	margin: auto;
-	font-size: 32px;
-	background: linear-gradient(to top, #ffe4e1 20%, transparent 40%);
-}
+.head-title {
+		            margin-top: 40px;
+		            text-align: center;
+		        }
+
+                .head-title>span {
+		
+		            width: 100%;
+		            height: 100%;
+		            margin: auto;
+		            font-size: 32px;
+		            background: linear-gradient(to top, #ffe4e1 20%, transparent 40%);
+		        }
+		         .cont_title01 {
+		            margin-top: 20px;
+		            padding: 10px;
+		            font-size: 20px;
+		            line-height: 38px;
+		            font-weight: bold;
+		            text-align: left;
+		        }
 
 .productATotalPrice{
 	display: none;
@@ -323,6 +337,7 @@ img {
 button {
 	background: #fcfcfb;
 }
+
 </style>
 
 </head>
@@ -330,13 +345,11 @@ button {
 <body>
 	<form method="post" name="form">
 
-		<div style="width: 80%; margin: auto;">
-			<div class="w3-bar w3-middle">
-
-				<section class="head-title"
-					style="margin-top: 25px; margin-bottom: 25px;">
-					<span>빵바구니</span> <br> <br>
-				</section>
+				<div class="cont_title01 " style="width: 75%; margin: auto;">
+ 				<div class="head-title">
+                <span>빵바구니</span>
+                <br>     <br>
+          		</div>
 
 				<div style="display: flex; justify-content: space-between;">
 

@@ -117,8 +117,8 @@ div {
 
 .order-table>thead {
 	padding: 21px 0;
-	border-left: 1px solid #eaeaea;
-	background: #b5babd;
+	border-left: 1px solid grey;
+	background: w3-sand;
 	color: #fff;
 	font-weight: bold;
 	text-align: center;
@@ -126,9 +126,9 @@ div {
 
 .product td:nth-child(n+2) {
 	padding: 23px 0;
-	border-left: 1px solid #eaeaea;
-	border-bottom: 1px solid #eaeaea;
-	background: #fcfcfb;
+	border-left: 1px solid white;
+	border-bottom: 1px solid white;
+	background: w3-sand;
 	text-align: center;
 }
 
@@ -138,16 +138,16 @@ div {
 
 th {
 	padding: 21px 0;
-	border-left: 1px solid #eaeaea;
-	background: #b5babd;
-	color: #fff;
+	border-left: 1px solid white;
+	background: #ffe4e1;
+	color: black;
 	font-weight: bold;
 }
 
 td {
 	border-left: 1px solid #eaeaea;
 	border-bottom: 1px solid #eaeaea;
-	background: #fcfcfb;
+	background: w3-sand;
 }
 
 img {
@@ -177,7 +177,7 @@ img {
 	font-size: 15px;
 	margin-top: 10px;
 	margin-left: 0em;
-	background-color: #fdfdf8;
+	background-color: w3-sand;
 	display: flex;
 	justify-content: space-between;
 }
@@ -349,6 +349,28 @@ input.text {
 input[type="checkbox"] {
 	margin-right: 5px;
 }
+
+.head-title {
+		            margin-top: 40px;
+		            text-align: center;
+		        }
+
+                .head-title>span {
+		
+		            width: 100%;
+		            height: 100%;
+		            margin: auto;
+		            font-size: 32px;
+		            background: linear-gradient(to top, #ffe4e1 20%, transparent 40%);
+		        }
+		         .cont_title01 {
+		            margin-top: 20px;
+		            padding: 10px;
+		            font-size: 20px;
+		            line-height: 38px;
+		            font-weight: bold;
+		            text-align: left;
+		        }
 </style>
 
 
@@ -364,7 +386,9 @@ input[type="checkbox"] {
 
 
 	<div class="cont_title01 " style="width: 75%; margin: auto;">
-		<h3>주문작성/결제</h3>
+ 				<div class="head-title">
+                <span>주문작성 & 결제</span>
+                <br><br><br>
 		<div class="modal">asdasdsda</div>
 		<form method="post" name="form">
 
@@ -443,7 +467,11 @@ input[type="checkbox"] {
 			<!--  -->
 			<!--  -->
 			<!--  -->
-			<h3 class="cont_title01">주문하시는분 (보내시는분)</h3>
+			<br>
+			<div class="head-title right">
+			<span>주문하시는분 (보내시는분)</span>
+			</div>
+			<br>
 			<table class="board_write">
 				<colgroup>
 					<col style="width: 175px">
@@ -557,8 +585,9 @@ input[type="checkbox"] {
 					<input type="submit" value="결제진행"
 						onclick="javascript: form.action='${pageContext.request.contextPath}/order/payment';" />
 				</div>
-			</div>
+			</div>			
 		</form>
+		</div>
 	</div>
 </body>
 

@@ -230,23 +230,21 @@
 					</div>
 
 
-					<br>
-					<div class="w3-half w3-padding-large btn-group">
-
-						<input type="submit"
-							class="btn btn-block btn-lg btn-outline-danger"
-							style="cursor: pointer; margin: 0px; background-color: white; - -bs-btn-padding-y: .25rem; margin-right: 1rem;"
-							value="장바구니"
-							onclick="javascript: form.action='${pageContext.request.contextPath}/cart/cartPro/';" />
-
-						<input type="submit"
-							class="btn btn-block btn-lg btn-outline-danger"
-							style="cursor: pointer; margin: 0px; background-color: #F9BFAB; - -bs-btn-padding-y: .25rem; margin-right: 1rem;" value="결제"
+					<br>	
+					<div class="w3-half w3-padding-large btn-group right">
+                        <div style="display: flex">
+							
+                            <input type="submit" class="btn btn-block btn-lg btn-outline-danger" value="장바구니"
+                                style="width: 250px; margin-right: 30px;"
+                                onclick="javascript: form.action='${pageContext.request.contextPath}/cart/cartPro/';" />
+							
+                            <input type="submit" class="btn btn-block btn-lg btn-outline-danger" value="결제"
+                                style="width: 250px; margin-right: 30px;"
                                 onclick="javascript: form.action='${pageContext.request.contextPath}/cart/cartPro1/';" />
-
-
-
-					</div>
+								
+                        </div>
+                    </div>
+					
 				</div>
 			</div>
 		</div>
@@ -261,7 +259,7 @@
 				<div class="w3-container w3-content w3-center w3-padding-64"
 					style="max-width: 1400px">
 
-					<div id="navbar">
+					<div id="navbar a">
 						<a href="#productDetail">상세설명</a> <a href="#review">리뷰</a>
 					</div>
 
