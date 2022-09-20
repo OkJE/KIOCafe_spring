@@ -29,6 +29,7 @@
 					<th>제품번호</th>
 					<th>제품명</th>
 					<th>구매수량</th>
+					<th>개당가격</th>
 					<th>총가격</th>
 				</tr>
 			</tbody>
@@ -40,6 +41,7 @@
 						<td><span> ${c.dname } </span></td>
 						<td><span> ${c.dqty }</span></td>
 						<td><span> ${c.dprice}</span>원</td>
+						<td><span> ${c.dtotal}</span>원</td>
 					</tr>
 				</c:forEach>
 			</tbody>

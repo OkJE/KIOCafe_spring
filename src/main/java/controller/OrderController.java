@@ -53,40 +53,37 @@ public class OrderController {
 
 	@RequestMapping("myOrderList")
 	public String myOrderList() throws Exception {
-		String did = "1";
-		List<Order> list = cd.orderList(did);
+		String userId = (String) session.getAttribute("id");
+		List<Order> list = cd.orderList(userId);
 		m.addAttribute("list", list);
 		return "/order/myorder";
 	}
 
 	@RequestMapping("myOrderListInfo")
 	public String myOrderListInfo() throws Exception {
-		System.out.println("myOrderListInfo");
-		String did = "1";
-		List<Object> list = cd.myOrderListInfo(did);
+		String userId = (String) session.getAttribute("id");
+		List<Object> list = cd.myOrderListInfo(userId);
 		m.addAttribute("list", list);
 		return "/order/myOrderListInfo";
 	}
 
 	@RequestMapping("myOrderDetailList")
 	public String myOrderDetailList(Order order, String orderId) throws Exception {
-		String did = "1";
-		List<Order> list = cd.myOrderDetailList(did, orderId);
+		String userId = (String) session.getAttribute("id");
+		List<Order> list = cd.myOrderDetailList(userId, orderId);
 		m.addAttribute("list", list);
 		return "/order/myOrderDetailList";
 	}
 
-	
 	@RequestMapping("payment")
 	public String payment(Order order, String[] dnum, String[] dname, String[] dqty, String[] dprice, String[] dtotal)
 			throws Exception {
 		String msg = "";
 		String url = "";
-		String userId = "1";
+		String userId = (String) session.getAttribute("id");
 		cd.selectOrderId();
 
-		cd.orderInsert(dnum, dname, dqty, dprice, dtotal, order);
-//
+		cd.orderInsert(dnum, dname, dqty, dprice, dtotal, order,userId);
 		cd.modifyDqty(userId, dnum, dqty);
 		int confirm = cd.deleteCart(userId, dnum);
 

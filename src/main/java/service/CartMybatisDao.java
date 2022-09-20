@@ -37,12 +37,13 @@ public class CartMybatisDao {
 	}
 
 	public int cartInsert(Cart cart) {
+	
 		int num = session.insert(ns + "cartInsert", cart);
 		return num;
 	}
 
-	public Cart cartOne(int dnum) {
-		Cart cart = session.selectOne(ns + "cartOne", dnum);
+	public Cart cartOne(Cart cart) {
+		 cart = session.selectOne(ns + "cartOne", cart);
 
 		return cart;
 	}
@@ -55,20 +56,22 @@ public class CartMybatisDao {
 		}
 		map.put("userid", userId);
 		map.put("didlist", didlist);
-
+System.out.println(map.get("userid"));
 		session.delete(ns + "cartDelete", map);
 	}
 
 //	장바구니 물품 체크 후 -> 결제
 	public void cartUpdate1(String userId, String[] dnum, ArrayList<String> dqtyArrList,
 			ArrayList<String> dtotalArrList) {
-
+		
 		for (int i = 0; i < dnum.length; i++) {
 			map.clear();
+			map.put("userid", userId);
 			map.put("dnum", dnum[i]);
 			map.put("dqty", Integer.parseInt(dqtyArrList.get(i)));
 			map.put("dtotal", Integer.parseInt(dtotalArrList.get(i)));
-			session.update(ns + "cartUpdate1", map);
+			
+		int confirm = session.update(ns + "cartUpdate1", map);
 		}
 	}
 
@@ -99,9 +102,8 @@ public class CartMybatisDao {
 			map.put("dqty", dqty[i]);
 			session.update(ns + "modifyDqty", map);
 		}
-		
+
 		return 1;
 	}
-
 
 } // end class

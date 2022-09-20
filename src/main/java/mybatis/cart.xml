@@ -6,7 +6,7 @@
 
 	<select id="cartOne" resultType="cart">
 		select * from kiocafe_cart where
-		dnum = #{dnum}
+		dnum = #{dnum} and did = #{did}
 
 	</select>
 
@@ -46,14 +46,14 @@
 		update kiocafe_cart set
 		dqty = #{dqty}, dtotal = #{dtotal}, dpay = 1
 		where
-		did =1 and
+		did =#{userid} and
 		dnum
 		=#{dnum}
 	</update>
 
 	<update id="cartUpdate2" parameterType="hashmap">
 		update kiocafe_cart set dpay = 2
-		where did =1 and
+		where did =#{userid} and
 		<foreach collection="dnumlist" item="item" index="index"
 			separator=" or" open="" close=" ">
 			dnum = #{item}
@@ -62,7 +62,7 @@
 
 	<update id="cancleOrder" parameterType="hashmap">
 		update kiocafe_cart set dpay = 0
-		where did =1 and
+		where did =#{userid} and
 		<foreach collection="dnums" item="item" index="index"
 			separator=" or" open="" close=" ">
 			dnum = #{item}

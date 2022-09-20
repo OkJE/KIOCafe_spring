@@ -21,14 +21,14 @@
 
 	<select id="myOrderDetailList" parameterType="hashmap"
 		resultType="order">
-		select * from kiocafe_order where did = 1 and orderid = #{orderId}
+		select * from kiocafe_order where did = #{did} and orderid = #{orderId}
 	</select>
 
 	<select id="myOrderListInfo" parameterType="map"
 		resultType="java.util.LinkedHashMap">
 		select count(orderID) as count, orderdate as
 		orderdate,max(dname) as DNAME, sum(dqty) as dqty, sum(dprice) as
-		dprice, orderid from kiocafe_order group by orderid,orderdate order by
+		dprice, orderid from kiocafe_order where did=#{did} group by orderid,orderdate order by
 		orderid desc
 	</select>
 

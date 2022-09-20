@@ -23,18 +23,17 @@ public class OrderMybatisDao {
 	private Map map = new HashMap<>();
 	private HashMap hashMap = new HashMap<>();
 
-	public int orderInsert(String[] dnum, String[] dname, String[] dqty, String[] dprice, String[] dtotal,
-			Order order) {
+	public int orderInsert(String[] dnum, String[] dname, String[] dqty, String[] dprice, String[] dtotal, Order order,
+			String userId) {
 		System.out.println(order.getDaddress());
 		for (int i = 0; i < dnum.length; i++) {
-//		System.out.println(	dnum[i] + " " + dname[i] + " " + dqty[i] + " " + dprice[i]);
 			map.clear();
 			map.put("dnum", dnum[i]);
 			map.put("dname", dname[i]);
 			map.put("dqty", dqty[i]);
 			map.put("dprice", dprice[i]);
 			map.put("dtotal", dtotal[i]);
-			map.put("did", "1");
+			map.put("did", userId);
 			map.put("daddress", order.getDaddress());
 			map.put("dpaym", order.getDpaym());
 			int num = session.insert(ns + "orderInsert", map);
@@ -60,12 +59,10 @@ public class OrderMybatisDao {
 		map.put("userid", userId);
 		map.put("dnums", dnums);
 		for (String string : dnums) {
-			System.out.println("string :  " + string);
 		}
 		int confirm = session.update(ns + "deleteCart", map);
 		return confirm;
 	}
- 
 
 	public List<Order> orderList(String did) {
 		map.put("did", did);
@@ -74,7 +71,6 @@ public class OrderMybatisDao {
 	}
 
 	public List<Object> myOrderListInfo(String did) {
-		System.out.println("dao myOrderListInfo");
 		map.put("did", did);
 		List<Object> list = session.selectList(ns + "myOrderListInfo", map);
 
@@ -82,8 +78,6 @@ public class OrderMybatisDao {
 	}
 
 	public List<Order> myOrderDetailList(String did, String orderId) {
-		System.out.println("dao myOrderListInfo");
-		System.out.println(orderId);
 		hashMap.put("did", did);
 		hashMap.put("orderId", orderId);
 		List<Order> list = session.selectList(ns + "myOrderDetailList", hashMap);
@@ -92,7 +86,6 @@ public class OrderMybatisDao {
 
 	public void selectOrderId() {
 		int orderId = session.selectOne(ns + "selectOrderId");
-		System.out.println(orderId + " ============== ");
 	}
 
 } // end class
