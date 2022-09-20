@@ -231,7 +231,7 @@ img {
 .board_write th {
 	color: black;
 	padding: 15px 35px;
-	background-color: #E5E4E4;
+	background-color: #FFEAEA ;
 }
 
 input.text {
@@ -468,10 +468,11 @@ input[type="checkbox"] {
 			<!--  -->
 			<!--  -->
 			<br>
-			<div class="head-title right">
-			<span>주문하시는분 (보내시는분)</span>
-			</div>
-			<br>
+			<div class="head-title" style="text-align: left;">
+
+                    <span style="font-size: 25px;">주문하시는분 (보내시는분)</span>
+                </div>
+			
 			<table class="board_write">
 				<colgroup>
 					<col style="width: 175px">
@@ -494,11 +495,12 @@ input[type="checkbox"] {
 			<!--  -->
 			<!--  -->
 			<!--  -->
-			<h3 class="cont_title01">
-				받으시는분 (상품받으실분) <input type="checkbox" style="margin: 5px;"><span
-					style="font-size: 14px;">주문자 정보와 동일</span>
-			</h3>
-
+			<div class="head-title" style="text-align: left;">
+              <span style="font-size: 25px;">받으시는분 (상품받으실분)</span>
+				 <input type="checkbox" style="margin: 5px;">
+				<span style="font-size: 14px;">주문자 정보와 동일</span>
+			   
+                </div>
 			<table class="board_write">
 				<colgroup>
 					<col style="width: 172px">
@@ -548,7 +550,10 @@ input[type="checkbox"] {
 			<!--  -->
 			<!--  -->
 			<!--  -->
-			<h3 class="cont_title01">결제선택</h3>
+			<div class="head-title" style="text-align: left;">
+
+                    <span style="font-size: 25px;">결제선택</span>
+                </div>
 			<table class="board_write ">
 				<colgroup>
 					<col style="width: 172px">

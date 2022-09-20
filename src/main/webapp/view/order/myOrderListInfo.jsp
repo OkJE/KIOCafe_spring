@@ -12,6 +12,30 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>Insert title here</title>
+<style>
+.head-title {
+		            margin-top: 40px;
+		            text-align: center;
+		        }
+
+                .head-title>span {
+		
+		            width: 100%;
+		            height: 100%;
+		            margin: auto;
+		            font-size: 32px;
+		            background: linear-gradient(to top, #ffe4e1 20%, transparent 40%);
+		        }
+		         .cont_title01 {
+		            margin-top: 20px;
+		            padding: 10px;
+		            font-size: 20px;
+		            line-height: 38px;
+		            font-weight: bold;
+		            text-align: left;
+		        }
+
+</style>
 <script>
  
 </script>
@@ -19,8 +43,11 @@
 
 <body>
 	<br>
-	<div class="w3-container w3-center" style="width: 90%; margin: auto;">
-		<h2>주문현황</h2>
+	  <div class="cont_title01 " style="width: 75%; margin: auto;">
+ <div class="head-title">
+                <span>주문현황</span>
+                <br>     <br>
+          		</div>
 
 
 		<table class="w3-table w3-bordered w3-hoverable">
