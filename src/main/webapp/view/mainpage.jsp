@@ -245,9 +245,8 @@
                         <div class="swiper-slide">
                             <a href="${pageContext.request.contextPath}/category/bakeryMain">
                                 <div class="w3-display-container">
-                                    <img src="<%=request.getContextPath()%>/view/bakery_main_img.jpg"
-                                        alt="Lights" style=" width: 100%; height: 70%;">
-                                    <div class="w3-padding w3-display-middle w3-white">Bakery</div>
+                                    <img src="<%=request.getContextPath()%>/view/bakery_main_img.png"
+                                        alt="Lights" style=" width: 100%; height: 50%;">
                                 </div>
                             </a>
                         </div>
@@ -255,9 +254,8 @@
                             <a href="${pageContext.request.contextPath}/category/drinkMain">
                         
                             <div class="w3-display-container">
-                                <img src="<%=request.getContextPath()%>/view/drink_main_img.jpg"
-                                    alt="Lights" style=" width: 100%; height: 70%;">
-                                <div class="w3-padding w3-display-topmiddle w3-white">Drink</div>
+                                <img src="<%=request.getContextPath()%>/view/drink_main_img.png"
+                                    alt="Lights" style=" width: 100%; height: 50%;">
                             </div>
                                 </a>
                         </div>
