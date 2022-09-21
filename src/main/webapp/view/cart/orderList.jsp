@@ -242,8 +242,8 @@
                     border: 0px;
                     width: 120px;
                     height: 35px;
-                    background-color: #bdc2c7;
-                    color: white;
+                    background-color: #ffeaed;
+                    color: black;
                 }
 
                 .order-div1 {
@@ -453,7 +453,7 @@
                         <!--  -->
                         <!--  -->
                         <br>
-                        <div class="head-title" style="text-align: left;">
+                        <div class="head-title" style="text-align: left; margin-bottom: 10px;">
 
                             <span style="font-size: 25px;">주문하시는분 (보내시는분)</span>
                         </div>
@@ -478,7 +478,7 @@
                         <!--  -->
                         <!--  -->
                         <!--  -->
-                        <div class="head-title" style="text-align: left;">
+                        <div class="head-title" style="text-align: left; margin-bottom: 10px;">
                             <span style="font-size: 25px;">받으시는분 (상품받으실분)</span> <input type="checkbox"
                                 style="margin: 5px;"> <span style="font-size: 14px;">주문자 정보와 동일</span>
 
@@ -531,10 +531,11 @@
                         <!--  -->
                         <!--  -->
                         <!--  -->
-                        <div class="head-title" style="text-align: left;">
+                        <div class="head-title" style="text-align: left; margin-bottom: 10px;">
 
                             <span style="font-size: 25px;">결제선택</span>
                         </div>
+                      
                         <table class="board_write ">
                             <colgroup>
                                 <col style="width: 172px">
@@ -566,11 +567,12 @@
                         </div>
                         <div class="center" style="margin: 30px;">
                             <div>
+                            	<input class="foot_btn" style="margin-bottom: 10px;" type="submit" value="결제진행"
+                                    onclick="javascript: form.action='${pageContext.request.contextPath}/order/payment';" />
+                            
                                 <input class="foot_btn" type="submit" value="주문취소"
                                     onclick="javascript: form.action='${pageContext.request.contextPath}/cart/cancleOrder';" />
-                                <input class="foot_btn" type="submit" " value="결제진행"
-                                    onclick="javascript: form.action='${pageContext.request.contextPath}/order/payment';" />
-
+                                
                             </div>
                         </div>
                     </form>
