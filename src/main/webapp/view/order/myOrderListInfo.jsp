@@ -14,40 +14,42 @@
 <title>Insert title here</title>
 <style>
 .head-title {
-		            margin-top: 40px;
-		            text-align: center;
-		        }
+	margin-top: 40px;
+	text-align: center;
+}
 
-                .head-title>span {
-		
-		            width: 100%;
-		            height: 100%;
-		            margin: auto;
-		            font-size: 32px;
-		            background: linear-gradient(to top, #ffe4e1 20%, transparent 40%);
-		        }
-		         .cont_title01 {
-		            margin-top: 20px;
-		            padding: 10px;
-		            font-size: 20px;
-		            line-height: 38px;
-		            font-weight: bold;
-		            text-align: left;
-		        }
+.head-title>span {
+	width: 100%;
+	height: 100%;
+	margin: auto;
+	font-size: 32px;
+	background: linear-gradient(to top, #ffe4e1 20%, transparent 40%);
+}
 
+.cont_title01 {
+	margin-top: 20px;
+	padding: 10px;
+	font-size: 20px;
+	line-height: 38px;
+	font-weight: bold;
+	text-align: left;
+}
+
+tr {
+	border-bottom: 1px solid #ffe4e1;
+}
 </style>
 <script>
- 
+	
 </script>
 </head>
 
 <body>
 	<br>
-	  <div class="cont_title01 " style="width: 75%; margin: auto;">
- <div class="head-title">
-                <span>주문현황</span>
-                <br>     <br>
-          		</div>
+	<div class="cont_title01 " style="width: 75%; margin: auto;">
+		<div class="head-title">
+			<span>주문현황</span> <br> <br>
+		</div>
 
 
 		<table class="w3-table w3-bordered w3-hoverable">

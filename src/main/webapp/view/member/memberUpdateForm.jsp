@@ -69,7 +69,7 @@
 				$('#inputId').focus();
 				return false;
 
-			}  else if ($('#inputName').val() == "") {
+			} else if ($('#inputName').val() == "") {
 				alert("이름을 입력해주세요");
 				$('#inputName').focus();
 				return false;
@@ -196,8 +196,21 @@ input.text {
 	border: 0px;
 	width: 120px;
 	height: 35px;
-	background-color: #92979b;
+	background-color: #bdc2c7;
 	color: white;
+}
+
+.foot_btn {
+	margin-top: 20px;
+	padding: 0 15 0 15;
+	font-size: 17px;
+	font-weight: bold;
+	line-height: 38px;
+	text-align: center;
+	margin-right: 15px;
+	border: none;
+	background-color: #ffdddd;
+	min-width: 98px;
 }
 </style>
 
@@ -287,7 +300,7 @@ input.text {
 			<!--  -->
 
 			<div class="center" style="margin-top: 40px;">
-				<button class="btn1 w3-pale-red" type="submit" style="width: 140px;"
+				<button class="foot_btn " type="submit" style="width: 140px;"
 					id="JBtn">회원정보수정</button>
 			</div>
 		</div>

@@ -161,17 +161,15 @@
 						let commaPrice = "";
 						for (let i = 0; i < $('[name="did"]').length; i++) {
 							getDid = $('[name="did"]').eq(i).attr("id");
-							
-							getMulPrice = $("#viewPriceMul" + getDid).text();							
-							commaMulPrice  = numberWithCommas(getMulPrice);
-							$("#viewPriceMul" + getDid).text(commaMulPrice );
-							
-							
-							getPrice  = $("#price" + getDid).text();
-							commaPrice  = numberWithCommas(getPrice);
+
+							getMulPrice = $("#viewPriceMul" + getDid).text();
+							commaMulPrice = numberWithCommas(getMulPrice);
+							$("#viewPriceMul" + getDid).text(commaMulPrice);
+
+							getPrice = $("#price" + getDid).text();
+							commaPrice = numberWithCommas(getPrice);
 							$("#price1" + getDid).text(commaPrice);
-						 
-							
+
 						}
 						let totalPrice = document.getElementsByName("0");
 						let priceSumResult = 0;
@@ -185,7 +183,7 @@
 						$('.plusA-btn')
 								.click(
 										function() {
-							
+
 											;
 											// var id = $('#inputId').val(); //id값이 "id"인 입력란의 값을 저장
 											let clickBtnId = $(this).attr("id");
@@ -236,28 +234,28 @@
 </script>
 <style type="text/css">
 .head-title {
-		            margin-top: 40px;
-		            text-align: center;
-		        }
+	margin-top: 40px;
+	text-align: center;
+}
 
-                .head-title>span {
-		
-		            width: 100%;
-		            height: 100%;
-		            margin: auto;
-		            font-size: 32px;
-		            background: linear-gradient(to top, #ffe4e1 20%, transparent 40%);
-		        }
-		         .cont_title01 {
-		            margin-top: 20px;
-		            padding: 10px;
-		            font-size: 20px;
-		            line-height: 38px;
-		            font-weight: bold;
-		            text-align: left;
-		        }
+.head-title>span {
+	width: 100%;
+	height: 100%;
+	margin: auto;
+	font-size: 32px;
+	background: linear-gradient(to top, #ffe4e1 20%, transparent 40%);
+}
 
-.productATotalPrice{
+.cont_title01 {
+	margin-top: 20px;
+	padding: 10px;
+	font-size: 20px;
+	line-height: 38px;
+	font-weight: bold;
+	text-align: left;
+}
+
+.productATotalPrice {
 	display: none;
 }
 
@@ -271,8 +269,8 @@ table {
 }
 
 tr {
-	border-top: 1px solid #fec5e5;;
-	border-bottom: 1px solid #fec5e5;;
+	border-top: 1px solid #ffe4e1;
+	border-bottom: 1px solid #ffe4e1;
 }
 
 th, td {
@@ -317,27 +315,36 @@ img {
 
 /*  */
 .pay-div {
-	width: 80%;
+	width: 70%;
 	margin: auto;
 	display: flex;
 	justify-content: end;
-	border: 1px black solid;
+	border: 1px #e988b4 solid;
 	border-radius: 6px;
 	margin-top: 45px;
+	padding-top: 15px;
+	padding-bottom: 10px;
 }
 
 .pay-div>h4 {
 	margin-right: 10px;
 }
 
-.pay-btn {
-	margin: 10px;
+.foot_btn {
+	padding: 0 15 0 15;
+	font-size: 17px;
+	font-weight: bold;
+	line-height: 38px;
+	text-align: center;
+	margin-right: 15px;
+	border: none;
+	background-color: #ffdddd
 }
+ 
 
 button {
 	background: #fcfcfb;
 }
-
 </style>
 
 </head>
@@ -345,131 +352,121 @@ button {
 <body>
 	<form method="post" name="form">
 
-				<div class="cont_title01 " style="width: 75%; margin: auto;">
- 				<div class="head-title">
-                <span>빵바구니</span>
-                <br>     <br>
-          		</div>
+		<div class="cont_title01 " style="width: 75%; margin: auto;">
+			<div class="head-title">
+				<span>빵바구니</span> <br> <br>
+			</div>
 
-				<div style="display: flex; justify-content: space-between;">
+			<div style="display: flex; justify-content: space-between;">
 
-					<!-- <div>
+				<!-- <div>
                     <span>전체선택</span> <input type="checkbox" id="allCheck"
                         class="w3-check" onclick="checkAll()">
                 </div> -->
 
-				</div>
-				<table class="w3-table " style="width: 95%; margin-left: 30px;">
-					<!--  -->
-					<thead>
-						<tr>
-							<th scope="col"
-								style="text-align: center; vertical-align: middle;">
-								<div>
-									<span>전체선택</span> <input type="checkbox" id="allCheck"
-										class="w3-check" onclick="checkAll()">
-								</div>
-							</th>
-							<th scope="col"
-								style="text-align: center; vertical-align: middle;">이미지</th>
-							<th scope="col"
-								style="text-align: center; vertical-align: middle;">제품코드</th>
-							<th scope="col"
-								style="text-align: center; vertical-align: middle;">제품명</th>
-							<th scope="col"
-								style="text-align: center; vertical-align: middle;">개당가격</th>
-							<th scope="col"
-								style="text-align: center; vertical-align: middle;">구매수량</th>
-							<th scope="col"
-								style="text-align: center; vertical-align: middle;">합계</th>
-						</tr>
-					</thead>
-					<!--  -->
-					<tbody style="text-align: center; vertical-align: middle;">
-						<c:forEach var="c" items="${list }">
-
-							<tr>
-								<td style="text-align: center; vertical-align: middle;"><span>
-										<input type="checkbox" class="w3-check" id="${c.dnum}"
-										value="" name="did" onclick="checkBoxValueOnOff(this.id)">
-								</span></td>
-
-								<td style="text-align: center; vertical-align: middle;"><img
-									src="<%=request.getContextPath()%>/view/cart/img/${c.dpicture}"
-									alt=""></td>
-
-
-								<td style="text-align: center; vertical-align: middle;"><span>${c.dnum }</span>
-								</td>
-								<td style="text-align: center; vertical-align: middle;"><span>${c.dname }</span>
-								</td>
-
-
-								<td style="text-align: center; vertical-align: middle;">
-								<span class="price"
-									id="price${c.dnum}">${c.dprice }</span>
-									
-										<span
-									id="price1${c.dnum}">${c.dprice }</span>
-									</td>
-								<!--  -->
-
-
-								<td class="btn-td"
-									style="text-align: center; vertical-align: middle;"><span
-									style="text-align: center; vertical-align: middle;">
-										<button type="button"
-											class="w3-button w3-white minusA-btn  count-btn"
-											id="minus${c.dnum}" onclick="getClickIdFunc(this.id)"
-											style="border: 1px black solid; border-radius: 8px;">
-											<span>-</span>
-										</button> 
-										<span class="count productA-cnt-p" style="text-align: center"
-										id="qtx${c.dnum }">${c.dqty }</span>
-
-										<input type="hidden"
-										id="qtxInput${c.dnum}" value="" name="dqty">
-
-										<button type="button"
-											class="w3-button w3-white plusA-btn   count-btn"
-											id="plus${c.dnum}" onclick="getClickIdFunc(this.id)"
-											style="border: 1px black solid; border-radius: 8px;">
-											<span>+</span>
-										</button>
-								</span></td>
-								<!--  -->
-								<td style="text-align: center; vertical-align: middle;"><span
-									class="productATotalPrice" id="priceMul${c.dnum}">${c.dtotal}</span>
-									<span class="productATotalPrice1" id="viewPriceMul${c.dnum}"
-									name="viewPriceMul">${c.dtotal}</span> <input type="hidden"
-									id="dtotalInput${c.dnum}" value="" name="dtotal"></td>
-
-							</tr>
-
-						</c:forEach>
-					</tbody>
-				</table>
-
 			</div>
+			<table class="w3-table " style="width: 95%; margin-left: 30px;">
+				<!--  -->
+				<thead>
+					<tr>
+						<th scope="col"
+							style="text-align: center; vertical-align: middle;">
+							<div>
+								<span>전체선택</span> <input type="checkbox" id="allCheck"
+									class="w3-check" onclick="checkAll()">
+							</div>
+						</th>
+						<th scope="col"
+							style="text-align: center; vertical-align: middle;">이미지</th>
+						<th scope="col"
+							style="text-align: center; vertical-align: middle;">제품코드</th>
+						<th scope="col"
+							style="text-align: center; vertical-align: middle;">제품명</th>
+						<th scope="col"
+							style="text-align: center; vertical-align: middle;">개당가격</th>
+						<th scope="col"
+							style="text-align: center; vertical-align: middle;">구매수량</th>
+						<th scope="col"
+							style="text-align: center; vertical-align: middle;">합계</th>
+					</tr>
+				</thead>
+				<!--  -->
+				<tbody style="text-align: center; vertical-align: middle;">
+					<c:forEach var="c" items="${list }">
+
+						<tr>
+							<td style="text-align: center; vertical-align: middle;"><span>
+									<input type="checkbox" class="w3-check" id="${c.dnum}" value=""
+									name="did" onclick="checkBoxValueOnOff(this.id)">
+							</span></td>
+
+							<td style="text-align: center; vertical-align: middle;"><img
+								src="<%=request.getContextPath()%>/view/cart/img/${c.dpicture}"
+								alt=""></td>
+
+
+							<td style="text-align: center; vertical-align: middle;"><span>${c.dnum }</span>
+							</td>
+							<td style="text-align: center; vertical-align: middle;"><span>${c.dname }</span>
+							</td>
+
+
+							<td style="text-align: center; vertical-align: middle;"><span
+								class="price" id="price${c.dnum}">${c.dprice }</span> <span
+								id="price1${c.dnum}">${c.dprice }</span></td>
+							<!--  -->
+
+
+							<td class="btn-td"
+								style="text-align: center; vertical-align: middle;"><span
+								style="text-align: center; vertical-align: middle;">
+									<button type="button"
+										class="w3-button w3-white minusA-btn  count-btn"
+										id="minus${c.dnum}" onclick="getClickIdFunc(this.id)"
+										style="border: 1px black solid; border-radius: 8px;">
+										<span>-</span>
+									</button> <span class="count productA-cnt-p" style="text-align: center"
+									id="qtx${c.dnum }">${c.dqty }</span> <input type="hidden"
+									id="qtxInput${c.dnum}" value="" name="dqty">
+
+									<button type="button"
+										class="w3-button w3-white plusA-btn   count-btn"
+										id="plus${c.dnum}" onclick="getClickIdFunc(this.id)"
+										style="border: 1px black solid; border-radius: 8px;">
+										<span>+</span>
+									</button>
+							</span></td>
+							<!--  -->
+							<td style="text-align: center; vertical-align: middle;"><span
+								class="productATotalPrice" id="priceMul${c.dnum}">${c.dtotal}</span>
+								<span class="productATotalPrice1" id="viewPriceMul${c.dnum}"
+								name="viewPriceMul">${c.dtotal}</span> <input type="hidden"
+								id="dtotalInput${c.dnum}" value="" name="dtotal"></td>
+
+						</tr>
+
+					</c:forEach>
+				</tbody>
+			</table>
+
+		</div>
 		</div>
 		<div>
 			<div class="pay-div">
 				<h4 class="pay-p allPrice"
-					style="font-size: 25px; font-weight: 500;">
+					style="font-size: 25px; margin-top: 5px; font-weight: 400;">
 					상품금액 : <span id="allPrice"
-						style="font-size: 25px; font-weight: 500;">0</span>
+						style="font-size: 25px; font-weight: 400;">0</span>
 				</h4>
 				<div style="text-align: center; vertical-align: middle;">
 
 					<input type="hidden" id="${c.dpay }" value="0" name="dpay">
 
 
-					<input class="pay-btn" type="submit" value="삭제"
-						style="background: #fec5e5; border: none;"
+					<input class="foot_btn w3-right " type="submit" value="삭제"
 						onclick="javascript: form.action='${pageContext.request.contextPath}/cart/cartDelete';" />
 
-					<input class="pay-btn" type="submit" value="결제"
-						style="background: #fec5e5; border: none;"
+					<input class="foot_btn " type="submit" value="결제"
 						onclick="javascript: form.action='${pageContext.request.contextPath}/cart/cartUpdatePro';" />
 
 
@@ -477,7 +474,6 @@ button {
 			</div>
 
 		</div>
-
 
 
 	</form>

@@ -12,7 +12,11 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>Insert title here</title>
-
+<style type="text/css">
+tr {
+	border-bottom: 1px solid #ffe4e1;
+}
+</style>
 <script>
 	history.replaceState({}, numm, location.pathname);
 </script>
@@ -35,7 +39,7 @@
 			</tbody>
 			<tbody>
 				<c:forEach var="c" items="${list}">
-				
+
 					<tr>
 						<td><span> ${c.dnum}</span></td>
 						<td><span> ${c.dname } </span></td>

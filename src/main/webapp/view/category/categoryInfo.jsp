@@ -9,6 +9,28 @@
 <title>Insert title here</title>
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+.head-title>span {
+	width: 100%;
+	height: 100%;
+	margin: auto;
+	font-size: 32px;
+	background: linear-gradient(to top, #ffe4e1 20%, transparent 40%);
+}
+
+.foot_abtn {
+	margin-top: 20px;
+	padding: 9 15 9 15;
+	font-size: 17px;
+	font-weight: bold;
+	line-height: 38px;
+	text-align: center;
+	margin-right: 15px;
+	border: none;
+	background-color: #ffdddd;
+	text-decoration: none;
+}
+</style>
 <script>
 	
 </script>
@@ -19,7 +41,9 @@
 	<br>
 	<br>
 	<br>
-	<h3 class="w3-center">제품 정보</h3>
+	<div class="head-title w3-center">
+		<span>제품 정보</span>
+	</div>
 	<br>
 	<br>
 
@@ -30,10 +54,10 @@
 
 	</div>
 
-	<table class="w3-center"
+	<table class="w3-center w3-margin-bottom"
 		style="background-color: #fff; color: #000; width: 700px; margin: auto;">
 		<tbody>
-
+			<tr>
 				<td>상품코드</td>
 				<td>
 					<p>${category.cnum}</p>
@@ -41,9 +65,9 @@
 			</tr>
 			<tr>
 				<td>상품분류</td>
-				<td><c:if test="${category.cmenu==1}">
+				<td><c:if test="${category.cmenu==0}">
 					디저트
-				</c:if> <c:if test="${category.cmenu==2}">
+				</c:if> <c:if test="${category.cmenu==1}">
 					음료
 				</c:if></td>
 			</tr>
@@ -72,16 +96,18 @@
 				</td>
 			</tr>
 		</tbody>
- 
+
 
 	</table>
-	<a class="w3-button w3-grey w3-right"
-			href="${pageContext.request.contextPath}/category/categoryUpdateForm?cnum=${category.cnum}">게시판수정</a> 
-	<a class="w3-button w3-grey w3-right"
-			href="${pageContext.request.contextPath}/category/categoryDeletePro?cnum=${category.cnum}">게시판삭제</a> 
+	<div class="w3-center w3-margin-top">
+		<a class="foot_abtn   w3-margin-right"
+			style="background-color: #ffdddd;"
+			href="${pageContext.request.contextPath}/category/categoryUpdateForm?cnum=${category.cnum}">게시판수정</a>
+		<a class="foot_abtn  " style="background-color: #ffdddd;"
+			href="${pageContext.request.contextPath}/category/categoryDeletePro?cnum=${category.cnum}">게시판삭제</a>
+	</div>
 
-	
-	
+
 </body>
 
 </html>
