@@ -33,7 +33,7 @@ body {
 
 .swiper {
 	width: 100%;
-	height: 100%;
+	height: 80%;
 }
 
 .swiper-slide {
@@ -214,9 +214,6 @@ td>img {
 </head>
 
 <body>
-	<br>
-	<br>
-
 
 	<div class="cont_title01 " style="width: 75%; margin: auto;">
 		<div id="wrapper">
@@ -232,7 +229,7 @@ td>img {
 							<div class="w3-display-container">
 								<img
 									src="<%=request.getContextPath()%>/view/bakery_main_img.png"
-									alt="Lights" style="width: 100%; height: 50%;">
+									alt="Lights" style="width: 100%; height: 80%;">
 							</div>
 						</a>
 					</div>
@@ -241,7 +238,7 @@ td>img {
 
 							<div class="w3-display-container">
 								<img src="<%=request.getContextPath()%>/view/drink_main_img.png"
-									alt="Lights" style="width: 100%; height: 50%;">
+									alt="Lights" style="width: 100%; height: 80%;">
 							</div>
 						</a>
 					</div>
