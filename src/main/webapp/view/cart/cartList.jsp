@@ -319,7 +319,7 @@ img {
 	margin: auto;
 	display: flex;
 	justify-content: end;
-	border: 1px #e988b4 solid;
+	border: 2px #ffc0cb solid;
 	border-radius: 6px;
 	margin-top: 45px;
 	padding-top: 15px;

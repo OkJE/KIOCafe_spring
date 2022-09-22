@@ -229,7 +229,7 @@ input.text {
 	width: 120px;
 	height: 35px;
 	background-color: #92979b;
-	color: white;
+	color: black;
 }
 
 .foot_btn {
@@ -273,7 +273,9 @@ input.text {
 
 				<tbody>
 
-					<p class="title">필수항목</p>
+					<div class="head-title" style="text-align: left; margin-bottom: 10px;">
+				<span style="font-size: 25px;">필수항목</span>
+			</div>
 					<tr>
 						<th scope="row">아이디</th>
 						<td style="display: flex;"><input type="text"
@@ -309,7 +311,7 @@ input.text {
 							<div>
 								<input type="text" id="addressInput1" class="text"
 									name="address" style="width: 350px;"> <input
-									type="button" style="background-color: #bdc2c7;" class="btn1"
+									type="button" style="background-color: #ffeaed;" class="btn1"
 									onclick="sample4_execDaumPostcode()" value="우편번호찾기"></input>
 							</div>
 
@@ -330,7 +332,9 @@ input.text {
 					<col>
 				</colgroup>
 				<tbody>
-					<p class="title">선택항목</p>
+					<div class="head-title" style="text-align: left; margin-bottom: 10px;">
+				<span style="font-size: 25px;">선택항목</span>
+			</div>
 					<!--    <tr>
                     <th scope="row">생년월일</th>
                     <td><input type="text" class="text" name="birthday" style="width:200px;">
@@ -354,8 +358,8 @@ input.text {
 			<!--  -->
 			<!--  -->
 
-			<div class="center " style="margin-top: 40px;">
-				<button class="foot_btn w3-pale-red" type="submit" id="JBtn">가입</button>
+			<div class="center " style="margin-top: 40px; ">
+				<button class="foot_btn" style="background-color: #ffeaed;" type="submit" id="JBtn">가입</button>
 			</div>
 
 		</div>

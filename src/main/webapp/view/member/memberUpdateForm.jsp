@@ -133,7 +133,7 @@ th {
 td {
 	border-left: 1px solid #eaeaea;
 	border-bottom: 1px solid #eaeaea;
-	background: #fcfcfb;
+	background: sand;
 }
 
 .head-title {
@@ -171,7 +171,7 @@ td {
 .board_write th {
 	color: black;
 	padding: 15px 35px;
-	background-color: #E5E4E4;
+	background-color: #ffeaed;
 }
 
 input.text {
@@ -196,8 +196,8 @@ input.text {
 	border: 0px;
 	width: 120px;
 	height: 35px;
-	background-color: #bdc2c7;
-	color: white;
+	background-color: #ffeaed;
+	color: black;
 }
 
 .foot_btn {
@@ -209,7 +209,7 @@ input.text {
 	text-align: center;
 	margin-right: 15px;
 	border: none;
-	background-color: #ffdddd;
+	background-color: #ffeaed;
 	min-width: 98px;
 }
 </style>
@@ -239,7 +239,9 @@ input.text {
 
 				<tbody>
 
-					<p class="title">필수항목</p>
+					<div class="head-title" style="text-align: left; margin-bottom: 10px;">
+				<span style="font-size: 25px;">필수항목</span>
+			</div>
 					<tr>
 						<th scope="row">아이디</th>
 						<td style="display: flex;"><input type="text"
