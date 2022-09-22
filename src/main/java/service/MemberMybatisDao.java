@@ -33,7 +33,7 @@ public class MemberMybatisDao {
 	}
 
 	public int updateMember(Member mem) {
-		int num = session.insert(NS + "updateMember", mem);
+		int num = session.update(NS + "updateMember", mem);
 		return num;
 	}
 

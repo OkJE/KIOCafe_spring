@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import model.Cart;
 import model.Member;
 import service.CartMybatisDao;
+import service.MemberMybatisDao;
 
 @Controller
 @RequestMapping("/cart/")
@@ -61,11 +62,11 @@ public class CartController {
 	public String basketDelete(String[] did) throws Exception {
 		String userId = (String) session.getAttribute("id");
 
-		String msg = "삭제 성공";
+		String msg = "선택하신 상품을 삭제하였습니다.";
 		String url = "/cart/cartList";
 
 		if (did == null) {
-			msg = "삭제할 상품의 체크박스를 클릭해주세요";
+			msg = "삭제할 상품을 선택해 주세요";
 			m.addAttribute("msg", msg);
 			m.addAttribute("url", url);
 
@@ -92,8 +93,6 @@ public class CartController {
 			return "redirect:/cart/cartList";
 		}
 
-
-
 		Cart cartChk = cd.cartOne(cart);
 		if (cartChk != null) {
 			String msg = "장바구니에 같은 제품이 있습니다. 확인해 주세요";
@@ -119,8 +118,6 @@ public class CartController {
 			return "redirect:/cart/cartList";
 		}
 
-
-
 		Cart cartChk = cd.cartOne(cart);
 		if (cartChk != null) {
 			String msg = "장바구니에 같은 제품이 있습니다. 확인해 주세요";
@@ -134,9 +131,9 @@ public class CartController {
 			cart.setDpay("1");
 			int num = cd.cartInsert(cart);
 		}
-		return "redirect:/cart/cartList";
+		return "redirect:/cart/orderList";
 	}
-		
+
 // 장바구니 결제버튼 클릭 
 	@RequestMapping("cartUpdatePro")
 	public String cartUpdatePro(String[] did, String[] dqty, String[] dtotal, String dpay) throws Exception {
@@ -144,32 +141,42 @@ public class CartController {
 		ArrayList<String> dqtyArrList = new ArrayList<>();
 		ArrayList<String> dtotalArrList = new ArrayList<>();
 		String userId = (String) session.getAttribute("id");
+
 //		 dqty 값 중 ""값이 아닌 값들 dqtyArrList에 추가
+		String msg = "";
+		String url = "/cart/cartList";
 
-		if (dpay.equals("0")) {
+		if (did == null) {
+			msg = "결제 할 상품의 선택해주세요";
+			m.addAttribute("msg", msg);
+			m.addAttribute("url", url);
 
-			for (String string : dqty) {
-				if (string != "") {
-					dqtyArrList.add(string);
+			return "alert";
+		} else {
+
+			if (dpay.equals("0")) {
+
+				for (String string : dqty) {
+					if (string != "") {
+						dqtyArrList.add(string);
+					}
 				}
-			}
 
-			for (String string : dtotal) {
-				if (string != "") {
-					dtotalArrList.add(string);
+				for (String string : dtotal) {
+					if (string != "") {
+						dtotalArrList.add(string);
+					}
 				}
-			}
 
-			for (String string : dqty) {
-				if (string != null) {
-					dtotalArrList.add(string);
+				for (String string : dqty) {
+					if (string != null) {
+						dtotalArrList.add(string);
+					}
 				}
+
+				cd.cartUpdate1(userId, did, dqtyArrList, dtotalArrList);
 			}
-
-			cd.cartUpdate1(userId, did, dqtyArrList, dtotalArrList);
-		}
-
-		else {
+			
 		}
 
 		return "redirect:/cart/orderList";
@@ -183,7 +190,6 @@ public class CartController {
 		String url = "";
 		msg = " 품목 삭제를 실패 하였습니다.";
 		url = "/cart/cartList";
-
 
 		String userId = (String) session.getAttribute("id");
 

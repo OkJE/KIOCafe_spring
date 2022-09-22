@@ -51,14 +51,6 @@ public class OrderController {
 	 * 
 	 */
 
-	@RequestMapping("myOrderList")
-	public String myOrderList() throws Exception {
-		String userId = (String) session.getAttribute("id");
-		List<Order> list = cd.orderList(userId);
-		m.addAttribute("list", list);
-		return "/order/myorder";
-	}
-
 	@RequestMapping("myOrderListInfo")
 	public String myOrderListInfo() throws Exception {
 		String userId = (String) session.getAttribute("id");

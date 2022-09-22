@@ -268,11 +268,6 @@ input.text {
 							value="${mb.nickname}" style="width: 200px;"></td>
 					</tr>
 					<tr>
-						<th scope="row">이메일</th>
-						<td><input type="text" class="text" name="email"
-							value="${mb.tel}" style="width: 200px;"></td>
-					</tr>
-					<tr>
 						<th scope=" row">전화번호</th>
 						<td><input type="text" class="text" name="tel"
 							value="${mb.tel}"></td>
@@ -288,7 +283,7 @@ input.text {
 						<td class="address-input">
 							<div>
 								<input type="text" id="addressInput1" class="text"
-									name="address" value="${m.address}" style="width: 350px;">
+									name="address" value="${mb.address}" style="width: 350px;">
 								<input type="button" class="btn1"
 									onclick="sample4_execDaumPostcode()" value="우편번호찾기"></input>
 							</div>

@@ -80,22 +80,40 @@
                         </div>
                     </div>
 
-
                     <a href="${pageContext.request.contextPath}/order/myOrderListInfo"
                         class="w3-bar-item w3-button">주문조회</a>
-
-                    <!-- 검색창 시작-->
-                    <!--<div class="w3-right" style="margin-right: 7rem;">
-				<input type="text" class="w3-bar-item w3-input"
-					placeholder="Search.."> <a href="#"
-					class="w3-bar-item w3-button w3-white">Go</a>
-			</div>-->
-                    <!-- 검색창 끝 -->
 
                 </div>
             </div>
             <!-- 메뉴바  끝-->
 
         </body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         </html>

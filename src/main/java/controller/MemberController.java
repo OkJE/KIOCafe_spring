@@ -232,8 +232,6 @@ public class MemberController {
 
 		Member dbm = md.selectOne(id);
 
-		if (dbm != null) {
-
 			if (dbm.getPass().equals(pass)) {
 				int num = md.changePass(id, chgpass1);
 				if (num > 0) {
@@ -247,7 +245,7 @@ public class MemberController {
 				msg = "비밀번호가 틀렸습니다.";
 				url = "/member/memberPassUpdate";
 			}
-		}
+	
 
 		m.addAttribute("msg", msg);
 		m.addAttribute("url", url);

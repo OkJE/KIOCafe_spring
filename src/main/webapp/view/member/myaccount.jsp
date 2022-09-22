@@ -178,6 +178,10 @@ input.text {
 					<td>${mb.address }</td>
 				</tr>
 				<tr>
+					<th scope="row">전화번호</th>
+					<td>${mb.tel }</td>
+				</tr>
+				<tr>
 					<th scope="row">이메일</th>
 					<td>${mb.email }</td>
 				</tr>
