@@ -199,7 +199,7 @@ input.text {
 	background-color: #ffeaed;
 	color: black;
 }
-
+ 
 .foot_btn {
 	margin-top: 20px;
 	padding: 0 15 0 15;

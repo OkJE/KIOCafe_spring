@@ -271,7 +271,7 @@ input.text {
 				</colgroup>
 
 
-				<tbody>
+				<tbody> 
 
 					<div class="head-title" style="text-align: left; margin-bottom: 10px;">
 				<span style="font-size: 25px;">필수항목</span>

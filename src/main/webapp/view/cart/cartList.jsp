@@ -320,7 +320,7 @@ img {
 	display: flex;
 	justify-content: end;
 	border: 2px #ffc0cb solid;
-	border-radius: 6px;
+	border-radius: 6px; 
 	margin-top: 45px;
 	padding-top: 15px;
 	padding-bottom: 10px;
