@@ -64,7 +64,7 @@
                             <a href="${pageContext.request.contextPath}/category/bakeryMain"
                                 class="w3-bar-item w3-button">베이커리</a> <a
                                 href="${pageContext.request.contextPath}/category/drinkMain"
-                                class="w3-bar-item w3-button">음료</a>
+                                class="w3-bar-item w3-button">드링크</a>
                         </div>
                     </div>
 

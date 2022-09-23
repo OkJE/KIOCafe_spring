@@ -42,7 +42,7 @@
 	<br>
 	<br>
 	<div class="head-title w3-center">
-		<span>제품 정보</span>
+		<span>상품 정보</span>
 	</div>
 	<br>
 	<br>
@@ -102,9 +102,9 @@
 	<div class="w3-center w3-margin-top">
 		<a class="foot_abtn   w3-margin-right"
 			style="background-color: #ffdddd;"
-			href="${pageContext.request.contextPath}/category/categoryUpdateForm?cnum=${category.cnum}">게시판수정</a>
+			href="${pageContext.request.contextPath}/category/categoryUpdateForm?cnum=${category.cnum}">상품수정</a>
 		<a class="foot_abtn  " style="background-color: #ffdddd;"
-			href="${pageContext.request.contextPath}/category/categoryDeletePro?cnum=${category.cnum}">게시판삭제</a>
+			href="${pageContext.request.contextPath}/category/categoryDeletePro?cnum=${category.cnum}">상품삭제</a>
 	</div>
 
 

@@ -73,6 +73,13 @@ public class OrderController {
 		String msg = "";
 		String url = "";
 		String userId = (String) session.getAttribute("id");
+		if (dnum == null) {
+			url = "/cart/cartList";
+			msg = "제품이 없습니다";
+			m.addAttribute("msg", msg);
+			m.addAttribute("url", url);
+			return "alert";
+		}
 		cd.selectOrderId();
 
 		cd.orderInsert(dnum, dname, dqty, dprice, dtotal, order,userId);

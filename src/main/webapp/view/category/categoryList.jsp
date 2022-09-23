@@ -64,7 +64,7 @@
 
 		</c:if>
 		<a class="foot_abtn w3-right  w3-margin-bottom"
-			href="${pageContext.request.contextPath}/category/menuUpdate">게시판입력</a>
+			href="${pageContext.request.contextPath}/category/menuUpdate">상품등록</a>
 		
 		<c:if test="${categoryCount > 0}">
 			<table class="w3-table w3-bordered w3-hoverable  w3-margin-bottom">

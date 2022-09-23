@@ -10,6 +10,11 @@
 
 	</select>
 
+	<select id="selectOne" resultType="member">
+		select * from kiocafe_member
+		where id = #{id}
+	</select>
+
 	<select id="cartList" parameterType="map" resultType="cart">
 		select *
 		from kiocafe_cart where did = #{id} and dpay = 0
@@ -71,8 +76,9 @@
 
 	<!-- 카트 수량 수정 -->
 	<update id="modifyDqty" parameterType="hashmap">
-		update kiocafe_category  set
-		 cqty = cqty - #{dqty} 
+		update kiocafe_category
+		set
+		cqty = cqty - #{dqty}
 		where cnum = #{dnum}
 	</update>
 

@@ -53,7 +53,18 @@ public class CartController {
 		String userId = (String) session.getAttribute("id");
 
 		List<Cart> list = cd.orderList(userId);
+		Member mb = cd.selectOne(userId);
+		
+		if(list.isEmpty()) {
+			String msg = "장바구니에서 상품을 추가해주세요";
+			String url = "/cart/cartList";
+			m.addAttribute("msg", msg);
+			m.addAttribute("url", url);
+			return "alert";
+		}
+		
 		m.addAttribute("list", list);
+		m.addAttribute("mb", mb);
 
 		return "/cart/orderList";
 	}
@@ -169,6 +180,14 @@ public class CartController {
 				}
 
 				for (String string : dqty) {
+					if ( string.startsWith("0")) {
+			               System.out.println("dqty else: " + dqty);
+			               msg = "각각의 제품을 1개 이상 선택해주세요";
+			               url = "/cart/cartList";
+			               m.addAttribute("msg", msg);
+			               m.addAttribute("url", url);
+			               return "alert";
+			            }
 					if (string != null) {
 						dtotalArrList.add(string);
 					}

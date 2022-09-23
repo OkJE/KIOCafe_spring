@@ -32,11 +32,15 @@
 	font-size: 20px;
 	line-height: 38px;
 	font-weight: bold;
-	text-align: left;
+	text-align: center;
 }
 
 tr {
 	border-bottom: 1px solid #ffe4e1;
+}
+
+th, td {
+	text-align: center !important
 }
 </style>
 <script>
@@ -56,11 +60,12 @@ tr {
 
 			<tbody>
 				<tr>
-					<th>제품번호</th>
+					<th>주문번호</th>
 					<th>주문날짜</th>
 					<th>제품명</th>
 					<th>구매수량</th>
 					<th>총가격</th>
+					<th>배송지</th>
 				</tr>
 			</tbody>
 			<tbody>
@@ -75,6 +80,7 @@ tr {
 						</span></td>
 						<td><span> ${c.DQTY }</span></td>
 						<td><span> ${c.DPRICE}</span>원</td>
+						<td><span> ${c.DADDRESS}</span></td>
 						</a>
 					</tr>
 				</c:forEach>
@@ -84,28 +90,3 @@ tr {
 	</div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

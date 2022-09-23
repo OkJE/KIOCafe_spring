@@ -31,9 +31,12 @@ body {
 	padding: 0;
 }
 
+
 .swiper {
 	width: 100%;
 	height: 80%;
+	position: relative;
+	z-index: -1;
 }
 
 .swiper-slide {
@@ -62,10 +65,12 @@ body {
         object-fit: cover;
       } */
 #wrapper {
-	max-width: 1000px;
-	margin: 0 auto;
-	border: 2px solid white;
-	border-radius: 6px;
+   max-width: 1000px;
+   margin: 0 auto;
+   border: 2px solid white;
+   border-radius: 6px;
+   position: relative;
+   z-index: 0;
 }
 
 /* span {
@@ -228,7 +233,7 @@ td>img {
 						<a href="${pageContext.request.contextPath}/category/bakeryMain">
 							<div class="w3-display-container">
 								<img
-									src="<%=request.getContextPath()%>/view/bakery_main_img.png"
+									src="<%=request.getContextPath()%>/view/bakery_main_img1.png"
 									alt="Lights" style="width: 100%; height: 80%;">
 							</div>
 						</a>
@@ -237,7 +242,7 @@ td>img {
 						<a href="${pageContext.request.contextPath}/category/drinkMain">
 
 							<div class="w3-display-container">
-								<img src="<%=request.getContextPath()%>/view/drink_main_img.png"
+								<img src="<%=request.getContextPath()%>/view/drink_main_img1.png"
 									alt="Lights" style="width: 100%; height: 80%;">
 							</div>
 						</a>

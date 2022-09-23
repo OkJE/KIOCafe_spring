@@ -36,6 +36,13 @@ public class CartMybatisDao {
 		return list;
 	}
 
+	public Member selectOne(String id) {
+		System.out.println("selectOne Start");
+		Member member= session.selectOne(ns + "selectOne", id);
+		return member;
+	}
+
+	
 	public int cartInsert(Cart cart) {
 	
 		int num = session.insert(ns + "cartInsert", cart);

@@ -6,6 +6,31 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style type="text/css">
+.btn {
+	margin-top: 20px;
+	padding: 0 15 0 15;
+	font-size: 17px;
+	font-weight: bold;
+	line-height: 38px;
+	text-align: center;
+	margin-right: 15px;
+	border: none;
+	background-color: #ffdddd;
+	min-width: 98px;
+}
+.abtn {
+	margin-top: 20px;
+	padding: 9 15 9 15 !important; 
+	font-size: 17px;
+	font-weight: bold;
+	line-height: 38px;
+	text-align: center;
+	margin-right: 15px;
+	border: none;
+	background-color: #ffdddd;
+	text-decoration: none;
+}</style>
 <script>
 	function win_upload() {
 
@@ -25,12 +50,12 @@
 		action="${pageContext.request.contextPath}/category/menuUpdatePro"
 		name="f" method="post" onsubmit="return inputCheck(this)">
 		<input type="hidden" name="cpicture"> <br> <br> <br>
-		<h3 class="w3-center">제품 등록</h3>
+		<h3 class="w3-center">상품 등록</h3>
 		<br> <br>
 
 		<div class="w3-center">
 			<img src="" width="600" height="400" id="pic"><br> <br>
-			<a class="w3-button w3-green" href="javascript:win_upload()">사진등록</a>
+			<a class="abtn"  href="javascript:win_upload()">사진등록</a>
 		</div>
 		<br>
 
@@ -80,7 +105,7 @@
 		<div class="w3-center">
 
 			<!--  <a href="${pageContext.request.contextPath}/view/category/mainpage.jsp">-->
-			<input type="submit" class="w3-button w3-light-grey" value="제품 등록">
+			<input type="submit" class="btn" value="상품 등록">
 		</div>
 		</tbody>
 	</form>

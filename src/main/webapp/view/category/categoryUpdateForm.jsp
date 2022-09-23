@@ -95,7 +95,7 @@
 
                         <tr>
                             <td class="w3-center" style="padding: 15 0 15 0;" colspan="2"><a class="abtn"
-                                    href="javascript:document.f.submit()">게시물수정</a></td>
+                                    href="javascript:document.f.submit()">상품수정</a></td>
                         </tr>
 
 
