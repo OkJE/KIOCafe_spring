@@ -82,8 +82,9 @@ public class OrderController {
 		}
 		cd.selectOrderId();
 
-		cd.orderInsert(dnum, dname, dqty, dprice, dtotal, order,userId);
+		cd.orderInsert(dnum, dname, dqty, dprice, dtotal, order, userId);
 		cd.modifyDqty(userId, dnum, dqty);
+
 		int confirm = cd.deleteCart(userId, dnum);
 
 		if (confirm > 0) {
